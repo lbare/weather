@@ -20,7 +20,7 @@ public class Weather {
     private String location;
     JsonElement jse;
     private String clientID = "wQhXMMnxoRV4HNKoRLZrL";
-    private String clientSecret = "rUOW0GEyf5bT9JhUzro2WQAuUpj3A7nFHgVCRGEK";
+    private String clientSecret = "b7HRgvAwgyo9EOyZtmninJ4WNzAvBzAIOAswkkgv";
 
 
     public Weather() {
