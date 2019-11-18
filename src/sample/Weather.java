@@ -3,15 +3,9 @@ package sample;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-
-//import javax.swing.*;
-//import java.awt.*;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 
@@ -143,15 +137,6 @@ public class Weather {
 
     public static void main(String[] args)
     {
-        Weather w = new Weather("95677");
-        /*System.out.println(w.getTemperatureF());
-        System.out.println(w.getTemperatureC());
-        System.out.println(w.getWeather());
-        System.out.println(w.getCityState());*/
-        System.out.println(w.getIcon());
 
     }
-//url to get json info quickly using 95843 area
-//http://api.aerisapi.com/observations/95843?client_id=wQhXMMnxoRV4HNKoRLZrL&client_secret=rUOW0GEyf5bT9JhUzro2WQAuUpj3A7nFHgVCRGEK
-
 }
