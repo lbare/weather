@@ -14,7 +14,7 @@ import java.net.URLEncoder;
 public class Weather {
     private String location;
     JsonElement locationJSE, forecastJSE;
-    private String[] avgTempF;
+    private String[] avgTempF, avgTempC, humidity, conditions, icon;
     private String clientID = "jqI4SN5g22BSyrI7rBIFb";
     private String clientSecret = "YqPdilijMvTmHzQ01vEGvbWo95iUmIFaw7L47fXR";
 
@@ -159,16 +159,35 @@ public class Weather {
     public void storeForecastData(){
         int day = 0;
         avgTempF = new String[7];
+        avgTempC = new String[7];
+        humidity = new String[7];
+        conditions = new String[7];
+        icon = new String[7];
+
+        // store data from each day into their own array
         while (day < 7) {
             avgTempF[day] = getForecastData()
                     .get(day).getAsJsonObject()
                     .get("avgTempF").getAsString();
-            // add arrays for each data we need
+
+            avgTempC[day] = getForecastData()
+                    .get(day).getAsJsonObject()
+                    .get("avgTempC").getAsString();
+
+            humidity[day] = getForecastData()
+                    .get(day).getAsJsonObject()
+                    .get("humidity").getAsString();
+
+            conditions[day] = getForecastData()
+                    .get(day).getAsJsonObject()
+                    .get("weather").getAsString();
+
+            icon[day] = getForecastData()
+                    .get(day).getAsJsonObject()
+                    .get("icon").getAsString();
+
             day++;
         }
-        for (int i = 0; i < avgTempF.length; i++) {
-            System.out.println(avgTempF[i]);
-        };
     }
 
     public JsonObject getLocationData(String key){
