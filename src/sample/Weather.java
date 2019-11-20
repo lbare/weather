@@ -1,5 +1,6 @@
 package sample;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -12,19 +13,22 @@ import java.net.URLEncoder;
 
 public class Weather {
     private String location;
-    JsonElement jse;
-    private String clientID = "wQhXMMnxoRV4HNKoRLZrL";
-    private String clientSecret = "b7HRgvAwgyo9EOyZtmninJ4WNzAvBzAIOAswkkgv";
+    JsonElement locationJSE, forecastJSE;
+    private String[] maxTempC;
+    private String clientID = "jqI4SN5g22BSyrI7rBIFb";
+    private String clientSecret = "YqPdilijMvTmHzQ01vEGvbWo95iUmIFaw7L47fXR";
 
 
     public Weather() {
-        autoFetch();
+        locationAutoFetch();
+        forecastAutoFetch();
     }
 
     public Weather(String input) {
         try {
             location = URLEncoder.encode(input, "utf-8");
             locationFetch();
+            forecastFetch();
         }
         catch (UnsupportedEncodingException e) {
             e.printStackTrace();
@@ -47,7 +51,7 @@ public class Weather {
             InputStream is = url.openStream();
             InputStreamReader isr = new InputStreamReader(is);
 
-            jse = JsonParser.parseReader(isr);
+            locationJSE = JsonParser.parseReader(isr);
         }
         catch (java.net.MalformedURLException mue)
         {
@@ -61,7 +65,37 @@ public class Weather {
         }
     }
 
-    public void autoFetch()
+    public void forecastFetch()
+    {
+
+        String weatherUrl = "http://api.aerisapi.com/forecasts/"
+                + location
+                + "?client_id="
+                + clientID
+                + "&client_secret="
+                + clientSecret;
+
+        try
+        {
+            URL url = new URL(weatherUrl);
+            InputStream is = url.openStream();
+            InputStreamReader isr = new InputStreamReader(is);
+
+            forecastJSE = JsonParser.parseReader(isr);
+        }
+        catch (java.net.MalformedURLException mue)
+        {
+            System.out.println("Malformed URL");
+            mue.printStackTrace();
+        }
+        catch (java.io.IOException ioe)
+        {
+            System.out.println("IO Exception");
+            ioe.printStackTrace();
+        }
+    }
+
+    public void locationAutoFetch()
     {
         String weatherUrl = "http://api.aerisapi.com/observations/:auto?client_id="
                 + clientID
@@ -74,7 +108,7 @@ public class Weather {
             InputStream is = url.openStream();
             InputStreamReader isr = new InputStreamReader(is);
 
-            jse = JsonParser.parseReader(isr);
+            locationJSE = JsonParser.parseReader(isr);
         }
         catch (java.net.MalformedURLException mue)
         {
@@ -88,15 +122,58 @@ public class Weather {
         }
     }
 
-    public JsonObject getData(String key){
-        return jse.getAsJsonObject()
+    public void forecastAutoFetch()
+    {
+        String weatherUrl = "http://api.aerisapi.com/forecasts/:auto?client_id="
+                + clientID
+                + "&client_secret="
+                + clientSecret;
+
+        try
+        {
+            URL url = new URL(weatherUrl);
+            InputStream is = url.openStream();
+            InputStreamReader isr = new InputStreamReader(is);
+
+            forecastJSE = JsonParser.parseReader(isr);
+        }
+        catch (java.net.MalformedURLException mue)
+        {
+            System.out.println("Malformed URL");
+            mue.printStackTrace();
+        }
+        catch (java.io.IOException ioe)
+        {
+            System.out.println("IO Exception");
+            ioe.printStackTrace();
+        }
+    }
+
+    public JsonArray getForecastData(){
+        return forecastJSE.getAsJsonObject()
+                .get("response").getAsJsonObject()
+                .get("periods").getAsJsonArray();
+    }
+
+    public void storeForecastData(){
+        String day1 = forecastJSE.getAsJsonObject()
+                .get("response").getAsJsonArray()
+                .get(0).getAsJsonObject()
+                .get("periods").getAsJsonArray()
+                .get(1).getAsJsonObject()
+                .get("avgTempF").getAsString();
+        System.out.println(day1);
+    }
+
+    public JsonObject getLocationData(String key){
+        return locationJSE.getAsJsonObject()
                 .get("response").getAsJsonObject()
                 .get(key).getAsJsonObject();
     }
 
     public String getTemperatureC()
     {
-        int num = getData("ob").getAsJsonObject()
+        int num = getLocationData("ob").getAsJsonObject()
                 .get("tempC").getAsInt();
         String temp = Integer.toString(num);
         return temp;
@@ -104,7 +181,7 @@ public class Weather {
 
     public String getTemperatureF()
     {
-        int num = getData("ob").getAsJsonObject()
+        int num = getLocationData("ob").getAsJsonObject()
                 .get("tempF").getAsInt();
         String temp = Integer.toString(num);
         return temp;
@@ -112,13 +189,14 @@ public class Weather {
 
     public String getWeather()
     {
-        String weather = getData("ob").getAsJsonObject()
+        String weather = getLocationData("ob").getAsJsonObject()
                 .get("weather").getAsString();
         return weather;
     }
+
     public String getIcon()
     {
-        String icon = getData("ob")
+        String icon = getLocationData("ob")
                 .getAsJsonObject()
                 .get("icon").getAsString();
 
@@ -127,16 +205,17 @@ public class Weather {
 
     public String getCityState()
     {
-        String cityState = getData("place").getAsJsonObject()
+        String cityState = getLocationData("place").getAsJsonObject()
                 .get("name").getAsString();
         cityState = cityState.substring(0, 1).toUpperCase() + cityState.substring(1);
-        cityState = cityState + "," + " " + getData("place").getAsJsonObject()
+        cityState = cityState + "," + " " + getLocationData("place").getAsJsonObject()
                 .get("state").getAsString().toUpperCase();
         return cityState;
     }
 
     public static void main(String[] args)
     {
-
+        Weather w = new Weather();
+        w.storeForecastData();
     }
 }
