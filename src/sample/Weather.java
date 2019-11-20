@@ -190,6 +190,26 @@ public class Weather {
         }
     }
 
+    public String getAvgTempF(int day){
+        return avgTempF[day];
+    }
+
+    public String getAvgTempC(int day){
+        return avgTempC[day];
+    }
+
+    public String getHumidity(int day){
+        return humidity[day];
+    }
+
+    public String getConditions(int day){
+        return conditions[day];
+    }
+
+    public String getIcon(int day){
+        return icon[day];
+    }
+
     public JsonObject getLocationData(String key){
         return locationJSE.getAsJsonObject()
                 .get("response").getAsJsonObject()
