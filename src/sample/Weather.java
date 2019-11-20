@@ -14,7 +14,7 @@ import java.net.URLEncoder;
 public class Weather {
     private String location;
     JsonElement locationJSE, forecastJSE;
-    private String[] maxTempC;
+    private String[] avgTempF;
     private String clientID = "jqI4SN5g22BSyrI7rBIFb";
     private String clientSecret = "YqPdilijMvTmHzQ01vEGvbWo95iUmIFaw7L47fXR";
 
@@ -151,18 +151,24 @@ public class Weather {
 
     public JsonArray getForecastData(){
         return forecastJSE.getAsJsonObject()
-                .get("response").getAsJsonObject()
+                .get("response").getAsJsonArray()
+                .get(0).getAsJsonObject()
                 .get("periods").getAsJsonArray();
     }
 
     public void storeForecastData(){
-        String day1 = forecastJSE.getAsJsonObject()
-                .get("response").getAsJsonArray()
-                .get(0).getAsJsonObject()
-                .get("periods").getAsJsonArray()
-                .get(1).getAsJsonObject()
-                .get("avgTempF").getAsString();
-        System.out.println(day1);
+        int day = 0;
+        avgTempF = new String[7];
+        while (day < 7) {
+            avgTempF[day] = getForecastData()
+                    .get(day).getAsJsonObject()
+                    .get("avgTempF").getAsString();
+            // add arrays for each data we need
+            day++;
+        }
+        for (int i = 0; i < avgTempF.length; i++) {
+            System.out.println(avgTempF[i]);
+        };
     }
 
     public JsonObject getLocationData(String key){
