@@ -32,7 +32,7 @@ public class Controller {
         if ((zipField.getText().matches("[0-9]+") && zipField.getText().length() == 5)) {
             Double num = Double.parseDouble(zipField.getText());
             Weather w = new Weather(zipField.getText());
-            tempField.setText(w.getTemperatureF());
+            tempLabel.setText(w.getTemperatureF());
             weatherField.setText(w.getWeather());
             locationField.setText(w.getCityState());
             setVisible();
@@ -46,7 +46,7 @@ public class Controller {
 
     public void myLocationButtonHandler(ActionEvent e){
         Weather w = new Weather();
-        tempField.setText(w.getTemperatureF());
+        tempLabel.setText(w.getTemperatureF());
         weatherField.setText(w.getWeather());
         locationField.setText(w.getCityState());
         setVisible();
@@ -63,7 +63,7 @@ public class Controller {
         cToggle.setVisible(true);
         locationField.setVisible(true);
         weatherField.setVisible(true);
-        tempField.setVisible(true);
+        //tempField.setVisible(true);
         tempLabel.setVisible(true);
         weatherLabel.setVisible(true);
         locationLabel.setVisible(true);
@@ -74,19 +74,19 @@ public class Controller {
         if (buttonClicked == 0) {
             Weather w = new Weather(zipField.getText());
             if (tempToggle.getSelectedToggle().equals(cToggle)) {
-                tempField.setText(w.getTemperatureC());
+                tempLabel.setText(w.getTemperatureC());
             }
             else if (tempToggle.getSelectedToggle().equals(fToggle)) {
-                tempField.setText(w.getTemperatureF());
+                tempLabel.setText(w.getTemperatureF());
             }
         }
         else if (buttonClicked == 1) {
             Weather w = new Weather();
             if (tempToggle.getSelectedToggle().equals(cToggle)) {
-                tempField.setText(w.getTemperatureC());
+                tempLabel.setText(w.getTemperatureC());
             }
             else if (tempToggle.getSelectedToggle().equals(fToggle)) {
-                tempField.setText(w.getTemperatureF());
+                tempLabel.setText(w.getTemperatureF());
             }
         }
     }
