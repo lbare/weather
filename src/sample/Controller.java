@@ -11,13 +11,13 @@ import javafx.scene.image.ImageView;
 
 public class Controller {
     @FXML
-    TextField zipField, weatherField, locationField;
+    TextField zipField, locationField, weatherField;
 
     @FXML
     RadioButton fToggle, cToggle;
 
     @FXML
-    Label tempLabel, weatherLabel, locationLabel, weather1Label, location1Label, day0, day1, day2, day3, day4, day5, day6;
+    Label tempLabel, weatherLabel, locationLabel, day0, day1, day2, day3, day4, day5, day6;
 
     @FXML
     ToggleGroup tempToggle;
@@ -34,9 +34,7 @@ public class Controller {
             Weather w = new Weather(zipField.getText());
             tempLabel.setText(w.getTemperatureF());
             weatherField.setText(w.getWeather());
-            weather1Label.setText(w.getWeather());
             locationField.setText(w.getCityState());
-            location1Label.setText(w.getCityState());
             setVisible();
             tempToggle.selectToggle(fToggle);
             buttonClicked = 0;
@@ -50,9 +48,7 @@ public class Controller {
         Weather w = new Weather();
         tempLabel.setText(w.getTemperatureF());
         weatherField.setText(w.getWeather());
-        weather1Label.setText(w.getWeather());
         locationField.setText(w.getCityState());
-        location1Label.setText(w.getCityState());
         setVisible();
         tempToggle.selectToggle(fToggle);
         buttonClicked = 1;
@@ -69,9 +65,7 @@ public class Controller {
         weatherField.setVisible(true);
         tempLabel.setVisible(true);
         weatherLabel.setVisible(true);
-        weather1Label.setVisible(true);
         locationLabel.setVisible(true);
-        location1Label.setVisible(true);
         imageView.setVisible(true);
     }
 

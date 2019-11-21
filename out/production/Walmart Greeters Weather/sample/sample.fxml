@@ -193,8 +193,8 @@
                 </Label>
             <TextField fx:id="locationField" layoutX="37.0" layoutY="592.0" />
             <TextField fx:id="weatherField" layoutX="219.0" layoutY="591.0" />
-            <Label layoutX="257.0" layoutY="618.0" text="WEATHER LABEL" />
-            <Label layoutX="72.0" layoutY="619.0" text="LOCATION LABEL" />
+            <Label layoutX="280.0" layoutY="620.0" text="WEATHER" />
+            <Label layoutX="77.0" layoutY="618.0" text="LOCATION" />
             </children>
         </Pane>
     </children>
