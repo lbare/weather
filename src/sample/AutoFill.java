@@ -3,23 +3,25 @@ package sample;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class AutoFill {
 
     private String apiKey = "pk.eyJ1IjoibGJhcmUiLCJhIjoiY2szYWhqaTc5MGUzdjNlb2NrbGlyMHdyMyJ9.v_XrJlAoxgK52CAEQoaEsw";
     private String query;
     private JsonElement mapJSE;
-    private ArrayList<String> searchResults;
+    private ArrayList<String> coordinateResults, locationResults;
+    private HashMap<String,String> map;
 
 
     public AutoFill(String s){
         query = s;
         fetch();
+        storeForecastData();
     }
 
     public void fetch()
@@ -51,37 +53,53 @@ public class AutoFill {
         }
     }
 
-    public JsonArray getSearchResults(){
+    public JsonArray getResults(){
         return mapJSE.getAsJsonObject()
                 .get("features").getAsJsonArray();
     }
 
     public void storeForecastData(){
         int day = 0;
-        int resultsLength = getSearchResults().size();
-        searchResults = new ArrayList<String>();
+        int resultsLength = getResults().size();
+        coordinateResults = new ArrayList<String>();
+        locationResults = new ArrayList<String>();
+        map = new HashMap<String,String>();
 
-        // store data from each day into their own array
+        // store data from each day into their own ArrayList
         for (int i = 0; i < resultsLength; i++) {
-            String store = getSearchResults()
-                    .get(i).getAsJsonObject()
-                    .get("geometry").getAsJsonObject()
-                    .get("coordinates").getAsJsonArray()
-                    .get(1).getAsString() +
+            String coordinates = getResults()
+                            .get(i).getAsJsonObject()
+                            .get("geometry").getAsJsonObject()
+                            .get("coordinates").getAsJsonArray()
+                            .get(1).getAsString() +
                     "," +
-                    getSearchResults()
-                    .get(i).getAsJsonObject()
-                    .get("geometry").getAsJsonObject()
-                    .get("coordinates").getAsJsonArray()
-                    .get(0).getAsString();
+                            getResults()
+                            .get(i).getAsJsonObject()
+                            .get("geometry").getAsJsonObject()
+                            .get("coordinates").getAsJsonArray()
+                            .get(0).getAsString();
 
-            searchResults.add(store);
+            String locations = getResults()
+                            .get(i).getAsJsonObject()
+                            .get("place_name").getAsString();
+
+            coordinateResults.add(coordinates);
+            locationResults.add(locations);
+            map.put(locationResults.get(i), coordinateResults.get(i));
             day++;
         }
     }
 
-    public static void main(String[] args) {
+    public ArrayList<String> getLocationResults() {
+        return locationResults;
+    }
 
+    public String getTopResult(){
+        return locationResults.get(0);
+    }
+
+    public static void main(String[] args) {
+        AutoFill a = new AutoFill("rockl");
     }
 
 

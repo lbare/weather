@@ -1,17 +1,25 @@
 package sample;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import org.controlsfx.control.textfield.TextFields;
 
-public class Controller {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class Controller implements Initializable {
     @FXML
-    TextField zipField, locationField, weatherField;
+    TextField zipField, locationField, weatherField, locationInput;
+
+    @FXML
+    ComboBox resultsBox;
 
     @FXML
     RadioButton fToggle, cToggle;
@@ -27,6 +35,10 @@ public class Controller {
 
     // keeps track of whether the Go or myLocation was pressed for the RadioButtons
     private int buttonClicked;
+
+    ObservableList<String> searchResults = FXCollections.observableArrayList("");
+
+
 
     public void goButtonHandler(ActionEvent e){
         if ((zipField.getText().matches("[0-9]+") && zipField.getText().length() == 5)) {
@@ -90,5 +102,21 @@ public class Controller {
         }
     }
 
+    public void autoFillUpdate(ActionEvent e){
+        AutoFill a = new AutoFill(locationInput.getText());
+        searchResults = FXCollections.observableArrayList(a.getLocationResults());
+        resultsBox.setItems(searchResults);
+    }
+
+    public void clearFields(ActionEvent e){
+        locationInput.clear();
+        resultsBox.setItems(searchResults);
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        resultsBox.setValue("");
+        resultsBox.setItems(searchResults);
+    }
 }
 
