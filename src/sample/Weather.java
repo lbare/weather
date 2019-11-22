@@ -13,7 +13,7 @@ import java.net.URLEncoder;
 
 public class Weather {
     private String location;
-    JsonElement locationJSE, forecastJSE;
+    private JsonElement locationJSE, forecastJSE;
     private String[] avgTempF, avgTempC, humidity, conditions, icon;
     private String clientID = "jqI4SN5g22BSyrI7rBIFb";
     private String clientSecret = "YqPdilijMvTmHzQ01vEGvbWo95iUmIFaw7L47fXR";
@@ -38,12 +38,12 @@ public class Weather {
     public void locationFetch()
     {
 
-        String weatherUrl = "http://api.aerisapi.com/observations/"
-                + location
-                + "?client_id="
-                + clientID
-                + "&client_secret="
-                + clientSecret;
+        String weatherUrl = "http://api.aerisapi.com/observations/" +
+                location +
+                "?client_id=" +
+                clientID +
+                "&client_secret=" +
+                clientSecret;
 
         try
         {
