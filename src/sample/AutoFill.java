@@ -94,8 +94,8 @@ public class AutoFill {
         return locationResults;
     }
 
-    public String getTopResult(){
-        return locationResults.get(0);
+    public HashMap<String,String> getMap(){
+        return map;
     }
 
     public static void main(String[] args) {

@@ -12,6 +12,7 @@ import javafx.scene.image.ImageView;
 import org.controlsfx.control.textfield.TextFields;
 
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -35,6 +36,8 @@ public class Controller implements Initializable {
 
     // keeps track of whether the Go or myLocation was pressed for the RadioButtons
     private int buttonClicked;
+    private HashMap<String,String> map;
+    private String selection;
 
     ObservableList<String> searchResults = FXCollections.observableArrayList("");
 
@@ -57,7 +60,7 @@ public class Controller implements Initializable {
     }
 
     public void myLocationButtonHandler(ActionEvent e){
-        Weather w = new Weather();
+        Weather w = new Weather(  );
         tempLabel.setText(w.getTemperatureF());
         weatherField.setText(w.getWeather());
         locationField.setText(w.getCityState());
@@ -104,6 +107,8 @@ public class Controller implements Initializable {
 
     public void autoFillUpdate(ActionEvent e){
         AutoFill a = new AutoFill(locationInput.getText());
+        map = new HashMap<String,String>();
+        map = a.getMap();
         searchResults = FXCollections.observableArrayList(a.getLocationResults());
         resultsBox.setItems(searchResults);
     }
@@ -111,6 +116,21 @@ public class Controller implements Initializable {
     public void clearFields(ActionEvent e){
         locationInput.clear();
         resultsBox.setItems(searchResults);
+    }
+
+    public void handleGoButton(ActionEvent e){
+        selection = map.get(resultsBox.getValue());
+        Weather w = new Weather(selection);
+
+        tempLabel.setText(w.getTemperatureF());
+        weatherField.setText(w.getWeather());
+        locationField.setText(w.getCityState());
+        setVisible();
+        tempToggle.selectToggle(fToggle);
+        buttonClicked = 0;
+
+        Image Icon1 = new Image("file:images/" + w.getIcon());
+        imageView.setImage(Icon1);
     }
 
     @Override

@@ -260,7 +260,7 @@ public class Weather {
 
     public static void main(String[] args)
     {
-        Weather w = new Weather();
+        Weather w = new Weather("42.1307,-70.9162");
         w.storeForecastData();
     }
 }
