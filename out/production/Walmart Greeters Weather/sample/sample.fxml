@@ -1,92 +1,201 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.ScrollBar?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-
-<Pane fx:id="basePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="490.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
-   <padding>
-      <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
-   </padding>
-   <children>
-      <ToolBar fx:id="searchToolBar" prefHeight="40.0" prefWidth="490.0">
-         <items>
-            <Label fx:id="zipCodeLabel" text="Enter a zip code:" textAlignment="CENTER">
-               <padding>
-                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
-               </padding>
-               <font>
-                  <Font name="Arial" size="16.0" />
-               </font>
-            </Label>
-            <TextField fx:id="searchField" prefHeight="25.0" prefWidth="90.0">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </TextField>
-            <Button fx:id="searchButton" mnemonicParsing="false" onAction="#goButtonHandler" text="Search" textAlignment="CENTER">
-               <font>
-                  <Font name="Arial" size="14.0" />
-               </font>
-            </Button>
-            <Button fx:id="clearButton" layoutX="233.0" layoutY="12.0" mnemonicParsing="false" onAction="#clearButtonHandler" text="Clear" textAlignment="CENTER">
-               <font>
-                  <Font name="Arial" size="14.0" />
-               </font>
-            </Button>
-            <Button fx:id="currentLocationButton" layoutX="302.0" layoutY="12.0" mnemonicParsing="false" onAction="#currentLocationButtonHandler" text="Current Location" textAlignment="CENTER">
-               <font>
-                  <Font name="Arial" size="14.0" />
-               </font>
-            </Button>
-         </items>
-      </ToolBar>
-      <ScrollBar layoutX="469.0" layoutY="40.0" orientation="VERTICAL" prefHeight="610.0" prefWidth="21.0" />
-      <Label fx:id="locationLabel" layoutX="158.0" layoutY="70.0" prefHeight="40.0" prefWidth="175.0" textAlignment="JUSTIFY">
-         <padding>
-            <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
-         </padding>
-         <font>
-            <Font name="Arial" size="20.0" />
-         </font>
-      </Label>
-      <Label fx:id="conditionsLabel" layoutX="158.0" layoutY="110.0" prefHeight="40.0" prefWidth="175.0" textAlignment="JUSTIFY">
-         <padding>
-            <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
-         </padding>
-         <font>
-            <Font name="Arial" size="20.0" />
-         </font>
-      </Label>
-      <Label fx:id="currentTemperatureLabel" layoutX="200.0" layoutY="150.0" prefHeight="90.0" prefWidth="90.0" textAlignment="JUSTIFY">
-         <font>
-            <Font size="72.0" />
-         </font>
-      </Label>
-      <ImageView fx:id="imageView" fitHeight="175.0" fitWidth="175.0" layoutX="158.0" layoutY="258.0" pickOnBounds="true" preserveRatio="true" />
-      <RadioButton fx:id="tempToggle" layoutX="14.0" layoutY="40.0" mnemonicParsing="false" onAction="#toggleButton" prefHeight="26.0" prefWidth="54.0" text="F" textAlignment="CENTER">
-         <font>
-            <Font name="Arial" size="14.0" />
-         </font>
-         <padding>
-            <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
-         </padding>
-      </RadioButton>
-      <RadioButton fx:id="cToggle" layoutX="14.0" layoutY="66.0" mnemonicParsing="false" onAction="#toggleButton" prefHeight="26.0" prefWidth="54.0" text="C" textAlignment="CENTER">
-         <font>
-            <Font name="Arial" size="14.0" />
-         </font>
-         <padding>
-            <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
-         </padding>
-      </RadioButton>
-   </children>
-</Pane>
+<GridPane alignment="center" hgap="10" prefHeight="716.0" prefWidth="394.0" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <columnConstraints>
+        <ColumnConstraints />
+        <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+    </rowConstraints>
+    <children>
+        <Pane prefHeight="678.0" prefWidth="430.0" GridPane.rowIndex="4">
+            <children>
+                <TextField fx:id="zipField" alignment="CENTER" layoutX="163.0" layoutY="93.0" prefHeight="27.0" prefWidth="189.0" />
+                <Label layoutX="65.0" layoutY="99.0" prefHeight="15.0" prefWidth="99.0" text="ENTER ZIPCODE:">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Label>
+                <Label fx:id="tempLabel" alignment="CENTER" layoutX="98.0" layoutY="535.0" text="Temperature F:" />
+                <Label alignment="CENTER" layoutX="228.0" layoutY="535.0" text="Temperature (°C):" />
+                <Label fx:id="weatherLabel" alignment="CENTER" layoutX="281.0" layoutY="574.0" text="Weather:" />
+                <Label fx:id="locationLabel" alignment="CENTER" layoutX="85.0" layoutY="573.0" text="Location:" />
+                <Button fx:id="goButton" layoutX="65.0" layoutY="132.0" mnemonicParsing="false" onAction="#goButtonHandler" prefHeight="25.0" prefWidth="70.0" text="Search">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font></Button>
+                <Button fx:id="myLocationButtonHandler" layoutX="228.0" layoutY="132.0" mnemonicParsing="false" onAction="#myLocationButtonHandler" prefHeight="25.0" prefWidth="125.0" text="My Current Location">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font></Button>
+                <RadioButton fx:id="cToggle" layoutX="280.0" layoutY="320.0" mnemonicParsing="false" onAction="#toggleButton" text="°C">
+                    <toggleGroup>
+                        <ToggleGroup fx:id="tempToggle" />
+                    </toggleGroup>
+                </RadioButton>
+                <RadioButton fx:id="fToggle" layoutX="280.0" layoutY="285.0" mnemonicParsing="false" onAction="#toggleButton" selected="true" text="°F" toggleGroup="$tempToggle">
+                    <font>
+                        <Font name="System Bold" size="13.0" />
+                    </font>
+                </RadioButton>
+                <ImageView id="Icon" fx:id="imageView" fitHeight="82.0" fitWidth="82.0" layoutX="60.0" layoutY="269.0" pickOnBounds="true" preserveRatio="true" />
+                <Button layoutX="16.0" layoutY="12.0" mnemonicParsing="false" text="SAC" />
+                <Button layoutX="71.0" layoutY="12.0" mnemonicParsing="false" text="NYC" />
+                <Button layoutX="129.0" layoutY="12.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="44.0" text="SF" />
+                <Button layoutX="187.0" layoutY="13.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="43.0" text="LA" />
+                <Button layoutX="243.0" layoutY="13.0" mnemonicParsing="false" text="SEATTLE" />
+                <Button layoutX="325.0" layoutY="13.0" mnemonicParsing="false" text="MIAMI" />
+                <Button layoutX="156.0" layoutY="131.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="54.0" text="Clear" />
+                <Circle fill="DODGERBLUE" layoutX="101.0" layoutY="310.0" radius="41.0" stroke="BLACK" strokeType="INSIDE" />
+                <Label layoutX="164.0" layoutY="195.0" prefHeight="15.0" prefWidth="92.0" text="CURRENT DATE">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Label>
+                <Label layoutX="175.0" layoutY="213.0" prefHeight="15.0" prefWidth="74.0" text="LOCATION">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Label>
+                <Label layoutX="144.0" layoutY="231.0" prefHeight="15.0" prefWidth="134.0" text="WEATHER CONDITION">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Label>
+                <Label layoutX="28.0" layoutY="391.0" prefHeight="15.0" prefWidth="35.0" text="MON">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Label>
+                <Label layoutX="78.0" layoutY="391.0" prefHeight="15.0" prefWidth="43.0" text="TUES">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Label>
+                <Label layoutX="134.0" layoutY="391.0" prefHeight="15.0" prefWidth="26.0" text="WED">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Label>
+                <Label layoutX="179.0" layoutY="391.0" prefHeight="15.0" prefWidth="50.0" text="THURS">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Label>
+                <Label layoutX="240.0" layoutY="390.0" prefHeight="15.0" prefWidth="26.0" text="FRI">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Label>
+                <Label layoutX="286.0" layoutY="390.0" prefHeight="15.0" prefWidth="26.0" text="SAT">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Label>
+                <Label layoutX="334.0" layoutY="389.0" prefHeight="15.0" prefWidth="26.0" text="SUN">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Label>
+                <Circle fill="DODGERBLUE" layoutX="43.0" layoutY="437.0" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fill="DODGERBLUE" layoutX="146.0" layoutY="436.0" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fill="DODGERBLUE" layoutX="95.0" layoutY="436.0" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fill="DODGERBLUE" layoutX="198.0" layoutY="436.0" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fill="DODGERBLUE" layoutX="348.0" layoutY="434.0" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fill="DODGERBLUE" layoutX="299.0" layoutY="435.0" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fill="DODGERBLUE" layoutX="249.0" layoutY="436.0" radius="22.0" stroke="BLACK" strokeType="INSIDE" />
+                <Label layoutX="29.0" layoutY="467.0" prefHeight="27.0" prefWidth="35.0" text="65*">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label layoutX="82.0" layoutY="467.0" prefHeight="27.0" prefWidth="35.0" text="65*">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label layoutX="134.0" layoutY="467.0" prefHeight="27.0" prefWidth="35.0" text="65*">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label layoutX="185.0" layoutY="468.0" prefHeight="27.0" prefWidth="35.0" text="65*">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label layoutX="237.0" layoutY="468.0" prefHeight="27.0" prefWidth="35.0" text="65*">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label layoutX="287.0" layoutY="468.0" prefHeight="27.0" prefWidth="35.0" text="65*">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Label layoutX="335.0" layoutY="468.0" prefHeight="27.0" prefWidth="35.0" text="65*">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Circle fill="#ffcc1f" layoutX="218.0" layoutY="512.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fill="#ffcc1f" layoutX="177.0" layoutY="512.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" />
+                <Label layoutX="142.0" layoutY="505.0" prefHeight="9.0" prefWidth="15.0" text="F">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Label>
+                <Label layoutX="244.0" layoutY="505.0" prefHeight="9.0" prefWidth="15.0" text="C">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Label>
+                <Label layoutX="194.0" layoutY="497.0" prefHeight="9.0" prefWidth="15.0" text="|">
+                    <font>
+                        <Font name="System Bold" size="24.0" />
+                    </font>
+                </Label>
+                <TextField alignment="CENTER" layoutX="136.0" layoutY="641.0" prefHeight="27.0" prefWidth="125.0" />
+                <Label layoutX="12.0" layoutY="648.0" prefHeight="15.0" prefWidth="125.0" text="ENTER NEW ZIPCODE:">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Label>
+                <Button layoutX="269.0" layoutY="642.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="54.0" text="Search">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                </Button>
+                <Button layoutX="329.0" layoutY="641.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="50.0" text="Clear" />
+                <Label fx:id="tempLabel" layoutX="157.0" layoutY="258.0" prefHeight="105.0" prefWidth="92.0">
+                    <font>
+                        <Font size="64.0" />
+                    </font>
+                </Label>
+            <TextField fx:id="locationField" layoutX="37.0" layoutY="592.0" />
+            <TextField fx:id="weatherField" layoutX="219.0" layoutY="591.0" />
+            <Label layoutX="280.0" layoutY="620.0" text="WEATHER" />
+            <Label layoutX="77.0" layoutY="618.0" text="LOCATION" />
+            </children>
+        </Pane>
+    </children>
+</GridPane>
