@@ -245,6 +245,143 @@ public class Weather {
                 .getAsJsonObject()
                 .get("icon").getAsString();
 
+        switch (icon) {
+            case "am_pcloudy.png":
+            case "mcloudy.png":
+            case "mcloudyw.png":
+            case "pcloudy.png":
+            case "pcloudyw.png":
+            case "pm_pcloudy.png":
+                icon = "pc.png";
+                break;
+            case "am_tstorm.png":
+            case "chancetstorm.png":
+            case "chancetstormn.png":
+            case "mcloudyt.png":
+            case "mcloudytn.png":
+            case "mcloudytw.png":
+            case "mcloudytwn.png":
+            case "pcloudyt.png":
+            case "pcloudytn.png":
+            case "pcloudytw.png":
+            case "pcloudytwn.png":
+            case "pm_tstorm.png":
+            case "tstorm.png":
+            case "tstormn.png":
+            case "tstormsw.png":
+            case "tstormswn.png":
+            case "tstormw.png":
+            case "tstormwn.png":
+                icon = "t.png";
+                break;
+            case "cloudy.png":
+            case "cloudyw.png":
+                icon = "c.png";
+                break;
+            case "dust.png":
+            case "fog.png":
+            case "smoke.png":
+            case "wind.png":
+                icon = "w.png";
+                break;
+            case "am_snowshowers.png":
+            case "blizzard.png":
+            case "blizzardn.png":
+            case "blowingsnow.png":
+            case "blowingsnown.png":
+            case "flurries.png":
+            case "flurriesn.png":
+            case "flurriesw.png":
+            case "flurrieswn.png":
+            case "mcloudys.png":
+            case "mcloudysfn.png":
+            case "mcloudysfw.png":
+            case "mcloudysfwn.png":
+            case "mcloudysn.png":
+            case "mcloudysw.png":
+            case "mcloudyswn.png":
+            case "pcloudys.png":
+            case "pcloudysf.png":
+            case "pcloudysfn.png":
+            case "pcloudysfw.png":
+            case "pcloudysfwn.png":
+            case "pcloudysn.png":
+            case "pcloudyswn.png":
+            case "pm_snowshowers.png":
+            case "rainandsnow.png":
+            case "rainandsnown.png":
+            case "raintosnow.png":
+            case "raintosnown.png":
+            case "sleet.png":
+            case "sleetn.png":
+            case "sleetsnow.png":
+            case "snow.png":
+            case "snowshowers.png":
+            case "snowshowersn.png":
+            case "snowshowersw.png":
+            case "snowshowerswn.png":
+            case "snoww.png":
+            case "snowwn.png":
+                icon = "sn.png";
+                break;
+            case "clearn.png":
+            case "clearwn.png":
+            case "cloudyn.png":
+            case "cloudywn.png":
+            case "fairn.png":
+            case "fairwn.png":
+            case "fogn.png":
+            case "hazyn.png":
+            case "mcloudyn.png":
+            case "mcloudywn.png":
+            case "pcloudyn.png":
+            case "pcloudywn.png":
+            case "smoken.png":
+            case "sunnyn.png":
+            case "sunnywn.png":
+                icon = "n.png";
+                break;
+            case "am_pcloudyr.png":
+            case "am_showers.png":
+            case "drizzle.png":
+            case "drizzlef.png":
+            case "drizzlen.png":
+            case "fdrizzle.png":
+            case "fdrizzlen.png":
+            case "freezingrain.png":
+            case "freezingrainn.png":
+            case "mcloudyr.png":
+            case "mcloudyrn.png":
+            case "mcloudyrw.png":
+            case "mcloudyrwn.png":
+            case "pcloudyr.png":
+            case "pcloudyrn.png":
+            case "pcloudyrw.png":
+            case "pcloudyrwn.png":
+            case "pm_pcloudyr.png":
+            case "pm_showers.png":
+            case "rain.png":
+            case "rainn.png":
+            case "rainw.png":
+            case "showers.png":
+            case "showersn.png":
+            case "showersw.png":
+            case "snowtorain.png":
+            case "snowtorainn.png":
+            case "wintrymix.png":
+            case "wintrymixn.png":
+                icon = "r.png";
+                break;
+            case "clear.png":
+            case "clearw.png":
+            case "fair.png":
+            case "fairw.png":
+            case "hazy.png":
+            case "sunny.png":
+            case "sunnyw.png":
+                icon = "s.png";
+                break;
+        }
         return icon;
     }
 
@@ -262,5 +399,6 @@ public class Weather {
     {
         Weather w = new Weather();
         w.storeForecastData();
+        System.out.println(w.getIcon());
     }
 }

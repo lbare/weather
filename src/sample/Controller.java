@@ -54,7 +54,7 @@ public class Controller {
         buttonClicked = 1;
         zipField.clear();
 
-        Image Icon1 = new Image("file:images/" + w.getIcon());
+        Image Icon1 = new Image("file:icons/" + w.getIcon());
         imageView.setImage(Icon1);
     }
 
