@@ -25,9 +25,10 @@
         <RowConstraints />
         <RowConstraints />
         <RowConstraints />
+      <RowConstraints />
     </rowConstraints>
     <children>
-        <Pane prefHeight="678.0" prefWidth="430.0" GridPane.rowIndex="4">
+        <Pane prefHeight="678.0" prefWidth="430.0" GridPane.rowIndex="5">
             <children>
                 <TextField fx:id="zipField" alignment="CENTER" layoutX="163.0" layoutY="93.0" prefHeight="27.0" prefWidth="189.0" />
                 <Label layoutX="65.0" layoutY="99.0" prefHeight="15.0" prefWidth="99.0" text="ENTER ZIPCODE:">
@@ -202,8 +203,9 @@
          <children>
             <TextField fx:id="locationInput" layoutX="24.0" layoutY="14.0" promptText="Enter a location" />
             <ComboBox fx:id="resultsBox" layoutX="207.0" layoutY="15.0" prefWidth="150.0" />
-            <Button layoutX="71.0" layoutY="50.0" mnemonicParsing="false" onAction="#autoFillUpdate" text="Search" />
-            <Button layoutX="192.0" layoutY="50.0" mnemonicParsing="false" onAction="#clearFields" text="Clear" />
+            <Button layoutX="43.0" layoutY="50.0" mnemonicParsing="false" onAction="#autoFillUpdate" text="Search" />
+            <Button layoutX="122.0" layoutY="50.0" mnemonicParsing="false" onAction="#clearFields" text="Clear" />
+            <Button layoutX="192.0" layoutY="50.0" mnemonicParsing="false" onAction="#handleGoButton" text="Go" />
          </children>
       </Pane>
     </children>
