@@ -189,14 +189,16 @@ public class Weather {
                     .get(day).getAsJsonObject()
                     .get("weather").getAsString();
 
-            icon[day] = getForecastData()
+             String temp = getForecastData()
                     .get(day).getAsJsonObject()
                     .get("icon").getAsString();
+            icon[day] = iconSort(temp);
 
             date[day] = getForecastData()
                     .get(day).getAsJsonObject()
                     .get("validTime").getAsString()
                     .substring(5,10).replace('-','/');
+
 
             day++;
         }
@@ -212,7 +214,7 @@ public class Weather {
     {
         int num = getLocationData("ob").getAsJsonObject()
                 .get("tempC").getAsInt();
-        String temp = Integer.toString(num);
+        String temp = Integer.toString(num) + "°";
         return temp;
     }
 
@@ -220,7 +222,7 @@ public class Weather {
     {
         int num = getLocationData("ob").getAsJsonObject()
                 .get("tempF").getAsInt();
-        String temp = Integer.toString(num);
+        String temp = Integer.toString(num) + "°";
         return temp;
     }
 
@@ -231,12 +233,7 @@ public class Weather {
         return weather;
     }
 
-    public String getIcon()
-    {
-        String icon = getLocationData("ob")
-                .getAsJsonObject()
-                .get("icon").getAsString();
-
+    public String iconSort(String icon){
         switch (icon) {
             case "am_pcloudy.png":
             case "mcloudy.png":
@@ -377,6 +374,14 @@ public class Weather {
         return icon;
     }
 
+    public String getIcon()
+    {
+        String icon = getLocationData("ob")
+                .getAsJsonObject()
+                .get("icon").getAsString();
+        return iconSort(icon);
+    }
+
     public String getCityState()
     {
         String cityState = getLocationData("place").getAsJsonObject()
@@ -413,10 +418,7 @@ public class Weather {
 
     public static void main(String[] args)
     {
-        Weather w = new Weather("42.1307,-70.9162");
-        for (int i = 0; i < 7; i++) {
-            System.out.println(w.getDate(i));
-        }
-        //System.out.println(w.getDate);
+        Weather w = new Weather();
+        System.out.println(w.getIcon());
     }
 }
