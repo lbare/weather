@@ -9,12 +9,13 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.Calendar;
 
 
 public class Weather {
     private String location;
     private JsonElement locationJSE, forecastJSE;
-    private String[] avgTempF, avgTempC, humidity, conditions, icon;
+    private String[] avgTempF, avgTempC, humidity, conditions, icon, date;
     private String clientID = "jqI4SN5g22BSyrI7rBIFb";
     private String clientSecret = "YqPdilijMvTmHzQ01vEGvbWo95iUmIFaw7L47fXR";
 
@@ -22,6 +23,7 @@ public class Weather {
     public Weather() {
         locationAutoFetch();
         forecastAutoFetch();
+        storeForecastData();
     }
 
     public Weather(String input) {
@@ -29,6 +31,7 @@ public class Weather {
             location = URLEncoder.encode(input, "utf-8");
             locationFetch();
             forecastFetch();
+            storeForecastData();
         }
         catch (UnsupportedEncodingException e) {
             e.printStackTrace();
@@ -163,20 +166,24 @@ public class Weather {
         humidity = new String[7];
         conditions = new String[7];
         icon = new String[7];
+        date = new String[7];
 
         // store data from each day into their own array
         while (day < 7) {
             avgTempF[day] = getForecastData()
                     .get(day).getAsJsonObject()
-                    .get("avgTempF").getAsString();
+                    .get("avgTempF").getAsString()
+                    + "°";
 
             avgTempC[day] = getForecastData()
                     .get(day).getAsJsonObject()
-                    .get("avgTempC").getAsString();
+                    .get("avgTempC").getAsString()
+                    + "°";
 
             humidity[day] = getForecastData()
                     .get(day).getAsJsonObject()
-                    .get("humidity").getAsString();
+                    .get("humidity").getAsString()
+                    + "%";
 
             conditions[day] = getForecastData()
                     .get(day).getAsJsonObject()
@@ -186,28 +193,13 @@ public class Weather {
                     .get(day).getAsJsonObject()
                     .get("icon").getAsString();
 
+            date[day] = getForecastData()
+                    .get(day).getAsJsonObject()
+                    .get("validTime").getAsString()
+                    .substring(5,10).replace('-','/');
+
             day++;
         }
-    }
-
-    public String getAvgTempF(int day){
-        return avgTempF[day];
-    }
-
-    public String getAvgTempC(int day){
-        return avgTempC[day];
-    }
-
-    public String getHumidity(int day){
-        return humidity[day];
-    }
-
-    public String getConditions(int day){
-        return conditions[day];
-    }
-
-    public String getIcon(int day){
-        return icon[day];
     }
 
     public JsonObject getLocationData(String key){
@@ -395,10 +387,36 @@ public class Weather {
         return cityState;
     }
 
+    public String getAvgTempF(int day){
+        return avgTempF[day];
+    }
+
+    public String getAvgTempC(int day){
+        return avgTempC[day];
+    }
+
+    public String getHumidity(int day){
+        return humidity[day];
+    }
+
+    public String getConditions(int day){
+        return conditions[day];
+    }
+
+    public String getIcon(int day){
+        return icon[day];
+    }
+
+    public String getDate(int day){
+        return date[day];
+    }
+
     public static void main(String[] args)
     {
         Weather w = new Weather("42.1307,-70.9162");
-        w.storeForecastData();
-        System.out.println(w.getIcon());
+        for (int i = 0; i < 7; i++) {
+            System.out.println(w.getDate(i));
+        }
+        //System.out.println(w.getDate);
     }
 }

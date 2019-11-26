@@ -26,7 +26,8 @@ public class Controller implements Initializable {
     RadioButton fToggle, cToggle;
 
     @FXML
-    Label tempLabel, weatherLabel, locationLabel, day0, day1, day2, day3, day4, day5, day6;
+    Label tempLabel, weatherLabel, locationLabel, day0temp, day1temp, day2temp, day3temp, day4temp, day5temp, day6temp,
+            day0Label, day1Label, day2Label, day3Label, day4Label, day5Label, day6Label;
 
     @FXML
     ToggleGroup tempToggle;
@@ -128,9 +129,28 @@ public class Controller implements Initializable {
         setVisible();
         tempToggle.selectToggle(fToggle);
         buttonClicked = 0;
-
+        forecastLabels();
         Image Icon1 = new Image("file:images/" + w.getIcon());
         imageView.setImage(Icon1);
+    }
+
+    public void forecastLabels(){
+        selection = map.get(resultsBox.getValue());
+        Weather w = new Weather(selection);
+        day0temp.setText(w.getAvgTempF(0));
+        day1temp.setText(w.getAvgTempF(1));
+        day2temp.setText(w.getAvgTempF(2));
+        day3temp.setText(w.getAvgTempF(3));
+        day4temp.setText(w.getAvgTempF(4));
+        day5temp.setText(w.getAvgTempF(5));
+        day6temp.setText(w.getAvgTempF(6));
+        day0Label.setText(w.getDate(0));
+        day1Label.setText(w.getDate(1));
+        day2Label.setText(w.getDate(2));
+        day3Label.setText(w.getDate(3));
+        day4Label.setText(w.getDate(4));
+        day5Label.setText(w.getDate(5));
+        day6Label.setText(w.getDate(6));
     }
 
     @Override
