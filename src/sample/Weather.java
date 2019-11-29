@@ -214,7 +214,7 @@ public class Weather {
     {
         int num = getLocationData("ob").getAsJsonObject()
                 .get("tempC").getAsInt();
-        String temp = Integer.toString(num) + "°";
+        String temp = Integer.toString(num) + "°C";
         return temp;
     }
 
@@ -222,7 +222,7 @@ public class Weather {
     {
         int num = getLocationData("ob").getAsJsonObject()
                 .get("tempF").getAsInt();
-        String temp = Integer.toString(num) + "°";
+        String temp = Integer.toString(num) + "°F";
         return temp;
     }
 

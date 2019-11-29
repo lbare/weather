@@ -23,14 +23,8 @@ public class Controller implements Initializable {
     ComboBox resultsBox;
 
     @FXML
-    RadioButton fToggle, cToggle;
-
-    @FXML
     Label tempLabel, weatherLabel, locationLabel, day0temp, day1temp, day2temp, day3temp, day4temp, day5temp, day6temp,
             day0Label, day1Label, day2Label, day3Label, day4Label, day5Label, day6Label, currentDateLabel;
-
-    @FXML
-    ToggleGroup tempToggle;
 
     @FXML
     ImageView imageView, day0view, day1view, day2view, day3view, day4view, day5view, day6view;
@@ -54,7 +48,6 @@ public class Controller implements Initializable {
             weatherField.setText(w.getWeather());
             locationField.setText(w.getCityState());
             setVisible();
-            tempToggle.selectToggle(fToggle);
             buttonClicked = 0;
             tempState = true;
 
@@ -70,7 +63,6 @@ public class Controller implements Initializable {
         locationLabel.setText(w.getCityState());
         setVisible();
         forecastLabels();
-        tempToggle.selectToggle(fToggle);
         buttonClicked = 1;
         tempState = true;
 
@@ -94,8 +86,6 @@ public class Controller implements Initializable {
     }
 
     public void setVisible(){
-        fToggle.setVisible(true);
-        cToggle.setVisible(true);
         locationLabel.setVisible(true);
         weatherLabel.setVisible(true);
         tempLabel.setVisible(true);
@@ -179,7 +169,6 @@ public class Controller implements Initializable {
         weatherLabel.setText(w.getWeather());
         locationLabel.setText(w.getCityState());
         setVisible();
-        tempToggle.selectToggle(fToggle);
         buttonClicked = 0;
         tempState = true;
         forecastLabels(1);

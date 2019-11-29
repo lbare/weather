@@ -142,7 +142,7 @@
                         <Font name="System Bold" size="24.0" />
                     </font>
                 </Label>
-                <Label fx:id="tempLabel" layoutX="155.0" layoutY="208.0" prefHeight="105.0" prefWidth="92.0">
+                <Label fx:id="tempLabel" layoutX="155.0" layoutY="208.0" prefHeight="105.0" prefWidth="150.0">
                     <font>
                         <Font size="42.0" />
                     </font>
