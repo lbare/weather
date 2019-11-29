@@ -37,6 +37,7 @@ public class Controller implements Initializable {
 
     // keeps track of whether the Go or myLocation was pressed for the RadioButtons
     private int buttonClicked;
+    private boolean tempState;
     private HashMap<String,String> map;
     private String selection;
     private Image Icon1, day0icon, day1icon, day2icon, day3icon, day4icon, day5icon, day6icon;;
@@ -55,6 +56,7 @@ public class Controller implements Initializable {
             setVisible();
             tempToggle.selectToggle(fToggle);
             buttonClicked = 0;
+            tempState = true;
 
             Image Icon1 = new Image("file:images/" + w.getIcon());
             imageView.setImage(Icon1);
@@ -70,6 +72,7 @@ public class Controller implements Initializable {
         forecastLabels();
         tempToggle.selectToggle(fToggle);
         buttonClicked = 1;
+        tempState = true;
 
         Icon1 = new Image("file:icons/" + w.getIcon());
         imageView.setImage(Icon1);
@@ -105,20 +108,52 @@ public class Controller implements Initializable {
         if (buttonClicked == 0) {
             selection = map.get(resultsBox.getValue());
             Weather w = new Weather(selection);
-            if (tempToggle.getSelectedToggle().equals(cToggle)) {
+            if (tempState) {
                 tempLabel.setText(w.getTemperatureC());
+                day0temp.setText(w.getAvgTempC(0));
+                day1temp.setText(w.getAvgTempC(1));
+                day2temp.setText(w.getAvgTempC(2));
+                day3temp.setText(w.getAvgTempC(3));
+                day4temp.setText(w.getAvgTempC(4));
+                day5temp.setText(w.getAvgTempC(5));
+                day6temp.setText(w.getAvgTempC(6));
+                tempState = false;
             }
-            else if (tempToggle.getSelectedToggle().equals(fToggle)) {
+            else {
                 tempLabel.setText(w.getTemperatureF());
+                day0temp.setText(w.getAvgTempF(0));
+                day1temp.setText(w.getAvgTempF(1));
+                day2temp.setText(w.getAvgTempF(2));
+                day3temp.setText(w.getAvgTempF(3));
+                day4temp.setText(w.getAvgTempF(4));
+                day5temp.setText(w.getAvgTempF(5));
+                day6temp.setText(w.getAvgTempF(6));
+                tempState = true;
             }
         }
         else if (buttonClicked == 1) {
             Weather w = new Weather();
-            if (tempToggle.getSelectedToggle().equals(cToggle)) {
+            if (tempState) {
                 tempLabel.setText(w.getTemperatureC());
+                day0temp.setText(w.getAvgTempC(0));
+                day1temp.setText(w.getAvgTempC(1));
+                day2temp.setText(w.getAvgTempC(2));
+                day3temp.setText(w.getAvgTempC(3));
+                day4temp.setText(w.getAvgTempC(4));
+                day5temp.setText(w.getAvgTempC(5));
+                day6temp.setText(w.getAvgTempC(6));
+                tempState = false;
             }
-            else if (tempToggle.getSelectedToggle().equals(fToggle)) {
+            else {
                 tempLabel.setText(w.getTemperatureF());
+                day0temp.setText(w.getAvgTempF(0));
+                day1temp.setText(w.getAvgTempF(1));
+                day2temp.setText(w.getAvgTempF(2));
+                day3temp.setText(w.getAvgTempF(3));
+                day4temp.setText(w.getAvgTempF(4));
+                day5temp.setText(w.getAvgTempF(5));
+                day6temp.setText(w.getAvgTempF(6));
+                tempState = true;
             }
         }
     }
@@ -146,6 +181,7 @@ public class Controller implements Initializable {
         setVisible();
         tempToggle.selectToggle(fToggle);
         buttonClicked = 0;
+        tempState = true;
         forecastLabels(1);
         Icon1 = new Image("file:icons/" + w.getIcon());
         imageView.setImage(Icon1);
