@@ -9,6 +9,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="gson-2.8.6" level="project" />
     <orderEntry type="library" name="JavaFX 13 SDK" level="application" />
-    <orderEntry type="library" name="Controls FX" level="project" />
+    <orderEntry type="library" name="ControlsFX" level="project" />
+    <orderEntry type="library" name="asynctask" level="project" />
   </component>
 </module>

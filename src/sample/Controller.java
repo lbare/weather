@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import org.controlsfx.control.textfield.TextFields;
 
 import java.net.URL;
@@ -38,9 +39,7 @@ public class Controller implements Initializable {
 
     ObservableList<String> searchResults = FXCollections.observableArrayList("");
 
-
-
-    public void goButtonHandler(ActionEvent e){
+    /*public void goButtonHandler(ActionEvent e){
         if ((zipField.getText().matches("[0-9]+") && zipField.getText().length() == 5)) {
             Double num = Double.parseDouble(zipField.getText());
             Weather w = new Weather(zipField.getText());
@@ -54,7 +53,7 @@ public class Controller implements Initializable {
             Image Icon1 = new Image("file:images/" + w.getIcon());
             imageView.setImage(Icon1);
         }
-    }
+    }*/
 
     public void handleGoButton(ActionEvent e){
         selection = map.get(resultsBox.getValue());
@@ -89,18 +88,19 @@ public class Controller implements Initializable {
         day5view.setImage(day5icon);
         day6icon = new Image("file:icons/" + w.getIcon(6));
         day6view.setImage(day6icon);
+        tempState = !tempState;
     }
 
     public void myLocationButtonHandler(ActionEvent e){
         Weather w = new Weather();
         buttonClicked = 1;
-        if (tempState){
+        if (tempState) {
             tempLabel.setText(w.getTemperatureF());
             minLabel.setText(w.getMinF());
             maxLabel.setText(w.getMaxF());
             fLabel.setText("°F");
         }
-        else{
+        else {
             tempLabel.setText(w.getTemperatureC());
             minLabel.setText(w.getMinC());
             maxLabel.setText(w.getMaxC());
@@ -128,6 +128,7 @@ public class Controller implements Initializable {
         day5view.setImage(day5icon);
         day6icon = new Image("file:icons/" + w.getIcon(6));
         day6view.setImage(day6icon);
+        tempState = !tempState;
     }
 
     public void setVisible(){
@@ -144,20 +145,6 @@ public class Controller implements Initializable {
             selection = map.get(resultsBox.getValue());
             Weather w = new Weather(selection);
             if (tempState) {
-                tempLabel.setText(w.getTemperatureC());
-                day0temp.setText(w.getAvgTempC(0));
-                day1temp.setText(w.getAvgTempC(1));
-                day2temp.setText(w.getAvgTempC(2));
-                day3temp.setText(w.getAvgTempC(3));
-                day4temp.setText(w.getAvgTempC(4));
-                day5temp.setText(w.getAvgTempC(5));
-                day6temp.setText(w.getAvgTempC(6));
-                maxLabel.setText(w.getMaxC());
-                minLabel.setText(w.getMinC());
-                fLabel.setText("°C");
-                tempState = false;
-            }
-            else {
                 tempLabel.setText(w.getTemperatureF());
                 day0temp.setText(w.getAvgTempF(0));
                 day1temp.setText(w.getAvgTempF(1));
@@ -169,26 +156,24 @@ public class Controller implements Initializable {
                 maxLabel.setText(w.getMaxF());
                 minLabel.setText(w.getMinF());
                 fLabel.setText("°F");
-                tempState = true;
+            }
+            else {
+                tempLabel.setText(w.getTemperatureC());
+                day0temp.setText(w.getAvgTempC(0));
+                day1temp.setText(w.getAvgTempC(1));
+                day2temp.setText(w.getAvgTempC(2));
+                day3temp.setText(w.getAvgTempC(3));
+                day4temp.setText(w.getAvgTempC(4));
+                day5temp.setText(w.getAvgTempC(5));
+                day6temp.setText(w.getAvgTempC(6));
+                maxLabel.setText(w.getMaxC());
+                minLabel.setText(w.getMinC());
+                fLabel.setText("°C");
             }
         }
         else if (buttonClicked == 1) {
             Weather w = new Weather();
             if (tempState) {
-                tempLabel.setText(w.getTemperatureC());
-                day0temp.setText(w.getAvgTempC(0));
-                day1temp.setText(w.getAvgTempC(1));
-                day2temp.setText(w.getAvgTempC(2));
-                day3temp.setText(w.getAvgTempC(3));
-                day4temp.setText(w.getAvgTempC(4));
-                day5temp.setText(w.getAvgTempC(5));
-                day6temp.setText(w.getAvgTempC(6));
-                maxLabel.setText(w.getMaxC());
-                minLabel.setText(w.getMinC());
-                fLabel.setText("°C");
-                tempState = false;
-            }
-            else {
                 tempLabel.setText(w.getTemperatureF());
                 day0temp.setText(w.getAvgTempF(0));
                 day1temp.setText(w.getAvgTempF(1));
@@ -200,7 +185,19 @@ public class Controller implements Initializable {
                 maxLabel.setText(w.getMaxF());
                 minLabel.setText(w.getMinF());
                 fLabel.setText("°F");
-                tempState = true;
+            }
+            else {
+                tempLabel.setText(w.getTemperatureC());
+                day0temp.setText(w.getAvgTempC(0));
+                day1temp.setText(w.getAvgTempC(1));
+                day2temp.setText(w.getAvgTempC(2));
+                day3temp.setText(w.getAvgTempC(3));
+                day4temp.setText(w.getAvgTempC(4));
+                day5temp.setText(w.getAvgTempC(5));
+                day6temp.setText(w.getAvgTempC(6));
+                maxLabel.setText(w.getMaxC());
+                minLabel.setText(w.getMinC());
+                fLabel.setText("°C");
             }
         }
     }
@@ -223,15 +220,6 @@ public class Controller implements Initializable {
             selection = map.get(resultsBox.getValue());
             Weather w = new Weather(selection);
             if (tempState){
-                day0temp.setText(w.getAvgTempC(0));
-                day1temp.setText(w.getAvgTempC(1));
-                day2temp.setText(w.getAvgTempC(2));
-                day3temp.setText(w.getAvgTempC(3));
-                day4temp.setText(w.getAvgTempC(4));
-                day5temp.setText(w.getAvgTempC(5));
-                day6temp.setText(w.getAvgTempC(6));
-            }
-            else {
                 day0temp.setText(w.getAvgTempF(0));
                 day1temp.setText(w.getAvgTempF(1));
                 day2temp.setText(w.getAvgTempF(2));
@@ -239,6 +227,15 @@ public class Controller implements Initializable {
                 day4temp.setText(w.getAvgTempF(4));
                 day5temp.setText(w.getAvgTempF(5));
                 day6temp.setText(w.getAvgTempF(6));
+            }
+            else {
+                day0temp.setText(w.getAvgTempC(0));
+                day1temp.setText(w.getAvgTempC(1));
+                day2temp.setText(w.getAvgTempC(2));
+                day3temp.setText(w.getAvgTempC(3));
+                day4temp.setText(w.getAvgTempC(4));
+                day5temp.setText(w.getAvgTempC(5));
+                day6temp.setText(w.getAvgTempC(6));
             }
             day0Label.setText(w.getDate(0));
             day1Label.setText(w.getDate(1));
@@ -254,15 +251,6 @@ public class Controller implements Initializable {
         else {
             Weather w = new Weather();
             if (tempState){
-                day0temp.setText(w.getAvgTempC(0));
-                day1temp.setText(w.getAvgTempC(1));
-                day2temp.setText(w.getAvgTempC(2));
-                day3temp.setText(w.getAvgTempC(3));
-                day4temp.setText(w.getAvgTempC(4));
-                day5temp.setText(w.getAvgTempC(5));
-                day6temp.setText(w.getAvgTempC(6));
-            }
-            else {
                 day0temp.setText(w.getAvgTempF(0));
                 day1temp.setText(w.getAvgTempF(1));
                 day2temp.setText(w.getAvgTempF(2));
@@ -270,6 +258,15 @@ public class Controller implements Initializable {
                 day4temp.setText(w.getAvgTempF(4));
                 day5temp.setText(w.getAvgTempF(5));
                 day6temp.setText(w.getAvgTempF(6));
+            }
+            else {
+                day0temp.setText(w.getAvgTempC(0));
+                day1temp.setText(w.getAvgTempC(1));
+                day2temp.setText(w.getAvgTempC(2));
+                day3temp.setText(w.getAvgTempC(3));
+                day4temp.setText(w.getAvgTempC(4));
+                day5temp.setText(w.getAvgTempC(5));
+                day6temp.setText(w.getAvgTempC(6));
             }
             day0Label.setText(w.getDate(0));
             day1Label.setText(w.getDate(1));
@@ -286,6 +283,7 @@ public class Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         resultsBox.setValue("");
         resultsBox.setItems(searchResults);
+        tempState = true;
     }
 }
 

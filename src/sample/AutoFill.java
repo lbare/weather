@@ -19,9 +19,17 @@ public class AutoFill {
 
 
     public AutoFill(String s){
-        query = s;
-        fetch();
-        storeForecastData();
+        if (s.contains(" ")) {
+            String temp = s.replace(" ", "%20");
+            query = temp;
+            fetch();
+            storeForecastData();
+        }
+        else {
+            query = s;
+            fetch();
+            storeForecastData();
+        }
     }
 
     public void fetch()
