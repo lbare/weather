@@ -9,8 +9,6 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.Calendar;
-
 
 public class Weather {
     private String location;
@@ -19,16 +17,17 @@ public class Weather {
     private String clientID = "jqI4SN5g22BSyrI7rBIFb";
     private String clientSecret = "YqPdilijMvTmHzQ01vEGvbWo95iUmIFaw7L47fXR";
 
-
+    // constructor for getting weather from user's IP
     public Weather() {
         locationAutoFetch();
         forecastAutoFetch();
         storeForecastData();
     }
 
+    // constructor for getting weather from user's input
     public Weather(String input) {
         try {
-            location = URLEncoder.encode(input, "utf-8");
+            location = URLEncoder.encode(input, "utf-8"); // sets location to user input
             locationFetch();
             forecastFetch();
             storeForecastData();
@@ -38,6 +37,7 @@ public class Weather {
         }
     }
 
+    // fetch location weather JSON using user's input location and store in forecastJSE
     public void locationFetch()
     {
 
@@ -46,15 +46,15 @@ public class Weather {
                 "?client_id=" +
                 clientID +
                 "&client_secret=" +
-                clientSecret;
+                clientSecret; // store String with input location
 
         try
         {
-            URL url = new URL(weatherUrl);
+            URL url = new URL(weatherUrl); // generate URL from String
             InputStream is = url.openStream();
             InputStreamReader isr = new InputStreamReader(is);
 
-            locationJSE = JsonParser.parseReader(isr);
+            locationJSE = JsonParser.parseReader(isr); // turn read JSON into JSE
         }
         catch (java.net.MalformedURLException mue)
         {
@@ -68,6 +68,7 @@ public class Weather {
         }
     }
 
+    // fetch forecast JSON using user's input location and store in forecastJSE
     public void forecastFetch()
     {
 
@@ -76,15 +77,15 @@ public class Weather {
                 + "?client_id="
                 + clientID
                 + "&client_secret="
-                + clientSecret;
+                + clientSecret; // store String with input location
 
         try
         {
-            URL url = new URL(weatherUrl);
+            URL url = new URL(weatherUrl); // generate URL from String
             InputStream is = url.openStream();
             InputStreamReader isr = new InputStreamReader(is);
 
-            forecastJSE = JsonParser.parseReader(isr);
+            forecastJSE = JsonParser.parseReader(isr); // turn read JSON into JSE
         }
         catch (java.net.MalformedURLException mue)
         {
@@ -98,6 +99,7 @@ public class Weather {
         }
     }
 
+    // fetch location weather JSON using user's input location and store in forecastJSE
     public void locationAutoFetch()
     {
         String weatherUrl = "http://api.aerisapi.com/observations/:auto?client_id="
@@ -125,6 +127,7 @@ public class Weather {
         }
     }
 
+    // fetch forecast JSON using user's input location and store in forecastJSE
     public void forecastAutoFetch()
     {
         String weatherUrl = "http://api.aerisapi.com/forecasts/:auto?client_id="

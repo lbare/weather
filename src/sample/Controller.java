@@ -57,8 +57,8 @@ public class Controller implements Initializable {
     }*/
 
     public void handleGoButton(ActionEvent e){
-        selection = map.get(resultsBox.getValue());
-        Weather w = new Weather(selection);
+        selection = map.get(resultsBox.getValue()); // gets selected value from ComboBox
+        Weather w = new Weather(selection); // creates new Weather object using the selected location as the parameter
         buttonClicked = 0;
         if (tempState) {
             tempLabel.setText(w.getTemperatureF());
