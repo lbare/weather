@@ -226,6 +226,34 @@ public class Weather {
         return temp;
     }
 
+    public String getMaxF(){
+        String temp = getForecastData()
+                .get(0).getAsJsonObject()
+                .get("maxTempF").getAsString();
+        return temp;
+    }
+
+    public String getMinF(){
+        String temp = getForecastData()
+                .get(0).getAsJsonObject()
+                .get("minTempF").getAsString();
+        return temp;
+    }
+
+    public String getMaxC(){
+        String temp = getForecastData()
+                .get(0).getAsJsonObject()
+                .get("maxTempC").getAsString();
+        return temp;
+    }
+
+    public String getMinC(){
+        String temp = getForecastData()
+                .get(0).getAsJsonObject()
+                .get("minTempC").getAsString();
+        return temp;
+    }
+
     public String getWeather()
     {
         String weather = getLocationData("ob").getAsJsonObject()
@@ -419,6 +447,5 @@ public class Weather {
     public static void main(String[] args)
     {
         Weather w = new Weather();
-        System.out.println(w.getIcon());
     }
 }

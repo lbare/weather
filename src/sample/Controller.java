@@ -23,8 +23,8 @@ public class Controller implements Initializable {
     ComboBox resultsBox;
 
     @FXML
-    Label tempLabel, weatherLabel, locationLabel, day0temp, day1temp, day2temp, day3temp, day4temp, day5temp, day6temp,
-            day0Label, day1Label, day2Label, day3Label, day4Label, day5Label, day6Label, currentDateLabel;
+    Label tempLabel, weatherLabel, locationLabel, day0temp, day1temp, day2temp, day3temp, day4temp, day5temp, day6temp, fLabel,
+            day0Label, day1Label, day2Label, day3Label, day4Label, day5Label, day6Label, currentDateLabel, minLabel, maxLabel;
 
     @FXML
     ImageView imageView, day0view, day1view, day2view, day3view, day4view, day5view, day6view;
@@ -61,10 +61,13 @@ public class Controller implements Initializable {
         tempLabel.setText(w.getTemperatureF());
         weatherLabel.setText(w.getWeather());
         locationLabel.setText(w.getCityState());
+        minLabel.setText(w.getMinF());
+        maxLabel.setText(w.getMaxF());
         setVisible();
         forecastLabels();
         buttonClicked = 1;
         tempState = true;
+        fLabel.setText("°F");
 
         Icon1 = new Image("file:icons/" + w.getIcon());
         imageView.setImage(Icon1);
@@ -107,6 +110,9 @@ public class Controller implements Initializable {
                 day4temp.setText(w.getAvgTempC(4));
                 day5temp.setText(w.getAvgTempC(5));
                 day6temp.setText(w.getAvgTempC(6));
+                maxLabel.setText(w.getMaxC());
+                minLabel.setText(w.getMinC());
+                fLabel.setText("°C");
                 tempState = false;
             }
             else {
@@ -118,6 +124,9 @@ public class Controller implements Initializable {
                 day4temp.setText(w.getAvgTempF(4));
                 day5temp.setText(w.getAvgTempF(5));
                 day6temp.setText(w.getAvgTempF(6));
+                maxLabel.setText(w.getMaxF());
+                minLabel.setText(w.getMinF());
+                fLabel.setText("°F");
                 tempState = true;
             }
         }
@@ -132,6 +141,9 @@ public class Controller implements Initializable {
                 day4temp.setText(w.getAvgTempC(4));
                 day5temp.setText(w.getAvgTempC(5));
                 day6temp.setText(w.getAvgTempC(6));
+                maxLabel.setText(w.getMaxC());
+                minLabel.setText(w.getMinC());
+                fLabel.setText("°C");
                 tempState = false;
             }
             else {
@@ -143,6 +155,9 @@ public class Controller implements Initializable {
                 day4temp.setText(w.getAvgTempF(4));
                 day5temp.setText(w.getAvgTempF(5));
                 day6temp.setText(w.getAvgTempF(6));
+                maxLabel.setText(w.getMaxF());
+                minLabel.setText(w.getMinF());
+                fLabel.setText("°F");
                 tempState = true;
             }
         }
@@ -171,6 +186,7 @@ public class Controller implements Initializable {
         setVisible();
         buttonClicked = 0;
         tempState = true;
+        fLabel.setText("°F");
         forecastLabels(1);
         Icon1 = new Image("file:icons/" + w.getIcon());
         imageView.setImage(Icon1);
