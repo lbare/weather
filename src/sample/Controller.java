@@ -11,6 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import org.controlsfx.control.textfield.TextFields;
+import sierra.AsyncTask;
 
 import java.net.URL;
 import java.util.HashMap;
@@ -61,10 +62,14 @@ public class Controller implements Initializable {
         buttonClicked = 0;
         if (tempState) {
             tempLabel.setText(w.getTemperatureF());
+            minLabel.setText(w.getMinF());
+            maxLabel.setText(w.getMaxF());
             fLabel.setText("°F");
         }
         else {
             tempLabel.setText(w.getTemperatureC());
+            minLabel.setText(w.getMinC());
+            maxLabel.setText(w.getMaxC());
             fLabel.setText("°C");
         }
         weatherLabel.setText(w.getWeather());
@@ -200,6 +205,7 @@ public class Controller implements Initializable {
                 fLabel.setText("°C");
             }
         }
+        tempState = !tempState;
     }
 
     public void autoFillUpdate(ActionEvent e){
