@@ -56,18 +56,60 @@ public class Controller implements Initializable {
         }
     }
 
-    public void myLocationButtonHandler(ActionEvent e){
-        Weather w = new Weather();
-        tempLabel.setText(w.getTemperatureF());
+    public void handleGoButton(ActionEvent e){
+        selection = map.get(resultsBox.getValue());
+        Weather w = new Weather(selection);
+        buttonClicked = 0;
+        if (tempState) {
+            tempLabel.setText(w.getTemperatureF());
+            fLabel.setText("°F");
+        }
+        else {
+            tempLabel.setText(w.getTemperatureC());
+            fLabel.setText("°C");
+        }
         weatherLabel.setText(w.getWeather());
         locationLabel.setText(w.getCityState());
-        minLabel.setText(w.getMinF());
-        maxLabel.setText(w.getMaxF());
         setVisible();
         forecastLabels();
+
+        Icon1 = new Image("file:icons/" + w.getIcon());
+        imageView.setImage(Icon1);
+        day0icon = new Image("file:icons/" + w.getIcon(0));
+        day0view.setImage(day0icon);
+        day1icon = new Image("file:icons/" + w.getIcon(1));
+        day1view.setImage(day1icon);
+        day2icon = new Image("file:icons/" + w.getIcon(2));
+        day2view.setImage(day2icon);
+        day3icon = new Image("file:icons/" + w.getIcon(3));
+        day3view.setImage(day3icon);
+        day4icon = new Image("file:icons/" + w.getIcon(4));
+        day4view.setImage(day4icon);
+        day5icon = new Image("file:icons/" + w.getIcon(5));
+        day5view.setImage(day5icon);
+        day6icon = new Image("file:icons/" + w.getIcon(6));
+        day6view.setImage(day6icon);
+    }
+
+    public void myLocationButtonHandler(ActionEvent e){
+        Weather w = new Weather();
         buttonClicked = 1;
-        tempState = true;
-        fLabel.setText("°F");
+        if (tempState){
+            tempLabel.setText(w.getTemperatureF());
+            minLabel.setText(w.getMinF());
+            maxLabel.setText(w.getMaxF());
+            fLabel.setText("°F");
+        }
+        else{
+            tempLabel.setText(w.getTemperatureC());
+            minLabel.setText(w.getMinC());
+            maxLabel.setText(w.getMaxC());
+            fLabel.setText("°C");
+        }
+        weatherLabel.setText(w.getWeather());
+        locationLabel.setText(w.getCityState());
+        setVisible();
+        forecastLabels();
 
         Icon1 = new Image("file:icons/" + w.getIcon());
         imageView.setImage(Icon1);
@@ -176,76 +218,68 @@ public class Controller implements Initializable {
         resultsBox.setItems(searchResults);
     }
 
-    public void handleGoButton(ActionEvent e){
-        selection = map.get(resultsBox.getValue());
-        Weather w = new Weather(selection);
-
-        tempLabel.setText(w.getTemperatureF());
-        weatherLabel.setText(w.getWeather());
-        locationLabel.setText(w.getCityState());
-        setVisible();
-        buttonClicked = 0;
-        tempState = true;
-        fLabel.setText("°F");
-        forecastLabels(1);
-        Icon1 = new Image("file:icons/" + w.getIcon());
-        imageView.setImage(Icon1);
-        day0icon = new Image("file:icons/" + w.getIcon(0));
-        day0view.setImage(day0icon);
-        day1icon = new Image("file:icons/" + w.getIcon(1));
-        day1view.setImage(day1icon);
-        day2icon = new Image("file:icons/" + w.getIcon(2));
-        day2view.setImage(day2icon);
-        day3icon = new Image("file:icons/" + w.getIcon(3));
-        day3view.setImage(day3icon);
-        day4icon = new Image("file:icons/" + w.getIcon(4));
-        day4view.setImage(day4icon);
-        day5icon = new Image("file:icons/" + w.getIcon(5));
-        day5view.setImage(day5icon);
-        day6icon = new Image("file:icons/" + w.getIcon(6));
-        day6view.setImage(day6icon);
-
-    }
-
     public void forecastLabels(){
-        Weather w = new Weather();
-        day0temp.setText(w.getAvgTempF(0));
-        day1temp.setText(w.getAvgTempF(1));
-        day2temp.setText(w.getAvgTempF(2));
-        day3temp.setText(w.getAvgTempF(3));
-        day4temp.setText(w.getAvgTempF(4));
-        day5temp.setText(w.getAvgTempF(5));
-        day6temp.setText(w.getAvgTempF(6));
-        day0Label.setText(w.getDate(0));
-        day1Label.setText(w.getDate(1));
-        day2Label.setText(w.getDate(2));
-        day3Label.setText(w.getDate(3));
-        day4Label.setText(w.getDate(4));
-        day5Label.setText(w.getDate(5));
-        day6Label.setText(w.getDate(6));
-        currentDateLabel.setText(w.getDate(0));
-    }
-
-    public void forecastLabels(int num){
-        selection = map.get(resultsBox.getValue());
-        Weather w = new Weather(selection);
-        day0temp.setText(w.getAvgTempF(0));
-        day1temp.setText(w.getAvgTempF(1));
-        day2temp.setText(w.getAvgTempF(2));
-        day3temp.setText(w.getAvgTempF(3));
-        day4temp.setText(w.getAvgTempF(4));
-        day5temp.setText(w.getAvgTempF(5));
-        day6temp.setText(w.getAvgTempF(6));
-        day0Label.setText(w.getDate(0));
-        day1Label.setText(w.getDate(1));
-        day2Label.setText(w.getDate(2));
-        day3Label.setText(w.getDate(3));
-        day4Label.setText(w.getDate(4));
-        day5Label.setText(w.getDate(5));
-        day6Label.setText(w.getDate(6));
-        Icon1 = new Image("file:images/" + w.getIcon());
-        imageView.setImage(Icon1);
-        currentDateLabel.setText(w.getDate(0));
+        if (buttonClicked == 0) {
+            selection = map.get(resultsBox.getValue());
+            Weather w = new Weather(selection);
+            if (tempState){
+                day0temp.setText(w.getAvgTempC(0));
+                day1temp.setText(w.getAvgTempC(1));
+                day2temp.setText(w.getAvgTempC(2));
+                day3temp.setText(w.getAvgTempC(3));
+                day4temp.setText(w.getAvgTempC(4));
+                day5temp.setText(w.getAvgTempC(5));
+                day6temp.setText(w.getAvgTempC(6));
+            }
+            else {
+                day0temp.setText(w.getAvgTempF(0));
+                day1temp.setText(w.getAvgTempF(1));
+                day2temp.setText(w.getAvgTempF(2));
+                day3temp.setText(w.getAvgTempF(3));
+                day4temp.setText(w.getAvgTempF(4));
+                day5temp.setText(w.getAvgTempF(5));
+                day6temp.setText(w.getAvgTempF(6));
+            }
+            day0Label.setText(w.getDate(0));
+            day1Label.setText(w.getDate(1));
+            day2Label.setText(w.getDate(2));
+            day3Label.setText(w.getDate(3));
+            day4Label.setText(w.getDate(4));
+            day5Label.setText(w.getDate(5));
+            day6Label.setText(w.getDate(6));
+            Icon1 = new Image("file:images/" + w.getIcon());
+            imageView.setImage(Icon1);
+            currentDateLabel.setText(w.getDate(0));
+        }
+        else {
+            Weather w = new Weather();
+            if (tempState){
+                day0temp.setText(w.getAvgTempC(0));
+                day1temp.setText(w.getAvgTempC(1));
+                day2temp.setText(w.getAvgTempC(2));
+                day3temp.setText(w.getAvgTempC(3));
+                day4temp.setText(w.getAvgTempC(4));
+                day5temp.setText(w.getAvgTempC(5));
+                day6temp.setText(w.getAvgTempC(6));
+            }
+            else {
+                day0temp.setText(w.getAvgTempF(0));
+                day1temp.setText(w.getAvgTempF(1));
+                day2temp.setText(w.getAvgTempF(2));
+                day3temp.setText(w.getAvgTempF(3));
+                day4temp.setText(w.getAvgTempF(4));
+                day5temp.setText(w.getAvgTempF(5));
+                day6temp.setText(w.getAvgTempF(6));
+            }
+            day0Label.setText(w.getDate(0));
+            day1Label.setText(w.getDate(1));
+            day2Label.setText(w.getDate(2));
+            day3Label.setText(w.getDate(3));
+            day4Label.setText(w.getDate(4));
+            day5Label.setText(w.getDate(5));
+            day6Label.setText(w.getDate(6));
+            currentDateLabel.setText(w.getDate(0));
+        }
     }
 
     @Override
