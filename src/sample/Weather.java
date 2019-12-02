@@ -272,7 +272,7 @@ public class Weather {
             case "pcloudy.png":
             case "pcloudyw.png":
             case "pm_pcloudy.png":
-                icon = "pc.png";
+                icon = "pc1.png";
                 break;
             case "am_tstorm.png":
             case "chancetstorm.png":
@@ -292,17 +292,17 @@ public class Weather {
             case "tstormswn.png":
             case "tstormw.png":
             case "tstormwn.png":
-                icon = "t.png";
+                icon = "t1.png";
                 break;
             case "cloudy.png":
             case "cloudyw.png":
-                icon = "c.png";
+                icon = "c1.png";
                 break;
             case "dust.png":
             case "fog.png":
             case "smoke.png":
             case "wind.png":
-                icon = "w.png";
+                icon = "w1.png";
                 break;
             case "am_snowshowers.png":
             case "blizzard.png":
@@ -342,7 +342,7 @@ public class Weather {
             case "snowshowerswn.png":
             case "snoww.png":
             case "snowwn.png":
-                icon = "sn.png";
+                icon = "sn1.png";
                 break;
             case "clearn.png":
             case "clearwn.png":
@@ -359,7 +359,7 @@ public class Weather {
             case "smoken.png":
             case "sunnyn.png":
             case "sunnywn.png":
-                icon = "n.png";
+                icon = "n1.png";
                 break;
             case "am_pcloudyr.png":
             case "am_showers.png":
@@ -390,7 +390,7 @@ public class Weather {
             case "snowtorainn.png":
             case "wintrymix.png":
             case "wintrymixn.png":
-                icon = "r.png";
+                icon = "r1.png";
                 break;
             case "clear.png":
             case "clearw.png":
@@ -399,7 +399,7 @@ public class Weather {
             case "hazy.png":
             case "sunny.png":
             case "sunnyw.png":
-                icon = "s.png";
+                icon = "s1.png";
                 break;
         }
         return icon;
@@ -410,7 +410,7 @@ public class Weather {
         String icon = getLocationData("ob")
                 .getAsJsonObject()
                 .get("icon").getAsString();
-        return iconSort(icon);
+        return iconSort(icon).replace("1","");
     }
 
     public String getCityState()

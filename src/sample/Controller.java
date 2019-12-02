@@ -143,6 +143,7 @@ public class Controller implements Initializable {
         weatherLabel.setVisible(true);
         locationLabel.setVisible(true);
         imageView.setVisible(true);
+
     }
 
     public void toggleButton(){
@@ -209,11 +210,13 @@ public class Controller implements Initializable {
     }
 
     public void autoFillUpdate(ActionEvent e){
-        AutoFill a = new AutoFill(locationInput.getText());
-        map = new HashMap<String,String>();
-        map = a.getMap();
-        searchResults = FXCollections.observableArrayList(a.getLocationResults());
-        resultsBox.setItems(searchResults);
+        if (locationInput.getText().length() > 2) {
+            AutoFill a = new AutoFill(locationInput.getText());
+            map = new HashMap<String, String>();
+            map = a.getMap();
+            searchResults = FXCollections.observableArrayList(a.getLocationResults());
+            resultsBox.setItems(searchResults);
+        }
     }
 
     public void clearFields(ActionEvent e){
