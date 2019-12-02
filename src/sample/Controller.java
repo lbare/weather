@@ -216,6 +216,7 @@ public class Controller implements Initializable {
             map = a.getMap();
             searchResults = FXCollections.observableArrayList(a.getLocationResults());
             resultsBox.setItems(searchResults);
+            resultsBox.show();
         }
     }
 
