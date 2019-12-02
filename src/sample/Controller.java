@@ -29,7 +29,7 @@ public class Controller implements Initializable {
             day0Label, day1Label, day2Label, day3Label, day4Label, day5Label, day6Label, currentDateLabel, minLabel, maxLabel;
 
     @FXML
-    ImageView imageView, day0view, day1view, day2view, day3view, day4view, day5view, day6view;
+    ImageView imageView, day0view, day1view, day2view, day3view, day4view, day5view, day6view, bgImage;
 
     // keeps track of whether the Go or myLocation was pressed for the RadioButtons
     private int buttonClicked;
@@ -290,6 +290,8 @@ public class Controller implements Initializable {
         resultsBox.setValue("");
         resultsBox.setItems(searchResults);
         tempState = true;
+        Image bg = new Image("file:bg/rainy_blur.png");
+        bgImage.setImage(bg);
     }
 }
 
