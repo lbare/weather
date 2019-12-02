@@ -12,7 +12,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="center" hgap="10" prefHeight="650.0" prefWidth="400.0" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<GridPane alignment="center" hgap="10" prefHeight="650.0" prefWidth="400.0" style="-fx-background-color: #000000;" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <columnConstraints>
         <ColumnConstraints />
         <ColumnConstraints />
@@ -148,7 +148,7 @@
                 <ImageView fx:id="day4view" fitHeight="44.0" fitWidth="43.0" layoutX="230.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true" />
                 <ImageView fx:id="day5view" fitHeight="44.0" fitWidth="43.0" layoutX="279.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true" />
                 <ImageView fx:id="day6view" fitHeight="44.0" fitWidth="43.0" layoutX="328.0" layoutY="468.0" pickOnBounds="true" preserveRatio="true" />
-            <Button fx:id="fcButton" layoutX="306.0" layoutY="223.0" minWidth="53.0" mnemonicParsing="false" onAction="#toggleButton" prefHeight="27.0" prefWidth="55.0" style="-fx-background-color: #333232;" text="°F/°C" textFill="WHITE" />
+            <Button fx:id="fcButton" layoutX="295.0" layoutY="277.0" minWidth="53.0" mnemonicParsing="false" onAction="#toggleButton" prefHeight="27.0" prefWidth="55.0" style="-fx-background-color: #333232;" text="°F/°C" textFill="WHITE" />
             <Label fx:id="maxLabel" alignment="CENTER" layoutX="279.0" layoutY="336.0" prefHeight="15.0" prefWidth="35.0" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="26.0" />
