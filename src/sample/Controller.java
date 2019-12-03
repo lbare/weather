@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import org.controlsfx.control.textfield.TextFields;
 import sierra.AsyncTask;
@@ -93,7 +94,6 @@ public class Controller implements Initializable {
         day5view.setImage(day5icon);
         day6icon = new Image("file:icons/" + w.getIcon(6));
         day6view.setImage(day6icon);
-        tempState = !tempState;
     }
 
     public void myLocationButtonHandler(ActionEvent e){
@@ -133,7 +133,6 @@ public class Controller implements Initializable {
         day5view.setImage(day5icon);
         day6icon = new Image("file:icons/" + w.getIcon(6));
         day6view.setImage(day6icon);
-        tempState = !tempState;
     }
 
     public void myLocationButtonHandler(){
@@ -249,7 +248,7 @@ public class Controller implements Initializable {
         tempState = !tempState;
     }
 
-    public void autoFillUpdate(ActionEvent e){
+    public void autoFillUpdate(KeyEvent e){
         if (locationInput.getText().length() > 2) {
             AutoFill a = new AutoFill(locationInput.getText());
             map = new HashMap<String, String>();
