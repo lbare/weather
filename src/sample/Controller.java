@@ -172,7 +172,6 @@ public class Controller implements Initializable {
         day5view.setImage(day5icon);
         day6icon = new Image("file:icons/" + w.getIcon(6));
         day6view.setImage(day6icon);
-        tempState = !tempState;
     }
 
     public void setVisible(){
