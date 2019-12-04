@@ -324,7 +324,7 @@ public class Controller implements Initializable {
         Image bg = new Image("file:bg/cloudy.png");
         Image arrow = new Image("file:bg/arrow_black1.png");
         Image refresh = new Image("file:icons/refresh.png");
-        refreshImage.setImage(arrow);
+        refreshImage.setImage(refresh);
         arrowImage.setImage(arrow);
         bgImage.setImage(bg);
         myLocationButtonHandler();
