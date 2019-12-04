@@ -192,9 +192,14 @@ public class Controller implements Initializable {
         }
     }
 
+    public void clearSearch() {
+        locationInput.clear();
+    }
+
     public void checkComboBox(ActionEvent e){
         if (resultsBox.getValue() != null){
             handleGoButton();
+            clearSearch();
         }
     }
 
