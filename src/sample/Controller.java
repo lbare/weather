@@ -4,14 +4,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Pane;
-import org.controlsfx.control.textfield.TextFields;
 import sierra.AsyncTask;
 
 import java.net.URL;
@@ -20,7 +17,7 @@ import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
     @FXML
-    TextField zipField, locationField, weatherField, locationInput;
+    TextField locationInput;
 
     @FXML
     ComboBox resultsBox;
@@ -39,7 +36,7 @@ public class Controller implements Initializable {
     private int buttonClicked;
     private boolean tempState;
     private HashMap<String,String> map;
-    private String selection, locationName;
+    private String selection;
     private Image Icon1, day0icon, day1icon, day2icon, day3icon, day4icon, day5icon, day6icon;;
 
     ObservableList<String> searchResults = FXCollections.observableArrayList("");
