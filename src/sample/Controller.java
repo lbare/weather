@@ -24,10 +24,11 @@ public class Controller implements Initializable {
 
     @FXML
     Label tempLabel, weatherLabel, locationLabel, day0temp, day1temp, day2temp, day3temp, day4temp, day5temp, day6temp, humidityLabel,
-            day0Label, day1Label, day2Label, day3Label, day4Label, day5Label, day6Label, currentDateLabel, minLabel, maxLabel;
+            day0Label, day1Label, day2Label, day3Label, day4Label, day5Label, day6Label, currentDateLabel, minLabel, maxLabel, windLabel,
+            visibilityLabel;
 
     @FXML
-    ImageView imageView, day0view, day1view, day2view, day3view, day4view, day5view, day6view, bgImage;
+    ImageView imageView, day0view, day1view, day2view, day3view, day4view, day5view, day6view, bgImage, arrowImage;
 
     @FXML
     Button myLocationButton;
@@ -62,6 +63,7 @@ public class Controller implements Initializable {
 
         Icon1 = new Image("file:icons/" + w.getIcon());
         imageView.setImage(Icon1);
+
 
         day0icon = new Image("file:icons/" + w.getIcon(0));
         day0view.setImage(day0icon);
@@ -242,6 +244,7 @@ public class Controller implements Initializable {
             tempLabel.setText(w.getTemperatureF());
             minLabel.setText(w.getMinF());
             maxLabel.setText(w.getMaxF());
+
         }
         else {
             tempLabel.setText(w.getTemperatureC());
@@ -319,8 +322,8 @@ public class Controller implements Initializable {
         resultsBox.setItems(searchResults);
         tempState = true;
         Image bg = new Image("file:bg/cloudy.png");
-        Image arrow = new Image("file:bg/arrow_black.png");
-        myLocationButton.setGraphic(new ImageView(arrow));
+        Image arrow = new Image("file:bg/arrow_black1.png");
+        arrowImage.setImage(arrow);
         bgImage.setImage(bg);
         myLocationButtonHandler();
     }

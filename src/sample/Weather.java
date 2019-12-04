@@ -272,6 +272,20 @@ public class Weather {
         return humidity;
     }
 
+    public String getWindSpeedMPH()
+    {
+        String humidity = getLocationData("ob").getAsJsonObject()
+                .get("windSpeedMPH").getAsString() + "MPH";
+        return humidity;
+    }
+
+    public String getWindSpeedKPH()
+    {
+        String humidity = getLocationData("ob").getAsJsonObject()
+                .get("windSpeedKPH").getAsString() + "KPH";
+        return humidity;
+    }
+
     public String iconSort(String icon){
         switch (icon) {
             case "am_pcloudy.png":
