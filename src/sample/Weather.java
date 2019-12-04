@@ -291,14 +291,32 @@ public class Weather {
     public String getVisibilityMI()
     {
         String visibility = getLocationData("ob").getAsJsonObject()
-                .get("visibilityMI").getAsString() + " MI";
+                .get("visibilityMI").getAsString();
+        if (visibility.indexOf('.') == 2) {
+            visibility = visibility.substring(0,2) + " MI";
+        }
+        else if (visibility.indexOf('.') == 1) {
+            visibility = visibility.substring(0,3) + " MI";
+        }
+        else {
+            visibility += " MI";
+        }
         return visibility;
     }
 
     public String getVisibilityKM()
     {
         String visibility = getLocationData("ob").getAsJsonObject()
-                .get("visibilityKM").getAsString().substring(0,3) + " KM";
+                .get("visibilityKM").getAsString();
+        if (visibility.indexOf('.') == 2) {
+            visibility = visibility.substring(0,2) + " KM";
+        }
+        else if (visibility.indexOf('.') == 1) {
+            visibility = visibility.substring(0,3) + " KM";
+        }
+        else {
+            visibility += " KM";
+        }
         return visibility;
     }
 

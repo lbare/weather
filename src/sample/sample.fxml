@@ -16,7 +16,7 @@
             <Image url="@../../bg/cloudy.png" />
          </image>
       </ImageView>
-      <ImageView id="Icon" fx:id="imageView" fitHeight="164.0" fitWidth="164.0" layoutX="17.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="Icon" fx:id="imageView" fitHeight="164.0" fitWidth="164.0" layoutX="9.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../icons/n1.png" />
          </image></ImageView>
@@ -31,7 +31,7 @@
             <Font name="System Bold Italic" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="tempLabel" alignment="CENTER" layoutX="170.0" layoutY="186.0" onMousePressed="#toggleButton" prefHeight="109.0" prefWidth="233.0" text="55°F">
+      <Label fx:id="tempLabel" alignment="CENTER" layoutX="162.0" layoutY="186.0" onMousePressed="#toggleButton" prefHeight="109.0" prefWidth="233.0" text="55°F">
          <font>
             <Font size="90.0" />
          </font>
