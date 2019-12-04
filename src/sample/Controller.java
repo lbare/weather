@@ -31,7 +31,7 @@ public class Controller implements Initializable {
     ImageView imageView, day0view, day1view, day2view, day3view, day4view, day5view, day6view, bgImage, arrowImage, tempImage, windDirection;
 
     @FXML
-    Button myLocationButton;
+
 
     // keeps track of whether the Go or myLocation was pressed for the RadioButtons
     private int buttonClicked;
@@ -90,7 +90,7 @@ public class Controller implements Initializable {
         day6view.setImage(day6icon);
     }
 
-    public void myLocationButtonHandler(){
+    public void myLocation(){
         Weather w = new Weather();
         buttonClicked = 1;
         if (tempState) {
@@ -155,15 +155,14 @@ public class Controller implements Initializable {
             tempImage.setImage(new Image("file:icons/cel.png"));
         }
         weatherLabel.setText(w.getWeather());
+        windDirection.setImage(new Image("file:arrows/" + w.getWindDirection()));
         locationLabel.setText(w.getCityState());
         humidityLabel.setText(w.getHumidity());
-        windDirection.setImage(new Image("file:arrows/" + w.getWindDirection()));
         setVisible();
         forecastLabels();
 
         Icon1 = new Image("file:icons/" + w.getIcon());
         imageView.setImage(Icon1);
-
 
         day0icon = new Image("file:icons/" + w.getIcon(0));
         day0view.setImage(day0icon);
@@ -364,8 +363,7 @@ public class Controller implements Initializable {
         tempImage.setImage(temp);
         arrowImage.setImage(arrow);
         bgImage.setImage(bg);
-        myLocationButtonHandler();
-        tempState = false;
+        myLocation();
     }
 }
 

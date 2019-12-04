@@ -56,7 +56,7 @@
             <Font name="System Bold" size="26.0" />
          </font>
       </Label>
-      <ComboBox fx:id="resultsBox" layoutX="96.0" layoutY="15.0" onAction="#checkComboBox" onMouseClicked="#handleGoButton" prefHeight="28.0" prefWidth="212.0" style="-fx-background-color: #333232;" />
+      <ComboBox fx:id="resultsBox" layoutX="94.0" layoutY="15.0" onAction="#checkComboBox" onMouseClicked="#handleGoButton" prefHeight="28.0" prefWidth="212.0" visibleRowCount="5" />
       <TextField fx:id="locationInput" layoutX="93.0" layoutY="10.0" onKeyTyped="#autoFillUpdate" prefHeight="34.0" prefWidth="217.0" promptText="Enter a City or Zip Code" />
       <Label fx:id="day3Label" alignment="CENTER" layoutX="188.0" layoutY="517.0" prefHeight="17.0" prefWidth="35.0" text="W">
          <font>
@@ -171,7 +171,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="windLabel" alignment="CENTER_RIGHT" layoutX="-6.0" layoutY="435.0" prefHeight="38.0" prefWidth="117.0" text="5 MPH" textAlignment="RIGHT">
+      <Label fx:id="windLabel" alignment="CENTER_RIGHT" layoutX="-6.0" layoutY="435.0" onMousePressed="#toggleButton" prefHeight="38.0" prefWidth="117.0" text="5 MPH" textAlignment="RIGHT">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>
@@ -181,12 +181,12 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="visibilityLabel" alignment="CENTER" layoutX="268.0" layoutY="435.0" prefHeight="38.0" prefWidth="116.0" text="10 MI">
+      <Label fx:id="visibilityLabel" alignment="CENTER" layoutX="268.0" layoutY="435.0" onMousePressed="#toggleButton" prefHeight="38.0" prefWidth="116.0" text="10 MI">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>
       </Label>
-      <ImageView fx:id="arrowImage" fitHeight="34.0" fitWidth="25.0" layoutX="324.0" layoutY="15.0" onMousePressed="#myLocationButtonHandler" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="arrowImage" fitHeight="34.0" fitWidth="25.0" layoutX="324.0" layoutY="15.0" onMouseClicked="#myLocation" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../bg/arrow_black1.png" />
          </image>

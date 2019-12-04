@@ -14,8 +14,10 @@ public class Weather {
     private String location;
     private JsonElement locationJSE, forecastJSE;
     private String[] avgTempF, avgTempC, humidity, conditions, icon, date;
-    private String clientID = "jqI4SN5g22BSyrI7rBIFb";
-    private String clientSecret = "YqPdilijMvTmHzQ01vEGvbWo95iUmIFaw7L47fXR";
+    private String clientID = "wQhXMMnxoRV4HNKoRLZrL";
+    private String clientID1 = "jqI4SN5g22BSyrI7rBIFb"; //switch
+    private String clientSecret = "rUOW0GEyf5bT9JhUzro2WQAuUpj3A7nFHgVCRGEK";
+    private String getClientSecret1 = "YqPdilijMvTmHzQ01vEGvbWo95iUmIFaw7L47fXR";
 
     // constructor for getting weather from user's IP
     public Weather() {
@@ -383,6 +385,7 @@ public class Weather {
             case "snowshowerswn.png":
             case "snoww.png":
             case "snowwn.png":
+            case "snown.png":
                 icon = "sn1.png";
                 break;
             case "clearn.png":
@@ -491,6 +494,6 @@ public class Weather {
     public static void main(String[] args)
     {
         Weather w = new Weather();
-        System.out.println(w.getVisibilityKM());
+        System.out.println(w.getTemperatureF());
     }
 }
