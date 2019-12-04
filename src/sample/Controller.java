@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import org.controlsfx.control.textfield.TextFields;
 import sierra.AsyncTask;
@@ -35,26 +36,10 @@ public class Controller implements Initializable {
     private int buttonClicked;
     private boolean tempState;
     private HashMap<String,String> map;
-    private String selection;
+    private String selection, locationName;
     private Image Icon1, day0icon, day1icon, day2icon, day3icon, day4icon, day5icon, day6icon;;
 
     ObservableList<String> searchResults = FXCollections.observableArrayList("");
-
-    /*public void goButtonHandler(ActionEvent e){
-        if ((zipField.getText().matches("[0-9]+") && zipField.getText().length() == 5)) {
-            Double num = Double.parseDouble(zipField.getText());
-            Weather w = new Weather(zipField.getText());
-            tempLabel.setText(w.getTemperatureF());
-            weatherField.setText(w.getWeather());
-            locationField.setText(w.getCityState());
-            setVisible();
-            buttonClicked = 0;
-            tempState = true;
-
-            Image Icon1 = new Image("file:images/" + w.getIcon());
-            imageView.setImage(Icon1);
-        }
-    }*/
 
     public void handleGoButton(ActionEvent e){
         selection = map.get(resultsBox.getValue()); // gets selected value from ComboBox
@@ -73,7 +58,10 @@ public class Controller implements Initializable {
             fLabel.setText("°C");
         }
         weatherLabel.setText(w.getWeather());
-        locationLabel.setText(w.getCityState());
+        String currentLocation = resultsBox.getValue().toString();
+        String temp = currentLocation.substring(currentLocation.indexOf(",") + 1);
+        currentLocation = currentLocation.replace(temp.substring(temp.indexOf(",")), "");
+        locationLabel.setText(currentLocation);
         setVisible();
         forecastLabels();
 
@@ -93,7 +81,6 @@ public class Controller implements Initializable {
         day5view.setImage(day5icon);
         day6icon = new Image("file:icons/" + w.getIcon(6));
         day6view.setImage(day6icon);
-        tempState = !tempState;
     }
 
     public void myLocationButtonHandler(ActionEvent e){
@@ -133,47 +120,23 @@ public class Controller implements Initializable {
         day5view.setImage(day5icon);
         day6icon = new Image("file:icons/" + w.getIcon(6));
         day6view.setImage(day6icon);
-        tempState = !tempState;
     }
 
-    public void myLocationButtonHandler(){
-        Weather w = new Weather();
-        buttonClicked = 1;
-        if (tempState) {
-            tempLabel.setText(w.getTemperatureF());
-            minLabel.setText(w.getMinF());
-            maxLabel.setText(w.getMaxF());
-            fLabel.setText("°F");
+    public void autoFillUpdate(KeyEvent e){
+        if (locationInput.getText().length() > 2) {
+            AutoFill a = new AutoFill(locationInput.getText());
+            map = new HashMap<String, String>();
+            map = a.getMap();
+            searchResults = FXCollections.observableArrayList(a.getLocationResultsArray());
+            resultsBox.setItems(searchResults);
+            resultsBox.show();
         }
-        else {
-            tempLabel.setText(w.getTemperatureC());
-            minLabel.setText(w.getMinC());
-            maxLabel.setText(w.getMaxC());
-            fLabel.setText("°C");
+    }
+
+    public void checkComboBox(ActionEvent e){
+        if (resultsBox.getValue() != null){
+            handleGoButton();
         }
-        weatherLabel.setText(w.getWeather());
-        locationLabel.setText(w.getCityState());
-        setVisible();
-        forecastLabels();
-
-        Icon1 = new Image("file:icons/" + w.getIcon());
-        imageView.setImage(Icon1);
-
-        day0icon = new Image("file:icons/" + w.getIcon(0));
-        day0view.setImage(day0icon);
-        day1icon = new Image("file:icons/" + w.getIcon(1));
-        day1view.setImage(day1icon);
-        day2icon = new Image("file:icons/" + w.getIcon(2));
-        day2view.setImage(day2icon);
-        day3icon = new Image("file:icons/" + w.getIcon(3));
-        day3view.setImage(day3icon);
-        day4icon = new Image("file:icons/" + w.getIcon(4));
-        day4view.setImage(day4icon);
-        day5icon = new Image("file:icons/" + w.getIcon(5));
-        day5view.setImage(day5icon);
-        day6icon = new Image("file:icons/" + w.getIcon(6));
-        day6view.setImage(day6icon);
-        tempState = !tempState;
     }
 
     public void setVisible(){
@@ -249,17 +212,6 @@ public class Controller implements Initializable {
         tempState = !tempState;
     }
 
-    public void autoFillUpdate(ActionEvent e){
-        if (locationInput.getText().length() > 2) {
-            AutoFill a = new AutoFill(locationInput.getText());
-            map = new HashMap<String, String>();
-            map = a.getMap();
-            searchResults = FXCollections.observableArrayList(a.getLocationResults());
-            resultsBox.setItems(searchResults);
-            resultsBox.show();
-        }
-    }
-
     public void clearFields(ActionEvent e){
         locationInput.clear();
         resultsBox.setItems(searchResults);
@@ -327,6 +279,87 @@ public class Controller implements Initializable {
             day6Label.setText(w.getDate(6));
             currentDateLabel.setText(w.getDate(0));
         }
+    }
+
+    public void handleGoButton(){
+        selection = map.get(resultsBox.getValue()); // gets selected value from ComboBox
+        Weather w = new Weather(selection); // creates new Weather object using the selected location as the parameter
+        buttonClicked = 0;
+        if (tempState) {
+            tempLabel.setText(w.getTemperatureF());
+            minLabel.setText(w.getMinF());
+            maxLabel.setText(w.getMaxF());
+            fLabel.setText("°F");
+        }
+        else {
+            tempLabel.setText(w.getTemperatureC());
+            minLabel.setText(w.getMinC());
+            maxLabel.setText(w.getMaxC());
+            fLabel.setText("°C");
+        }
+        weatherLabel.setText(w.getWeather());
+        String currentLocation = resultsBox.getValue().toString();
+        String temp = currentLocation.substring(currentLocation.indexOf(",") + 1);
+        currentLocation = currentLocation.replace(temp.substring(temp.indexOf(",")), "");
+        locationLabel.setText(currentLocation);
+        setVisible();
+        forecastLabels();
+
+        Icon1 = new Image("file:icons/" + w.getIcon());
+        imageView.setImage(Icon1);
+        day0icon = new Image("file:icons/" + w.getIcon(0));
+        day0view.setImage(day0icon);
+        day1icon = new Image("file:icons/" + w.getIcon(1));
+        day1view.setImage(day1icon);
+        day2icon = new Image("file:icons/" + w.getIcon(2));
+        day2view.setImage(day2icon);
+        day3icon = new Image("file:icons/" + w.getIcon(3));
+        day3view.setImage(day3icon);
+        day4icon = new Image("file:icons/" + w.getIcon(4));
+        day4view.setImage(day4icon);
+        day5icon = new Image("file:icons/" + w.getIcon(5));
+        day5view.setImage(day5icon);
+        day6icon = new Image("file:icons/" + w.getIcon(6));
+        day6view.setImage(day6icon);
+    }
+
+    public void myLocationButtonHandler(){
+        Weather w = new Weather();
+        buttonClicked = 1;
+        if (tempState) {
+            tempLabel.setText(w.getTemperatureF());
+            minLabel.setText(w.getMinF());
+            maxLabel.setText(w.getMaxF());
+            fLabel.setText("°F");
+        }
+        else {
+            tempLabel.setText(w.getTemperatureC());
+            minLabel.setText(w.getMinC());
+            maxLabel.setText(w.getMaxC());
+            fLabel.setText("°C");
+        }
+        weatherLabel.setText(w.getWeather());
+        locationLabel.setText(w.getCityState());
+        setVisible();
+        forecastLabels();
+
+        Icon1 = new Image("file:icons/" + w.getIcon());
+        imageView.setImage(Icon1);
+
+        day0icon = new Image("file:icons/" + w.getIcon(0));
+        day0view.setImage(day0icon);
+        day1icon = new Image("file:icons/" + w.getIcon(1));
+        day1view.setImage(day1icon);
+        day2icon = new Image("file:icons/" + w.getIcon(2));
+        day2view.setImage(day2icon);
+        day3icon = new Image("file:icons/" + w.getIcon(3));
+        day3view.setImage(day3icon);
+        day4icon = new Image("file:icons/" + w.getIcon(4));
+        day4view.setImage(day4icon);
+        day5icon = new Image("file:icons/" + w.getIcon(5));
+        day5view.setImage(day5icon);
+        day6icon = new Image("file:icons/" + w.getIcon(6));
+        day6view.setImage(day6icon);
     }
 
     @Override
