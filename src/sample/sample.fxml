@@ -31,33 +31,33 @@
             <Font name="System Bold Italic" size="17.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="266.0" layoutY="176.0" prefHeight="15.0" prefWidth="35.0" text="HIGH:">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="332.0" layoutY="176.0" prefHeight="15.0" prefWidth="35.0" text="LOW:">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label fx:id="tempLabel" alignment="CENTER" layoutX="170.0" layoutY="229.0" onMousePressed="#toggleButton" prefHeight="131.0" prefWidth="233.0" text="55°F">
+      <Label fx:id="tempLabel" alignment="CENTER" layoutX="170.0" layoutY="200.0" onMousePressed="#toggleButton" prefHeight="109.0" prefWidth="233.0" text="55°F">
          <font>
             <Font size="90.0" />
          </font>
       </Label>
+      <Label alignment="CENTER" layoutX="234.0" layoutY="325.0" prefHeight="15.0" prefWidth="35.0" text="HIGH:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="300.0" layoutY="325.0" prefHeight="15.0" prefWidth="35.0" text="LOW:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="maxLabel" alignment="CENTER" layoutX="222.0" layoutY="338.0" prefHeight="38.0" prefWidth="62.0" text="55°">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label fx:id="minLabel" alignment="CENTER" layoutX="288.0" layoutY="338.0" prefHeight="38.0" prefWidth="62.0" text="55°">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
       <ComboBox fx:id="resultsBox" layoutX="96.0" layoutY="15.0" onAction="#checkComboBox" onMouseClicked="#handleGoButton" prefHeight="28.0" prefWidth="212.0" style="-fx-background-color: #333232;" />
       <TextField fx:id="locationInput" layoutX="93.0" layoutY="10.0" onKeyTyped="#autoFillUpdate" prefHeight="34.0" prefWidth="217.0" promptText="Enter a City or Zip Code" />
-      <Label fx:id="maxLabel" alignment="CENTER" layoutX="254.0" layoutY="204.0" prefHeight="38.0" prefWidth="62.0" text="55°">
-         <font>
-            <Font name="System Bold" size="26.0" />
-         </font>
-      </Label>
-      <Label fx:id="minLabel" alignment="CENTER" layoutX="320.0" layoutY="204.0" prefHeight="38.0" prefWidth="62.0" text="55°">
-         <font>
-            <Font name="System Bold" size="26.0" />
-         </font>
-      </Label>
       <Label fx:id="day3Label" alignment="CENTER" layoutX="188.0" layoutY="517.0" prefHeight="17.0" prefWidth="35.0" text="W">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -171,7 +171,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="windLabel" alignment="CENTER_RIGHT" layoutX="6.0" layoutY="435.0" prefHeight="38.0" prefWidth="117.0" text="5 MPH" textAlignment="RIGHT">
+      <Label fx:id="windLabel" alignment="CENTER_RIGHT" layoutX="1.0" layoutY="435.0" prefHeight="38.0" prefWidth="117.0" text="5 MPH" textAlignment="RIGHT">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>
@@ -201,6 +201,10 @@
             <Image url="@../../icons/refresh.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="124.0" layoutY="436.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="windDirection" fitHeight="34.0" fitWidth="27.0" layoutX="121.0" layoutY="441.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../arrows/NE.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>

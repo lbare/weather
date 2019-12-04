@@ -275,15 +275,36 @@ public class Weather {
     public String getWindSpeedMPH()
     {
         String humidity = getLocationData("ob").getAsJsonObject()
-                .get("windSpeedMPH").getAsString() + "MPH";
+                .get("windSpeedMPH").getAsString() + " MPH";
         return humidity;
     }
 
     public String getWindSpeedKPH()
     {
         String humidity = getLocationData("ob").getAsJsonObject()
-                .get("windSpeedKPH").getAsString() + "KPH";
+                .get("windSpeedKPH").getAsString() + " KPH";
         return humidity;
+    }
+
+    public String getVisibilityMI()
+    {
+        String visibility = getLocationData("ob").getAsJsonObject()
+                .get("visibilityMI").getAsString() + " MI";
+        return visibility;
+    }
+
+    public String getVisibilityKM()
+    {
+        String visibility = getLocationData("ob").getAsJsonObject()
+                .get("visibilityKM").getAsString() + " KM";
+        return visibility;
+    }
+
+    public String getWindDirection()
+    {
+        String direction = getLocationData("ob").getAsJsonObject()
+                .get("windDir").getAsString() + ".png";
+        return direction;
     }
 
     public String iconSort(String icon){
@@ -470,6 +491,6 @@ public class Weather {
     public static void main(String[] args)
     {
         Weather w = new Weather();
-        System.out.println(w.getIcon(1));
+        System.out.println(w.getWindDirection());
     }
 }
