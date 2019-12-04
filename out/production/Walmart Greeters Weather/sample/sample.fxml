@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="650.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<Pane prefHeight="650.0" prefWidth="400.0" style="-fx-background-color: #ccdeec;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
       <ImageView fx:id="bgImage" fitHeight="658.0" fitWidth="414.0" layoutX="-7.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="myLocationButton" layoutX="313.0" layoutY="31.0" minWidth="35.0" mnemonicParsing="false" onAction="#myLocationButtonHandler" prefHeight="31.0" prefWidth="35.0" textFill="WHITE">
@@ -34,76 +34,6 @@
             <Font name="System Bold Italic" size="21.0" />
          </font>
       </Label>
-      <Label fx:id="day0Label" alignment="CENTER" layoutX="22.0" layoutY="502.0" prefHeight="15.0" prefWidth="35.0" text="n/a" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label fx:id="day1Label" alignment="CENTER" layoutX="68.0" layoutY="502.0" prefHeight="15.0" prefWidth="43.0" text="n/a" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label fx:id="day2Label" alignment="CENTER" layoutX="126.0" layoutY="502.0" prefHeight="15.0" prefWidth="35.0" text="n/a" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label fx:id="day3Label" alignment="CENTER" layoutX="174.0" layoutY="502.0" prefHeight="15.0" prefWidth="43.0" text="n/a" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label fx:id="day4Label" alignment="CENTER" layoutX="229.0" layoutY="501.0" prefHeight="15.0" prefWidth="35.0" text="n/a" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label fx:id="day5Label" alignment="CENTER" layoutX="279.0" layoutY="501.0" prefHeight="15.0" prefWidth="35.0" text="n/a" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label fx:id="day6Label" alignment="CENTER" layoutX="327.0" layoutY="501.0" prefHeight="15.0" prefWidth="35.0" text="n/a" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label fx:id="day0temp" alignment="CENTER" layoutX="22.0" layoutY="579.0" prefHeight="27.0" prefWidth="35.0" text="n/a" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="day1temp" alignment="CENTER" layoutX="75.0" layoutY="578.0" prefHeight="27.0" prefWidth="35.0" text="n/a" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="day2temp" alignment="CENTER" layoutX="126.0" layoutY="578.0" prefHeight="27.0" prefWidth="35.0" text="n/a" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="day3temp" alignment="CENTER" layoutX="178.0" layoutY="579.0" prefHeight="27.0" prefWidth="35.0" text="n/a" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="day4temp" alignment="CENTER" layoutX="229.0" layoutY="579.0" prefHeight="27.0" prefWidth="35.0" text="n/a" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="day5temp" alignment="CENTER" layoutX="279.0" layoutY="579.0" prefHeight="27.0" prefWidth="35.0" text="n/a" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="day6temp" alignment="CENTER" layoutX="328.0" layoutY="579.0" prefHeight="27.0" prefWidth="35.0" text="n/a" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
       <Label alignment="CENTER" layoutX="275.0" layoutY="376.0" prefHeight="15.0" prefWidth="35.0" text="High:" textFill="WHITE">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -121,16 +51,6 @@
       </Label>
       <ComboBox fx:id="resultsBox" layoutX="61.0" layoutY="34.0" onAction="#checkComboBox" onMouseClicked="#handleGoButton" prefHeight="28.0" prefWidth="216.0" style="-fx-background-color: #333232;" />
       <TextField fx:id="locationInput" layoutX="61.0" layoutY="31.0" onKeyTyped="#autoFillUpdate" prefHeight="34.0" prefWidth="235.0" promptText="Enter a location" />
-      <Button layoutX="170.0" layoutY="94.0" minWidth="53.0" mnemonicParsing="false" onAction="#handleGoButton" prefHeight="25.0" prefWidth="53.0" style="-fx-background-color: #333232;" text="Go" textFill="WHITE" />
-      <Button layoutX="108.0" layoutY="94.0" minWidth="53.0" mnemonicParsing="false" onAction="#clearFields" prefHeight="25.0" prefWidth="53.0" style="-fx-background-color: #333232;" text="Clear" textFill="WHITE" />
-      <Button layoutX="28.0" layoutY="94.0" mnemonicParsing="false" onAction="#autoFillUpdate" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: #333232;" text="Search" textFill="WHITE" />
-      <ImageView fx:id="day0view" fitHeight="44.0" fitWidth="43.0" layoutX="18.0" layoutY="525.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="day1view" fitHeight="44.0" fitWidth="43.0" layoutX="68.0" layoutY="525.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="day2view" fitHeight="44.0" fitWidth="43.0" layoutX="122.0" layoutY="525.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="day3view" fitHeight="44.0" fitWidth="43.0" layoutX="174.0" layoutY="525.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="day4view" fitHeight="44.0" fitWidth="43.0" layoutX="225.0" layoutY="525.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="day5view" fitHeight="44.0" fitWidth="43.0" layoutX="274.0" layoutY="525.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="day6view" fitHeight="44.0" fitWidth="43.0" layoutX="323.0" layoutY="525.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="fcButton" layoutX="290.0" layoutY="334.0" minWidth="53.0" mnemonicParsing="false" onAction="#toggleButton" prefHeight="27.0" prefWidth="55.0" style="-fx-background-color: #333232;" text="°F/°C" textFill="WHITE" />
       <Label fx:id="maxLabel" alignment="CENTER" layoutX="274.0" layoutY="393.0" prefHeight="15.0" prefWidth="35.0" textFill="WHITE">
          <font>
@@ -147,5 +67,82 @@
             <Font name="System Bold" size="31.0" />
          </font>
       </Label>
+      <Label fx:id="day0Label" alignment="CENTER" layoutX="22.0" layoutY="502.0" prefHeight="15.0" prefWidth="35.0" text="n/a" textFill="#59656f">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="day1Label" alignment="CENTER" layoutX="68.0" layoutY="502.0" prefHeight="15.0" prefWidth="43.0" text="n/a" textFill="#59656f">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="day2Label" alignment="CENTER" layoutX="126.0" layoutY="502.0" prefHeight="15.0" prefWidth="35.0" text="n/a" textFill="#59656f">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="day3Label" alignment="CENTER" layoutX="174.0" layoutY="502.0" prefHeight="15.0" prefWidth="43.0" text="n/a" textFill="#59656f">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="day4Label" alignment="CENTER" layoutX="229.0" layoutY="501.0" prefHeight="15.0" prefWidth="35.0" text="n/a" textFill="#59656f">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="day5Label" alignment="CENTER" layoutX="279.0" layoutY="501.0" prefHeight="15.0" prefWidth="35.0" text="n/a" textFill="#59656f">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="day6Label" alignment="CENTER" layoutX="327.0" layoutY="501.0" prefHeight="15.0" prefWidth="35.0" text="n/a" textFill="#59656f">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="day0temp" alignment="CENTER" layoutX="22.0" layoutY="579.0" prefHeight="27.0" prefWidth="35.0" text="n/a" textFill="#59656f">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="day1temp" alignment="CENTER" layoutX="75.0" layoutY="578.0" prefHeight="27.0" prefWidth="35.0" text="n/a" textFill="#59656f">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="day2temp" alignment="CENTER" layoutX="126.0" layoutY="578.0" prefHeight="27.0" prefWidth="35.0" text="n/a" textFill="#59656f">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="day3temp" alignment="CENTER" layoutX="178.0" layoutY="579.0" prefHeight="27.0" prefWidth="35.0" text="n/a" textFill="#59656f">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="day4temp" alignment="CENTER" layoutX="229.0" layoutY="579.0" prefHeight="27.0" prefWidth="35.0" text="n/a" textFill="#59656f">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="day5temp" alignment="CENTER" layoutX="279.0" layoutY="579.0" prefHeight="27.0" prefWidth="35.0" text="n/a" textFill="#59656f">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="day6temp" alignment="CENTER" layoutX="328.0" layoutY="579.0" prefHeight="27.0" prefWidth="35.0" text="n/a" textFill="#59656f">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="day0view" fitHeight="44.0" fitWidth="43.0" layoutX="18.0" layoutY="525.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="day1view" fitHeight="44.0" fitWidth="43.0" layoutX="68.0" layoutY="525.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="day2view" fitHeight="44.0" fitWidth="43.0" layoutX="122.0" layoutY="525.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="day3view" fitHeight="44.0" fitWidth="43.0" layoutX="174.0" layoutY="525.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="day4view" fitHeight="44.0" fitWidth="43.0" layoutX="225.0" layoutY="525.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="day5view" fitHeight="44.0" fitWidth="43.0" layoutX="274.0" layoutY="525.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="day6view" fitHeight="44.0" fitWidth="43.0" layoutX="323.0" layoutY="525.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </Pane>
