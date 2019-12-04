@@ -46,6 +46,7 @@ public class Controller implements Initializable {
         selection = map.get(resultsBox.getValue()); // gets selected value from ComboBox
         Weather w = new Weather(selection); // creates new Weather object using the selected location as the parameter
         buttonClicked = 0;
+        tempState = true;
         if (tempState) {
             tempLabel.setText(w.getTemperatureF());
             minLabel.setText(w.getMinF());
@@ -93,6 +94,7 @@ public class Controller implements Initializable {
     public void myLocation(){
         Weather w = new Weather();
         buttonClicked = 1;
+        tempState = true;
         if (tempState) {
             tempLabel.setText(w.getTemperatureF());
             minLabel.setText(w.getMinF());
