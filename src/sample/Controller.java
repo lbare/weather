@@ -252,7 +252,7 @@ public class Controller implements Initializable {
             AutoFill a = new AutoFill(locationInput.getText());
             map = new HashMap<String, String>();
             map = a.getMap();
-            searchResults = FXCollections.observableArrayList(a.getLocationResults());
+            searchResults = FXCollections.observableArrayList(a.getLocationResultsArray());
             resultsBox.setItems(searchResults);
             resultsBox.show();
         }

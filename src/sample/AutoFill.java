@@ -13,8 +13,8 @@ public class AutoFill {
 
     private String apiKey = "pk.eyJ1IjoibGJhcmUiLCJhIjoiY2szYWhqaTc5MGUzdjNlb2NrbGlyMHdyMyJ9.v_XrJlAoxgK52CAEQoaEsw";
     private String query;
-    private JsonElement mapJSE;
-    private ArrayList<String> coordinateResults, locationResults;
+    private JsonElement locationJSE, zipJSE;
+    private ArrayList<String> coordinateResults, locationResults, zipResults;
     private HashMap<String,String> map;
 
 
@@ -22,24 +22,33 @@ public class AutoFill {
         if (s.contains(" ")) {
             String temp = s.replace(" ", "%20");
             query = temp;
-            fetch();
+            locationFetch();
             storeForecastData();
         }
         else {
             query = s;
-            fetch();
+            locationFetch();
             storeForecastData();
         }
     }
 
-    public void fetch()
+    public void locationFetch()
     {
-
-        String mapUrl = "https://api.mapbox.com/geocoding/v5/mapbox.places/" +
-                query +
-                ".json?access_token=" +
-                apiKey +
-                "&limit=5&types=place";
+        String mapUrl = "";
+        if (query.matches("^[a-zA-Z]*$")) {
+            mapUrl = "https://api.mapbox.com/geocoding/v5/mapbox.places/" +
+                    query +
+                    ".json?access_token=" +
+                    apiKey +
+                    "&limit=5&types=place";
+        }
+        else {
+            mapUrl = "https://api.mapbox.com/geocoding/v5/mapbox.places/" +
+                    query +
+                    ".json?access_token=" +
+                    apiKey +
+                    "&limit=5&types=postcode";
+        }
 
         try
         {
@@ -47,7 +56,7 @@ public class AutoFill {
             InputStream is = url.openStream();
             InputStreamReader isr = new InputStreamReader(is);
 
-            mapJSE = JsonParser.parseReader(isr);
+            locationJSE = JsonParser.parseReader(isr);
         }
         catch (java.net.MalformedURLException mue)
         {
@@ -61,33 +70,33 @@ public class AutoFill {
         }
     }
 
-    public JsonArray getResults(){
-        return mapJSE.getAsJsonObject()
+    public JsonArray getLocationResults(){
+        return locationJSE.getAsJsonObject()
                 .get("features").getAsJsonArray();
     }
 
     public void storeForecastData(){
         int day = 0;
-        int resultsLength = getResults().size();
+        int resultsLength = getLocationResults().size();
         coordinateResults = new ArrayList<String>();
         locationResults = new ArrayList<String>();
         map = new HashMap<String,String>();
 
         // store data from each day into their own ArrayList
         for (int i = 0; i < resultsLength; i++) {
-            String coordinates = getResults()
+            String coordinates = getLocationResults()
                             .get(i).getAsJsonObject()
                             .get("geometry").getAsJsonObject()
                             .get("coordinates").getAsJsonArray()
                             .get(1).getAsString() +
                     "," +
-                            getResults()
+                            getLocationResults()
                             .get(i).getAsJsonObject()
                             .get("geometry").getAsJsonObject()
                             .get("coordinates").getAsJsonArray()
                             .get(0).getAsString();
 
-            String locations = getResults()
+            String locations = getLocationResults()
                             .get(i).getAsJsonObject()
                             .get("place_name").getAsString();
 
@@ -98,7 +107,7 @@ public class AutoFill {
         }
     }
 
-    public ArrayList<String> getLocationResults() {
+    public ArrayList<String> getLocationResultsArray() {
         return locationResults;
     }
 
@@ -107,7 +116,8 @@ public class AutoFill {
     }
 
     public static void main(String[] args) {
-        AutoFill a = new AutoFill("rockl");
+        AutoFill a = new AutoFill("95677");
+        System.out.println(a.getLocationResultsArray());
     }
 
 
