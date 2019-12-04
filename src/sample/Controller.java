@@ -28,7 +28,7 @@ public class Controller implements Initializable {
             visibilityLabel;
 
     @FXML
-    ImageView imageView, day0view, day1view, day2view, day3view, day4view, day5view, day6view, bgImage, arrowImage, refreshImage, windDirection;
+    ImageView imageView, day0view, day1view, day2view, day3view, day4view, day5view, day6view, bgImage, arrowImage, tempImage, windDirection;
 
     @FXML
     Button myLocationButton;
@@ -52,7 +52,7 @@ public class Controller implements Initializable {
             maxLabel.setText(w.getMaxF());
             windLabel.setText(w.getWindSpeedMPH());
             visibilityLabel.setText(w.getVisibilityMI());
-
+            tempImage.setImage(new Image("file:icons/fah.png"));
         }
         else {
             tempLabel.setText(w.getTemperatureC());
@@ -60,6 +60,7 @@ public class Controller implements Initializable {
             maxLabel.setText(w.getMaxC());
             windLabel.setText(w.getWindSpeedKPH());
             visibilityLabel.setText(w.getVisibilityKM());
+            tempImage.setImage(new Image("file:icons/cel.png"));
         }
         weatherLabel.setText(w.getWeather());
         windDirection.setImage(new Image("file:arrows/" + w.getWindDirection()));
@@ -98,6 +99,7 @@ public class Controller implements Initializable {
             maxLabel.setText(w.getMaxF());
             windLabel.setText(w.getWindSpeedMPH());
             visibilityLabel.setText(w.getVisibilityMI());
+            tempImage.setImage(new Image("file:icons/fah.png"));
         }
         else {
             tempLabel.setText(w.getTemperatureC());
@@ -105,6 +107,7 @@ public class Controller implements Initializable {
             maxLabel.setText(w.getMaxC());
             windLabel.setText(w.getWindSpeedKPH());
             visibilityLabel.setText(w.getVisibilityKM());
+            tempImage.setImage(new Image("file:icons/cel.png"));
         }
         weatherLabel.setText(w.getWeather());
         windDirection.setImage(new Image("file:arrows/" + w.getWindDirection()));
@@ -141,6 +144,7 @@ public class Controller implements Initializable {
             maxLabel.setText(w.getMaxF());
             windLabel.setText(w.getWindSpeedMPH());
             visibilityLabel.setText(w.getVisibilityMI());
+            tempImage.setImage(new Image("file:icons/fah.png"));
         }
         else {
             tempLabel.setText(w.getTemperatureC());
@@ -148,6 +152,7 @@ public class Controller implements Initializable {
             maxLabel.setText(w.getMaxC());
             windLabel.setText(w.getWindSpeedKPH());
             visibilityLabel.setText(w.getVisibilityKM());
+            tempImage.setImage(new Image("file:icons/cel.png"));
         }
         weatherLabel.setText(w.getWeather());
         locationLabel.setText(w.getCityState());
@@ -220,6 +225,7 @@ public class Controller implements Initializable {
                 minLabel.setText(w.getMinF());
                 windLabel.setText(w.getWindSpeedMPH());
                 visibilityLabel.setText(w.getVisibilityMI());
+                tempImage.setImage(new Image("file:icons/fah.png"));
             }
             else {
                 tempLabel.setText(w.getTemperatureC());
@@ -234,6 +240,7 @@ public class Controller implements Initializable {
                 minLabel.setText(w.getMinC());
                 windLabel.setText(w.getWindSpeedKPH());
                 visibilityLabel.setText(w.getVisibilityKM());
+                tempImage.setImage(new Image("file:icons/cel.png"));
             }
         }
         else if (buttonClicked == 1) {
@@ -251,6 +258,7 @@ public class Controller implements Initializable {
                 minLabel.setText(w.getMinF());
                 windLabel.setText(w.getWindSpeedMPH());
                 visibilityLabel.setText(w.getVisibilityMI());
+                tempImage.setImage(new Image("file:icons/fah.png"));
             }
             else {
                 tempLabel.setText(w.getTemperatureC());
@@ -265,6 +273,7 @@ public class Controller implements Initializable {
                 minLabel.setText(w.getMinC());
                 windLabel.setText(w.getWindSpeedKPH());
                 visibilityLabel.setText(w.getVisibilityKM());
+                tempImage.setImage(new Image("file:icons/cel.png"));
             }
         }
         tempState = !tempState;
@@ -346,11 +355,12 @@ public class Controller implements Initializable {
         tempState = true;
         Image bg = new Image("file:bg/cloudy.png");
         Image arrow = new Image("file:bg/arrow_black1.png");
-        Image refresh = new Image("file:icons/refresh.png");
-        refreshImage.setImage(refresh);
+        Image temp = new Image("file:icons/fah.png");
+        tempImage.setImage(temp);
         arrowImage.setImage(arrow);
         bgImage.setImage(bg);
         myLocationButtonHandler();
+        tempState = false;
     }
 }
 

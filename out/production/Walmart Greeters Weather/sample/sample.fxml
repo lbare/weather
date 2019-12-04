@@ -16,7 +16,7 @@
             <Image url="@../../bg/cloudy.png" />
          </image>
       </ImageView>
-      <ImageView id="Icon" fx:id="imageView" fitHeight="164.0" fitWidth="164.0" layoutX="17.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView id="Icon" fx:id="imageView" fitHeight="164.0" fitWidth="164.0" layoutX="17.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../icons/n1.png" />
          </image></ImageView>
@@ -31,27 +31,27 @@
             <Font name="System Bold Italic" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="tempLabel" alignment="CENTER" layoutX="170.0" layoutY="200.0" onMousePressed="#toggleButton" prefHeight="109.0" prefWidth="233.0" text="55°F">
+      <Label fx:id="tempLabel" alignment="CENTER" layoutX="170.0" layoutY="186.0" onMousePressed="#toggleButton" prefHeight="109.0" prefWidth="233.0" text="55°F">
          <font>
             <Font size="90.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="234.0" layoutY="325.0" prefHeight="15.0" prefWidth="35.0" text="HIGH:">
+      <Label alignment="CENTER" layoutX="234.0" layoutY="311.0" prefHeight="15.0" prefWidth="35.0" text="HIGH:">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="300.0" layoutY="325.0" prefHeight="15.0" prefWidth="35.0" text="LOW:">
+      <Label alignment="CENTER" layoutX="300.0" layoutY="311.0" prefHeight="15.0" prefWidth="35.0" text="LOW:">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="maxLabel" alignment="CENTER" layoutX="222.0" layoutY="338.0" prefHeight="38.0" prefWidth="62.0" text="55°">
+      <Label fx:id="maxLabel" alignment="CENTER" layoutX="222.0" layoutY="324.0" prefHeight="38.0" prefWidth="62.0" text="55°">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>
       </Label>
-      <Label fx:id="minLabel" alignment="CENTER" layoutX="288.0" layoutY="338.0" prefHeight="38.0" prefWidth="62.0" text="55°">
+      <Label fx:id="minLabel" alignment="CENTER" layoutX="288.0" layoutY="324.0" prefHeight="38.0" prefWidth="62.0" text="55°">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>
@@ -181,7 +181,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="visibilityLabel" alignment="CENTER" layoutX="284.0" layoutY="435.0" prefHeight="38.0" prefWidth="84.0" text="10 MI">
+      <Label fx:id="visibilityLabel" alignment="CENTER" layoutX="268.0" layoutY="435.0" prefHeight="38.0" prefWidth="116.0" text="10 MI">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>
@@ -196,9 +196,9 @@
             <Font name="System Bold" size="26.0" />
          </font>
       </Label>
-      <ImageView fx:id="refreshImage" fitHeight="34.0" fitWidth="25.0" layoutX="51.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tempImage" fitHeight="34.0" fitWidth="25.0" layoutX="51.0" layoutY="15.0" onMousePressed="#toggleButton" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../icons/refresh.png" />
+            <Image url="@../../icons/fah.png" />
          </image>
       </ImageView>
       <ImageView fx:id="windDirection" fitHeight="34.0" fitWidth="27.0" layoutX="114.0" layoutY="441.0" pickOnBounds="true" preserveRatio="true">
