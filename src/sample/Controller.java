@@ -23,7 +23,7 @@ public class Controller implements Initializable {
     ComboBox resultsBox;
 
     @FXML
-    Label tempLabel, weatherLabel, locationLabel, day0temp, day1temp, day2temp, day3temp, day4temp, day5temp, day6temp, fLabel,
+    Label tempLabel, weatherLabel, locationLabel, day0temp, day1temp, day2temp, day3temp, day4temp, day5temp, day6temp, humidityLabel,
             day0Label, day1Label, day2Label, day3Label, day4Label, day5Label, day6Label, currentDateLabel, minLabel, maxLabel;
 
     @FXML
@@ -41,48 +41,6 @@ public class Controller implements Initializable {
 
     ObservableList<String> searchResults = FXCollections.observableArrayList("");
 
-    public void handleGoButton(ActionEvent e){
-        selection = map.get(resultsBox.getValue()); // gets selected value from ComboBox
-        Weather w = new Weather(selection); // creates new Weather object using the selected location as the parameter
-        buttonClicked = 0;
-        if (tempState) {
-            tempLabel.setText(w.getTemperatureF());
-            minLabel.setText(w.getMinF());
-            maxLabel.setText(w.getMaxF());
-            fLabel.setText("°F");
-        }
-        else {
-            tempLabel.setText(w.getTemperatureC());
-            minLabel.setText(w.getMinC());
-            maxLabel.setText(w.getMaxC());
-            fLabel.setText("°C");
-        }
-        weatherLabel.setText(w.getWeather());
-        String currentLocation = resultsBox.getValue().toString();
-        String temp = currentLocation.substring(currentLocation.indexOf(",") + 1);
-        currentLocation = currentLocation.replace(temp.substring(temp.indexOf(",")), "");
-        locationLabel.setText(currentLocation);
-        setVisible();
-        forecastLabels();
-
-        Icon1 = new Image("file:icons/" + w.getIcon());
-        imageView.setImage(Icon1);
-        day0icon = new Image("file:icons/" + w.getIcon(0));
-        day0view.setImage(day0icon);
-        day1icon = new Image("file:icons/" + w.getIcon(1));
-        day1view.setImage(day1icon);
-        day2icon = new Image("file:icons/" + w.getIcon(2));
-        day2view.setImage(day2icon);
-        day3icon = new Image("file:icons/" + w.getIcon(3));
-        day3view.setImage(day3icon);
-        day4icon = new Image("file:icons/" + w.getIcon(4));
-        day4view.setImage(day4icon);
-        day5icon = new Image("file:icons/" + w.getIcon(5));
-        day5view.setImage(day5icon);
-        day6icon = new Image("file:icons/" + w.getIcon(6));
-        day6view.setImage(day6icon);
-    }
-
     public void myLocationButtonHandler(ActionEvent e){
         Weather w = new Weather();
         buttonClicked = 1;
@@ -90,16 +48,15 @@ public class Controller implements Initializable {
             tempLabel.setText(w.getTemperatureF());
             minLabel.setText(w.getMinF());
             maxLabel.setText(w.getMaxF());
-            fLabel.setText("°F");
         }
         else {
             tempLabel.setText(w.getTemperatureC());
             minLabel.setText(w.getMinC());
             maxLabel.setText(w.getMaxC());
-            fLabel.setText("°C");
         }
         weatherLabel.setText(w.getWeather());
         locationLabel.setText(w.getCityState());
+        humidityLabel.setText(w.getHumidity());
         setVisible();
         forecastLabels();
 
@@ -164,7 +121,6 @@ public class Controller implements Initializable {
                 day6temp.setText(w.getAvgTempF(6));
                 maxLabel.setText(w.getMaxF());
                 minLabel.setText(w.getMinF());
-                fLabel.setText("°F");
             }
             else {
                 tempLabel.setText(w.getTemperatureC());
@@ -177,7 +133,6 @@ public class Controller implements Initializable {
                 day6temp.setText(w.getAvgTempC(6));
                 maxLabel.setText(w.getMaxC());
                 minLabel.setText(w.getMinC());
-                fLabel.setText("°C");
             }
         }
         else if (buttonClicked == 1) {
@@ -193,7 +148,6 @@ public class Controller implements Initializable {
                 day6temp.setText(w.getAvgTempF(6));
                 maxLabel.setText(w.getMaxF());
                 minLabel.setText(w.getMinF());
-                fLabel.setText("°F");
             }
             else {
                 tempLabel.setText(w.getTemperatureC());
@@ -206,7 +160,6 @@ public class Controller implements Initializable {
                 day6temp.setText(w.getAvgTempC(6));
                 maxLabel.setText(w.getMaxC());
                 minLabel.setText(w.getMinC());
-                fLabel.setText("°C");
             }
         }
         tempState = !tempState;
@@ -289,19 +242,18 @@ public class Controller implements Initializable {
             tempLabel.setText(w.getTemperatureF());
             minLabel.setText(w.getMinF());
             maxLabel.setText(w.getMaxF());
-            fLabel.setText("°F");
         }
         else {
             tempLabel.setText(w.getTemperatureC());
             minLabel.setText(w.getMinC());
             maxLabel.setText(w.getMaxC());
-            fLabel.setText("°C");
         }
         weatherLabel.setText(w.getWeather());
         String currentLocation = resultsBox.getValue().toString();
         String temp = currentLocation.substring(currentLocation.indexOf(",") + 1);
         currentLocation = currentLocation.replace(temp.substring(temp.indexOf(",")), "");
         locationLabel.setText(currentLocation);
+        humidityLabel.setText(w.getHumidity());
         setVisible();
         forecastLabels();
 
@@ -330,16 +282,15 @@ public class Controller implements Initializable {
             tempLabel.setText(w.getTemperatureF());
             minLabel.setText(w.getMinF());
             maxLabel.setText(w.getMaxF());
-            fLabel.setText("°F");
         }
         else {
             tempLabel.setText(w.getTemperatureC());
             minLabel.setText(w.getMinC());
             maxLabel.setText(w.getMaxC());
-            fLabel.setText("°C");
         }
         weatherLabel.setText(w.getWeather());
         locationLabel.setText(w.getCityState());
+        humidityLabel.setText(w.getHumidity());
         setVisible();
         forecastLabels();
 

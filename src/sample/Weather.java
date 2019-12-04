@@ -233,28 +233,28 @@ public class Weather {
     public String getMaxF(){
         String temp = getForecastData()
                 .get(0).getAsJsonObject()
-                .get("maxTempF").getAsString();
+                .get("maxTempF").getAsString() + "°";
         return temp;
     }
 
     public String getMinF(){
         String temp = getForecastData()
                 .get(0).getAsJsonObject()
-                .get("minTempF").getAsString();
+                .get("minTempF").getAsString() + "°";
         return temp;
     }
 
     public String getMaxC(){
         String temp = getForecastData()
                 .get(0).getAsJsonObject()
-                .get("maxTempC").getAsString();
+                .get("maxTempC").getAsString() + "°";
         return temp;
     }
 
     public String getMinC(){
         String temp = getForecastData()
                 .get(0).getAsJsonObject()
-                .get("minTempC").getAsString();
+                .get("minTempC").getAsString() + "°";
         return temp;
     }
 
@@ -263,6 +263,13 @@ public class Weather {
         String weather = getLocationData("ob").getAsJsonObject()
                 .get("weather").getAsString();
         return weather;
+    }
+
+    public String getHumidity()
+    {
+        String humidity = getLocationData("ob").getAsJsonObject()
+                .get("humidity").getAsString() + "%";
+        return humidity;
     }
 
     public String iconSort(String icon){
