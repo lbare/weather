@@ -29,24 +29,24 @@
         <Pane prefHeight="650.0" prefWidth="400.0" GridPane.rowIndex="5">
             <children>
             <ImageView fx:id="bgImage" fitHeight="658.0" fitWidth="414.0" layoutX="-2.0" layoutY="-57.0" pickOnBounds="true" preserveRatio="true" />
-                <Button fx:id="myLocationButtonHandler" layoutX="235.0" layoutY="37.0" mnemonicParsing="false" onAction="#myLocationButtonHandler" prefHeight="25.0" prefWidth="134.0" style="-fx-background-color: #333232;" text="My Current Location" textFill="WHITE">
+                <Button fx:id="myLocationButtonHandler" layoutX="235.0" layoutY="37.0" minWidth="29.0" mnemonicParsing="false" onAction="#myLocationButtonHandler" prefHeight="25.0" prefWidth="29.0" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
             </Button>
                 <ImageView id="Icon" fx:id="imageView" fitHeight="82.0" fitWidth="82.0" layoutX="93.0" layoutY="235.0" pickOnBounds="true" preserveRatio="true" />
                 <Circle fill="DODGERBLUE" layoutX="110.0" layoutY="236.0" radius="41.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
-                <Label fx:id="currentDateLabel" alignment="CENTER" layoutX="130.0" layoutY="83.0" prefHeight="20.0" prefWidth="152.0" text="CURRENT DATE">
+                <Label fx:id="currentDateLabel" alignment="CENTER" layoutX="119.0" layoutY="82.0" prefHeight="20.0" prefWidth="152.0" text="CURRENT DATE">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
                 </Label>
-                <Label fx:id="locationLabel" alignment="CENTER" layoutX="42.0" layoutY="109.0" prefHeight="34.0" prefWidth="328.0" text="LOCATION">
+                <Label fx:id="locationLabel" alignment="CENTER" layoutX="31.0" layoutY="108.0" prefHeight="34.0" prefWidth="328.0" text="LOCATION">
                     <font>
                         <Font name="System Bold" size="23.0" />
                     </font>
                 </Label>
-                <Label fx:id="weatherLabel" alignment="CENTER" layoutX="37.0" layoutY="150.0" prefHeight="27.0" prefWidth="339.0" text="WEATHER CONDITION">
+                <Label fx:id="weatherLabel" alignment="CENTER" layoutX="26.0" layoutY="149.0" prefHeight="27.0" prefWidth="339.0" text="WEATHER CONDITION">
                     <font>
                         <Font name="System Bold Italic" size="21.0" />
                     </font>
@@ -136,7 +136,7 @@
                         <Font size="42.0" />
                     </font>
                 </Label>
-                <ComboBox fx:id="resultsBox" layoutX="38.0" layoutY="-21.0" onMouseClicked="#handleGoButton" prefHeight="28.0" prefWidth="216.0" style="-fx-background-color: #333232;" />
+                <ComboBox fx:id="resultsBox" layoutX="38.0" layoutY="-21.0" onAction="#checkComboBox" onMouseClicked="#handleGoButton" prefHeight="28.0" prefWidth="216.0" style="-fx-background-color: #333232;" />
                 <TextField fx:id="locationInput" layoutX="38.0" layoutY="-24.0" onKeyTyped="#autoFillUpdate" prefHeight="34.0" prefWidth="235.0" promptText="Enter a location" />
                 <Button layoutX="175.0" layoutY="37.0" minWidth="53.0" mnemonicParsing="false" onAction="#handleGoButton" prefHeight="25.0" prefWidth="53.0" style="-fx-background-color: #333232;" text="Go" textFill="WHITE" />
                 <Button layoutX="113.0" layoutY="37.0" minWidth="53.0" mnemonicParsing="false" onAction="#clearFields" prefHeight="25.0" prefWidth="53.0" style="-fx-background-color: #333232;" text="Clear" textFill="WHITE" />
