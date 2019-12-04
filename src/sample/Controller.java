@@ -36,26 +36,10 @@ public class Controller implements Initializable {
     private int buttonClicked;
     private boolean tempState;
     private HashMap<String,String> map;
-    private String selection;
+    private String selection, locationName;
     private Image Icon1, day0icon, day1icon, day2icon, day3icon, day4icon, day5icon, day6icon;;
 
     ObservableList<String> searchResults = FXCollections.observableArrayList("");
-
-    /*public void goButtonHandler(ActionEvent e){
-        if ((zipField.getText().matches("[0-9]+") && zipField.getText().length() == 5)) {
-            Double num = Double.parseDouble(zipField.getText());
-            Weather w = new Weather(zipField.getText());
-            tempLabel.setText(w.getTemperatureF());
-            weatherField.setText(w.getWeather());
-            locationField.setText(w.getCityState());
-            setVisible();
-            buttonClicked = 0;
-            tempState = true;
-
-            Image Icon1 = new Image("file:images/" + w.getIcon());
-            imageView.setImage(Icon1);
-        }
-    }*/
 
     public void handleGoButton(ActionEvent e){
         selection = map.get(resultsBox.getValue()); // gets selected value from ComboBox
@@ -74,7 +58,10 @@ public class Controller implements Initializable {
             fLabel.setText("°C");
         }
         weatherLabel.setText(w.getWeather());
-        locationLabel.setText(w.getCityState());
+        String currentLocation = resultsBox.getValue().toString();
+        String temp = currentLocation.substring(currentLocation.indexOf(",") + 1);
+        currentLocation = currentLocation.replace(temp.substring(temp.indexOf(",")), "");
+        locationLabel.setText(currentLocation);
         setVisible();
         forecastLabels();
 
@@ -174,6 +161,17 @@ public class Controller implements Initializable {
         day6view.setImage(day6icon);
     }
 
+    public void autoFillUpdate(KeyEvent e){
+        if (locationInput.getText().length() > 2) {
+            AutoFill a = new AutoFill(locationInput.getText());
+            map = new HashMap<String, String>();
+            map = a.getMap();
+            searchResults = FXCollections.observableArrayList(a.getLocationResultsArray());
+            resultsBox.setItems(searchResults);
+            resultsBox.show();
+        }
+    }
+
     public void setVisible(){
         locationLabel.setVisible(true);
         weatherLabel.setVisible(true);
@@ -245,17 +243,6 @@ public class Controller implements Initializable {
             }
         }
         tempState = !tempState;
-    }
-
-    public void autoFillUpdate(KeyEvent e){
-        if (locationInput.getText().length() > 2) {
-            AutoFill a = new AutoFill(locationInput.getText());
-            map = new HashMap<String, String>();
-            map = a.getMap();
-            searchResults = FXCollections.observableArrayList(a.getLocationResultsArray());
-            resultsBox.setItems(searchResults);
-            resultsBox.show();
-        }
     }
 
     public void clearFields(ActionEvent e){

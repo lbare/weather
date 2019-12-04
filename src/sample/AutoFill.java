@@ -5,7 +5,9 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -13,29 +15,27 @@ public class AutoFill {
 
     private String apiKey = "pk.eyJ1IjoibGJhcmUiLCJhIjoiY2szYWhqaTc5MGUzdjNlb2NrbGlyMHdyMyJ9.v_XrJlAoxgK52CAEQoaEsw";
     private String query;
-    private JsonElement locationJSE, zipJSE;
-    private ArrayList<String> coordinateResults, locationResults, zipResults;
-    private HashMap<String,String> map;
+    private JsonElement locationJSE;
+    private ArrayList<String> coordinateResults, locationResults;
+    private HashMap<String,String> map, map1;
 
 
     public AutoFill(String s){
-        if (s.contains(" ")) {
-            String temp = s.replace(" ", "%20");
-            query = temp;
+        try {
+            query = URLEncoder.encode(s, "utf-8");
             locationFetch();
             storeForecastData();
         }
-        else {
-            query = s;
-            locationFetch();
-            storeForecastData();
+        catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
         }
     }
 
     public void locationFetch()
     {
         String mapUrl = "";
-        if (query.matches("^[a-zA-Z]*$")) {
+        if (!query.matches("[0-9]+")) {
+            query = query.replace(" ", "%20");
             mapUrl = "https://api.mapbox.com/geocoding/v5/mapbox.places/" +
                     query +
                     ".json?access_token=" +
@@ -43,6 +43,7 @@ public class AutoFill {
                     "&limit=5&types=place";
         }
         else {
+            query = query.replace(" ", "");
             mapUrl = "https://api.mapbox.com/geocoding/v5/mapbox.places/" +
                     query +
                     ".json?access_token=" +
@@ -81,6 +82,7 @@ public class AutoFill {
         coordinateResults = new ArrayList<String>();
         locationResults = new ArrayList<String>();
         map = new HashMap<String,String>();
+        map1 = new HashMap<String,String>();
 
         // store data from each day into their own ArrayList
         for (int i = 0; i < resultsLength; i++) {
@@ -103,6 +105,7 @@ public class AutoFill {
             coordinateResults.add(coordinates);
             locationResults.add(locations);
             map.put(locationResults.get(i), coordinateResults.get(i));
+            map1.put(coordinateResults.get(i), locationResults.get(i));
             day++;
         }
     }
@@ -116,7 +119,7 @@ public class AutoFill {
     }
 
     public static void main(String[] args) {
-        AutoFill a = new AutoFill("95677");
+        AutoFill a = new AutoFill("new york");
         System.out.println(a.getLocationResultsArray());
     }
 

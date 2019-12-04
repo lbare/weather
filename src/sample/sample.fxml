@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
-<?import org.controlsfx.control.textfield.CustomTextField?>
 
 <GridPane alignment="center" hgap="10" prefHeight="650.0" prefWidth="400.0" vgap="10" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <columnConstraints>
@@ -165,7 +164,6 @@
                   <Font name="System Bold" size="31.0" />
                </font>
             </Label>
-            <CustomTextField layoutX="121.0" layoutY="211.0" />
             </children>
         </Pane>
     </children>
