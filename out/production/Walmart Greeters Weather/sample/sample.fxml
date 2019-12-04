@@ -156,32 +156,32 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="170.0" layoutY="407.0" prefHeight="17.0" prefWidth="70.0" text="HUMIDITY:">
+      <Label alignment="CENTER" layoutX="172.0" layoutY="407.0" prefHeight="17.0" prefWidth="70.0" text="HUMIDITY:">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="humidityLabel" alignment="CENTER" layoutX="162.0" layoutY="435.0" prefHeight="38.0" prefWidth="84.0" text="26%">
+      <Label fx:id="humidityLabel" alignment="CENTER" layoutX="164.0" layoutY="435.0" prefHeight="38.0" prefWidth="84.0" text="26%">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="42.0" layoutY="407.0" prefHeight="17.0" prefWidth="84.0" text="WIND:">
+      <Label alignment="CENTER" layoutX="35.0" layoutY="407.0" prefHeight="17.0" prefWidth="84.0" text="WIND:">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="windLabel" alignment="CENTER_RIGHT" layoutX="1.0" layoutY="435.0" prefHeight="38.0" prefWidth="117.0" text="5 MPH" textAlignment="RIGHT">
+      <Label fx:id="windLabel" alignment="CENTER_RIGHT" layoutX="-6.0" layoutY="435.0" prefHeight="38.0" prefWidth="117.0" text="5 MPH" textAlignment="RIGHT">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="284.0" layoutY="407.0" prefHeight="17.0" prefWidth="70.0" text="VISIBILITY:">
+      <Label alignment="CENTER" layoutX="292.0" layoutY="407.0" prefHeight="17.0" prefWidth="70.0" text="VISIBILITY:">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="visibilityLabel" alignment="CENTER" layoutX="276.0" layoutY="435.0" prefHeight="38.0" prefWidth="84.0" text="10 MI">
+      <Label fx:id="visibilityLabel" alignment="CENTER" layoutX="284.0" layoutY="435.0" prefHeight="38.0" prefWidth="84.0" text="10 MI">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>
@@ -201,7 +201,7 @@
             <Image url="@../../icons/refresh.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="windDirection" fitHeight="34.0" fitWidth="27.0" layoutX="121.0" layoutY="441.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="windDirection" fitHeight="34.0" fitWidth="27.0" layoutX="114.0" layoutY="441.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../arrows/NE.png" />
          </image>

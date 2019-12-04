@@ -296,7 +296,7 @@ public class Weather {
     public String getVisibilityKM()
     {
         String visibility = getLocationData("ob").getAsJsonObject()
-                .get("visibilityKM").getAsString() + " KM";
+                .get("visibilityKM").getAsString().substring(0,3) + " KM";
         return visibility;
     }
 
@@ -491,6 +491,6 @@ public class Weather {
     public static void main(String[] args)
     {
         Weather w = new Weather();
-        System.out.println(w.getWindDirection());
+        System.out.println(w.getVisibilityKM());
     }
 }
