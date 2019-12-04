@@ -367,7 +367,7 @@ public class Controller implements Initializable {
         resultsBox.setValue("");
         resultsBox.setItems(searchResults);
         tempState = true;
-        Image bg = new Image("file:bg/day.png");
+        Image bg = new Image("file:bg/cloudy.png");
         Image arrow = new Image("file:bg/arrow_black.png");
         myLocationButton.setGraphic(new ImageView(arrow));
         bgImage.setImage(bg);

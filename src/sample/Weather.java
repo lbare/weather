@@ -194,7 +194,8 @@ public class Weather {
 
              String temp = getForecastData()
                     .get(day).getAsJsonObject()
-                    .get("icon").getAsString();
+                    .get("icon").getAsString()
+                     .replace("1","");;
             icon[day] = iconSort(temp);
 
             date[day] = getForecastData()
@@ -296,13 +297,11 @@ public class Weather {
                 break;
             case "cloudy.png":
             case "cloudyw.png":
-                icon = "c1.png";
-                break;
             case "dust.png":
             case "fog.png":
             case "smoke.png":
             case "wind.png":
-                icon = "w1.png";
+                icon = "c1.png";
                 break;
             case "am_snowshowers.png":
             case "blizzard.png":
@@ -410,7 +409,7 @@ public class Weather {
         String icon = getLocationData("ob")
                 .getAsJsonObject()
                 .get("icon").getAsString();
-        return iconSort(icon).replace("1","");
+        return iconSort(icon);
     }
 
     public String getCityState()
@@ -450,5 +449,6 @@ public class Weather {
     public static void main(String[] args)
     {
         Weather w = new Weather();
+        System.out.println(w.getIcon(1));
     }
 }
