@@ -32,6 +32,9 @@ public class Controller implements Initializable {
     @FXML
     ImageView imageView, day0view, day1view, day2view, day3view, day4view, day5view, day6view, bgImage;
 
+    @FXML
+    Button myLocationButton;
+
     // keeps track of whether the Go or myLocation was pressed for the RadioButtons
     private int buttonClicked;
     private boolean tempState;
@@ -367,7 +370,9 @@ public class Controller implements Initializable {
         resultsBox.setValue("");
         resultsBox.setItems(searchResults);
         tempState = true;
-        Image bg = new Image("file:bg/rainy_blur.png");
+        Image bg = new Image("file:bg/cloudy.png");
+        Image arrow = new Image("file:bg/arrow_black.png");
+        myLocationButton.setGraphic(new ImageView(arrow));
         bgImage.setImage(bg);
         myLocationButtonHandler();
     }

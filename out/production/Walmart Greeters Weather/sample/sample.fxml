@@ -29,7 +29,7 @@
         <Pane prefHeight="650.0" prefWidth="400.0" GridPane.rowIndex="5">
             <children>
             <ImageView fx:id="bgImage" fitHeight="658.0" fitWidth="414.0" layoutX="-2.0" layoutY="-57.0" pickOnBounds="true" preserveRatio="true" />
-                <Button fx:id="myLocationButtonHandler" layoutX="235.0" layoutY="37.0" minWidth="29.0" mnemonicParsing="false" onAction="#myLocationButtonHandler" prefHeight="25.0" prefWidth="29.0" textFill="WHITE">
+                <Button fx:id="myLocationButton" layoutX="235.0" layoutY="37.0" minWidth="29.0" mnemonicParsing="false" onAction="#myLocationButtonHandler" prefHeight="25.0" prefWidth="29.0" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="12.0" />
                     </font>
