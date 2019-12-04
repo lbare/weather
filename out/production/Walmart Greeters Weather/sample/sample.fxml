@@ -186,7 +186,7 @@
             <Font name="System Bold" size="26.0" />
          </font>
       </Label>
-      <ImageView fx:id="arrowImage" fitHeight="34.0" fitWidth="25.0" layoutX="342.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="arrowImage" fitHeight="34.0" fitWidth="25.0" layoutX="324.0" layoutY="15.0" onMousePressed="#myLocationButtonHandler" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../bg/arrow_black1.png" />
          </image>
@@ -196,5 +196,10 @@
             <Font name="System Bold" size="26.0" />
          </font>
       </Label>
+      <ImageView fx:id="refreshImage" fitHeight="34.0" fitWidth="25.0" layoutX="51.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../icons/refresh.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>

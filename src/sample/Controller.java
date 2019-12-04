@@ -28,7 +28,7 @@ public class Controller implements Initializable {
             visibilityLabel;
 
     @FXML
-    ImageView imageView, day0view, day1view, day2view, day3view, day4view, day5view, day6view, bgImage, arrowImage;
+    ImageView imageView, day0view, day1view, day2view, day3view, day4view, day5view, day6view, bgImage, arrowImage, refreshImage, windDirection;
 
     @FXML
     Button myLocationButton;
@@ -323,6 +323,8 @@ public class Controller implements Initializable {
         tempState = true;
         Image bg = new Image("file:bg/cloudy.png");
         Image arrow = new Image("file:bg/arrow_black1.png");
+        Image refresh = new Image("file:icons/refresh.png");
+        refreshImage.setImage(arrow);
         arrowImage.setImage(arrow);
         bgImage.setImage(bg);
         myLocationButtonHandler();
