@@ -4,9 +4,8 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
+
+import java.io.*;
 import java.net.URL;
 import java.net.URLEncoder;
 
@@ -16,6 +15,9 @@ public class Weather {
     private String[] avgTempF, avgTempC, humidity, conditions, icon, date;
     private String clientID;
     private String clientKey;
+    String currentDay = "file:JSON/CurrentDay.json";
+    String Forecast = "file:JSON/Forecast.json";
+    JsonObject
 
     // constructor for getting weather from user's IP
     public Weather() {
@@ -37,6 +39,10 @@ public class Weather {
         catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
+    }
+
+    public Weather(JsonObject j){
+
     }
 
     // fetch location weather JSON using user's input location and store in forecastJSE
@@ -524,6 +530,15 @@ public class Weather {
     public String getDate(int day){
         return date[day];
     }
+
+    /*public void parseJson(){
+        try {
+            Object obj = parser.parse(new FileReader("file:JSON/CurrentDay.json"));
+        }
+        catch (FileNotFoundException f){
+            System.out.println("File not found");
+        }
+    }*/
 
     public static void main(String[] args)
     {
