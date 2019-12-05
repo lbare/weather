@@ -22,6 +22,7 @@ public class Weather {
         APIKeys.addToArrayList();
         clientID = APIKeys.ClientID();
         clientKey = APIKeys.ClientKey();
+        updateAPIKey();
         locationAutoFetch();
         forecastAutoFetch();
         storeForecastData();
@@ -34,6 +35,7 @@ public class Weather {
         clientKey = APIKeys.ClientKey();
         try {
             location = URLEncoder.encode(input, "utf-8"); // sets location to user input
+            updateAPIKey();
             locationFetch();
             forecastFetch();
             storeForecastData();
@@ -489,8 +491,17 @@ public class Weather {
         return cityState;
     }
 
-    public boolean checkAPI(){
-        return false;
+    public boolean checkAPIKey(){
+        locationAutoFetch();
+        String check = getLocationData("ob").getAsJsonObject()
+                .get("humidity").getAsString();
+        return true;
+    }
+
+    public void updateAPIKey(){
+        if (!checkAPIKey()) {
+            APIKeys.nextKey();
+        }
     }
 
     public String getAvgTempF(int day){
