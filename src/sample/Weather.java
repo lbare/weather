@@ -19,9 +19,6 @@ public class Weather {
 
     // constructor for getting weather from user's IP
     public Weather() {
-        APIKeys.addToArrayList();
-        clientID = APIKeys.ClientID();
-        clientKey = APIKeys.ClientKey();
         updateAPIKey();
         locationAutoFetch();
         forecastAutoFetch();
@@ -30,9 +27,6 @@ public class Weather {
 
     // constructor for getting weather from user's input
     public Weather(String input) {
-        APIKeys.addToArrayList();
-        clientID = APIKeys.ClientID();
-        clientKey = APIKeys.ClientKey();
         try {
             location = URLEncoder.encode(input, "utf-8"); // sets location to user input
             updateAPIKey();
@@ -499,6 +493,9 @@ public class Weather {
     }
 
     public void updateAPIKey(){
+        APIKeys.addToArrayList();
+        clientID = APIKeys.ClientID();
+        clientKey = APIKeys.ClientKey();
         if (!checkAPIKey()) {
             APIKeys.nextKey();
         }
