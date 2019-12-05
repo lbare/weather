@@ -43,8 +43,11 @@ public class Controller implements Initializable {
     ObservableList<String> searchResults = FXCollections.observableArrayList("");
 
     public void handleGoButton(){
-        selection = map.get(resultsBox.getValue()); // gets selected value from ComboBox
+        AsyncTask t = new MyBackground();
+        t.execute("test");
+        /*selection = map.get(resultsBox.getValue()); // gets selected value from ComboBox
         Weather w = new Weather(selection); // creates new Weather object using the selected location as the parameter
+
         buttonClicked = 0;
         tempState = true;
         if (tempState) {
@@ -88,7 +91,7 @@ public class Controller implements Initializable {
         day5icon = new Image("file:icons/" + w.getIcon(5));
         day5view.setImage(day5icon);
         day6icon = new Image("file:icons/" + w.getIcon(6));
-        day6view.setImage(day6icon);
+        day6view.setImage(day6icon);*/
     }
 
     public void myLocation(){
@@ -352,6 +355,63 @@ public class Controller implements Initializable {
             day6Label.setText(w.getDate(6));
             currentDateLabel.setText(w.getDate(0));
         }
+    }
+
+    public class MyBackground extends AsyncTask<String, Weather>{
+
+        public Weather doInBackground(String query){
+            selection = map.get(resultsBox.getValue()); // gets selected value from ComboBox
+            Weather w = new Weather(selection); // creates new Weather object using the selected location as the parameter
+            return w;
+        }
+
+        public void onPostExecute(Weather w){
+            buttonClicked = 0;
+            tempState = true;
+            if (tempState) {
+                tempLabel.setText(w.getTemperatureF());
+                minLabel.setText(w.getMinF());
+                maxLabel.setText(w.getMaxF());
+                windLabel.setText(w.getWindSpeedMPH());
+                visibilityLabel.setText(w.getVisibilityMI());
+                tempImage.setImage(new Image("file:icons/fah.png"));
+            }
+            else {
+                tempLabel.setText(w.getTemperatureC());
+                minLabel.setText(w.getMinC());
+                maxLabel.setText(w.getMaxC());
+                windLabel.setText(w.getWindSpeedKPH());
+                visibilityLabel.setText(w.getVisibilityKM());
+                tempImage.setImage(new Image("file:icons/cel.png"));
+            }
+            weatherLabel.setText(w.getWeather());
+            windDirection.setImage(new Image("file:arrows/" + w.getWindDirection()));
+            String currentLocation = resultsBox.getValue().toString();
+            String temp = currentLocation.substring(currentLocation.indexOf(",") + 1);
+            currentLocation = currentLocation.replace(temp.substring(temp.indexOf(",")), "");
+            locationLabel.setText(currentLocation);
+            humidityLabel.setText(w.getHumidity());
+            setVisible();
+            forecastLabels();
+
+            Icon1 = new Image("file:icons/" + w.getIcon());
+            imageView.setImage(Icon1);
+            day0icon = new Image("file:icons/" + w.getIcon(0));
+            day0view.setImage(day0icon);
+            day1icon = new Image("file:icons/" + w.getIcon(1));
+            day1view.setImage(day1icon);
+            day2icon = new Image("file:icons/" + w.getIcon(2));
+            day2view.setImage(day2icon);
+            day3icon = new Image("file:icons/" + w.getIcon(3));
+            day3view.setImage(day3icon);
+            day4icon = new Image("file:icons/" + w.getIcon(4));
+            day4view.setImage(day4icon);
+            day5icon = new Image("file:icons/" + w.getIcon(5));
+            day5view.setImage(day5icon);
+            day6icon = new Image("file:icons/" + w.getIcon(6));
+            day6view.setImage(day6icon);
+        }
+
     }
 
     @Override

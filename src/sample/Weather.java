@@ -14,11 +14,14 @@ public class Weather {
     private String location;
     private JsonElement locationJSE, forecastJSE;
     private String[] avgTempF, avgTempC, humidity, conditions, icon, date;
-    private String clientID = "jqI4SN5g22BSyrI7rBIFb";
-    private String clientSecret = "YqPdilijMvTmHzQ01vEGvbWo95iUmIFaw7L47fXR";
+    private String clientID;
+    private String clientKey;
 
     // constructor for getting weather from user's IP
     public Weather() {
+        APIKeys.addToArrayList();
+        clientID = APIKeys.ClientID();
+        clientKey = APIKeys.ClientKey();
         locationAutoFetch();
         forecastAutoFetch();
         storeForecastData();
@@ -26,6 +29,9 @@ public class Weather {
 
     // constructor for getting weather from user's input
     public Weather(String input) {
+        APIKeys.addToArrayList();
+        clientID = APIKeys.ClientID();
+        clientKey = APIKeys.ClientKey();
         try {
             location = URLEncoder.encode(input, "utf-8"); // sets location to user input
             locationFetch();
@@ -46,7 +52,7 @@ public class Weather {
                 "?client_id=" +
                 clientID +
                 "&client_secret=" +
-                clientSecret; // store String with input location
+                clientKey; // store String with input location
 
         try
         {
@@ -77,7 +83,7 @@ public class Weather {
                 + "?client_id="
                 + clientID
                 + "&client_secret="
-                + clientSecret; // store String with input location
+                + clientKey; // store String with input location
 
         try
         {
@@ -105,7 +111,7 @@ public class Weather {
         String weatherUrl = "http://api.aerisapi.com/observations/:auto?client_id="
                 + clientID
                 + "&client_secret="
-                + clientSecret;
+                + clientKey;
 
         try
         {
@@ -133,7 +139,7 @@ public class Weather {
         String weatherUrl = "http://api.aerisapi.com/forecasts/:auto?client_id="
                 + clientID
                 + "&client_secret="
-                + clientSecret;
+                + clientKey;
 
         try
         {
@@ -481,6 +487,10 @@ public class Weather {
         cityState = cityState + "," + " " + getLocationData("place").getAsJsonObject()
                 .get("state").getAsString().toUpperCase();
         return cityState;
+    }
+
+    public boolean checkAPI(){
+        return false;
     }
 
     public String getAvgTempF(int day){
