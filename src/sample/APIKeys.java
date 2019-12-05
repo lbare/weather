@@ -12,11 +12,23 @@ public class APIKeys {
     }
 
     public static String ClientID(){
-        return ID.get(place);
+        try {
+            return ID.get(place);
+        }
+        catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("out of keys");
+        }
+        return "";
     }
 
     public static String ClientKey(){
-        return Key.get(place);
+        try {
+            return Key.get(place);
+        }
+        catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("out of keys");
+        }
+        return "";
     }
 
     public static void addToArrayList(){
