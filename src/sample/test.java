@@ -2,24 +2,25 @@ package sample;
 
 public class test {
     public static void main(String[] args) {
-        String city = "new orleans"; // city = "new orleans"
-        city = city.substring(0, 1).toUpperCase() + city.substring(1); // city = "New orleans"
-        city = city.substring(city.indexOf(" "),city.indexOf(" ") + 1).toUpperCase() +
-                city.substring(city.indexOf(" ") + 1); // city = "new orleans"
-        String state = "la".toUpperCase(); // state = "LA"
-        //System.out.println(city + "," + " " + state);
-        String test = "test test";
-        int wordCount = 1;
-        for (int i = 0; i < test.length(); i++) {
-            if (test.charAt(i) == ' '){
-                wordCount++;
-            }
+        test t = new test();
+        String city = "new york city/nyc";
+        if (city.indexOf('/') > 0){
+            city = city.substring(0, city.indexOf('/'));
         }
-        System.out.println(wordCount);
-        /*test = test.substring(test.indexOf(" ") + 1,test.indexOf(" ") + 2).toUpperCase() +
-                test.substring(test.indexOf(" ") + 2);
+        String state = "la".toUpperCase(); // capitalize State
+        String cityState = city + "," + " " + state;
+        cityState = t.capitalizeWords(cityState);
+        System.out.println(cityState);
+    }
 
-        System.out.println(test);*/
-
+    public String capitalizeWords(String str){
+        String words[]=str.split("\\s");
+        String capitalizeWord="";
+        for(String w:words){
+            String first=w.substring(0,1);
+            String afterfirst=w.substring(1);
+            capitalizeWord+=first.toUpperCase()+afterfirst+" ";
+        }
+        return capitalizeWord.trim();
     }
 }

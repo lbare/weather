@@ -484,13 +484,14 @@ public class Weather {
     {
         String city = getLocationData("place").getAsJsonObject()
                 .get("name").getAsString();
-        city = city.substring(0, 1).toUpperCase() + city.substring(1); // capitalize City name
-        city = city + city.substring(city.indexOf(" "),city.indexOf(" ") + 1).toUpperCase() +
-                city.substring(city.indexOf(" ") + 1);
+        if (city.indexOf('/') > 0){
+            city = city.substring(0, city.indexOf('/'));
+        }
         String state = getLocationData("place").getAsJsonObject()
                 .get("state").getAsString().toUpperCase(); // capitalize State
-
-        return city + "," + " " + state;
+        String cityState = city + "," + " " + state;
+        cityState = capitalizeWord(cityState);
+        return cityState;
     }
 
     public boolean checkAPIKey(){
@@ -553,9 +554,20 @@ public class Weather {
         }
     }
 
+    public String capitalizeWord(String str){
+        String words[]=str.split("\\s");
+        String capitalizeWord="";
+        for(String w:words){
+            String first=w.substring(0,1);
+            String afterfirst=w.substring(1);
+            capitalizeWord+=first.toUpperCase()+afterfirst+" ";
+        }
+        return capitalizeWord.trim();
+    }
+
     public static void main(String[] args)
     {
-        Weather w = new Weather("New Orleans,LA");
+        Weather w = new Weather();
         System.out.println(w.getCityState());
 
     }
