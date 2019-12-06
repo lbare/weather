@@ -489,6 +489,10 @@ public class Weather {
         }
         String state = getLocationData("place").getAsJsonObject()
                 .get("state").getAsString().toUpperCase(); // capitalize State
+        if (state.equals("")) {
+            state = getLocationData("place").getAsJsonObject()
+                    .get("country").getAsString().toUpperCase();
+        }
         String cityState = city + "," + " " + state;
         cityState = capitalizeWord(cityState);
         return cityState;

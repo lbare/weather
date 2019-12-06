@@ -23,7 +23,7 @@
       <Circle fill="DODGERBLUE" layoutX="105.0" layoutY="293.0" radius="41.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
       <Label fx:id="currentDateLabel" alignment="CENTER" layoutX="124.0" layoutY="69.0" prefHeight="20.0" prefWidth="152.0" text="CURRENT DATE">
          <font>
-            <Font name="System Bold" size="9.0" />
+            <Font name="System Bold" size="13.0" />
          </font>
       </Label>
       <Label fx:id="weatherLabel" alignment="CENTER" layoutX="31.0" layoutY="140.0" prefHeight="27.0" prefWidth="339.0" text="WEATHER CONDITION">
