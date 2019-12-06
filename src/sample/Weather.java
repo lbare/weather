@@ -11,13 +11,10 @@ import java.net.URLEncoder;
 
 public class Weather {
     private String location;
-    private JsonElement locationJSE, forecastJSE, currentDayJSE;
+    private JsonElement locationJSE, forecastJSE;
     private String[] avgTempF, avgTempC, humidity, conditions, icon, date;
     private String clientID;
     private String clientKey;
-    String currentDay = "file:JSON/CurrentDay.json";
-    String Forecast = "file:JSON/Forecast.json";
-    private JsonObject testJSON;
 
     // constructor for getting weather from user's IP
     public Weather() {
@@ -41,8 +38,10 @@ public class Weather {
         }
     }
 
-    public Weather(JsonObject j){
-
+    // test
+    public Weather(int num){
+        storeJsonTest();
+        storeForecastData();
     }
 
     // fetch location weather JSON using user's input location and store in forecastJSE
@@ -531,19 +530,19 @@ public class Weather {
         return date[day];
     }
 
-    public void JSONtoObject(){
+    public void storeJsonTest(){
         try
         {
             URL url = new URL("file:JSON/CurrentDay.json"); // generate URL from String
             InputStream is = url.openStream();
             InputStreamReader isr = new InputStreamReader(is);
 
+            URL url1 = new URL("file:JSON/Forecasts.json"); // generate URL from String
+            InputStream is1 = url1.openStream();
+            InputStreamReader isr1 = new InputStreamReader(is1);
+
             locationJSE = JsonParser.parseReader(isr); // turn read JSON into JSE
-        }
-        catch (java.net.MalformedURLException mue)
-        {
-            System.out.println("Malformed URL");
-            mue.printStackTrace();
+            forecastJSE = JsonParser.parseReader(isr1); // turn read JSON into JSE
         }
         catch (java.io.IOException ioe) {
             System.out.println("IO Exception");
@@ -553,7 +552,7 @@ public class Weather {
 
     public static void main(String[] args)
     {
-        Weather w = new Weather();
+        Weather w = new Weather(1);
         System.out.println(w.getTemperatureF());
 
     }
