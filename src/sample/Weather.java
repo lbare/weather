@@ -17,7 +17,7 @@ public class Weather {
     private String clientKey;
     String currentDay = "file:JSON/CurrentDay.json";
     String Forecast = "file:JSON/Forecast.json";
-    JsonObject
+    //JsonObject
 
     // constructor for getting weather from user's IP
     public Weather() {
