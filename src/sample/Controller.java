@@ -40,24 +40,19 @@ public class Controller implements Initializable {
     ObservableList<String> searchResults = FXCollections.observableArrayList("");
 
     public void handleGoButton(){
-        AsyncTask t = new MyBackground();
+        AsyncTask t = new locationSearchBackground();
         t.execute("test");
-
     }
 
     public void myLocation(){
-        Weather w = new Weather();
-        displayInfo(w);
+        AsyncTask t = new myLocationBackground();
+        t.execute("test");
     }
 
     public void autoFillUpdate(KeyEvent e){
         if (locationInput.getText().length() > 2) {
-            AutoFill a = new AutoFill(locationInput.getText());
-            map = new HashMap<String, String>();
-            map = a.getMap();
-            searchResults = FXCollections.observableArrayList(a.getLocationResultsArray());
-            resultsBox.setItems(searchResults);
-            resultsBox.show();
+            AsyncTask t = new autofillBackground();
+            t.execute("test");
         }
     }
 
@@ -153,18 +148,39 @@ public class Controller implements Initializable {
         tempState = !tempState;
     }
 
-    public class MyBackground extends AsyncTask<String, Weather>{
-
+    public class locationSearchBackground extends AsyncTask<String, Weather>{
         public Weather doInBackground(String query){
             selection = map.get(resultsBox.getValue()); // gets selected value from ComboBox
             Weather w = new Weather(selection); // creates new Weather object using the selected location as the parameter
             return w;
         }
-
         public void onPostExecute(Weather w){
             displayInfo(w);
         }
+    }
 
+    public class myLocationBackground extends AsyncTask<String, Weather>{
+        public Weather doInBackground(String query){
+            Weather w = new Weather(); // creates new Weather object using the selected location as the parameter
+            return w;
+        }
+        public void onPostExecute(Weather w){
+            displayInfo(w);
+        }
+    }
+
+    public class autofillBackground extends AsyncTask<String, AutoFill>{
+        public AutoFill doInBackground(String query){
+            AutoFill a = new AutoFill(locationInput.getText());
+            return a;
+        }
+        public void onPostExecute(AutoFill a){
+            map = new HashMap<String, String>();
+            map = a.getMap();
+            searchResults = FXCollections.observableArrayList(a.getLocationResultsArray());
+            resultsBox.setItems(searchResults);
+            resultsBox.show();
+        }
     }
 
     public void displayInfo(Weather w) {
