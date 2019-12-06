@@ -5,5 +5,6 @@ module Walmart.Greeters.Weather {
     requires java.desktop;
     requires org.controlsfx.controls;
     requires asynctask;
+    requires json.simple;
     opens sample;
 }

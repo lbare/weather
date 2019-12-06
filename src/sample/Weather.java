@@ -11,7 +11,7 @@ import java.net.URLEncoder;
 
 public class Weather {
     private String location;
-    private JsonElement locationJSE, forecastJSE;
+    private JsonElement locationJSE, forecastJSE, currentDayJSE;
     private String[] avgTempF, avgTempC, humidity, conditions, icon, date;
     private String clientID;
     private String clientKey;
@@ -531,18 +531,30 @@ public class Weather {
         return date[day];
     }
 
-    /*public void JSONtoObject(){
-        try {
-            Object obj = parser.parse(new FileReader("file:JSON/CurrentDay.json"));
+    public void JSONtoObject(){
+        try
+        {
+            URL url = new URL("file:JSON/CurrentDay.json"); // generate URL from String
+            InputStream is = url.openStream();
+            InputStreamReader isr = new InputStreamReader(is);
+
+            locationJSE = JsonParser.parseReader(isr); // turn read JSON into JSE
         }
-        catch (FileNotFoundException f){
-            System.out.println("File not found");
+        catch (java.net.MalformedURLException mue)
+        {
+            System.out.println("Malformed URL");
+            mue.printStackTrace();
         }
-    }*/
+        catch (java.io.IOException ioe) {
+            System.out.println("IO Exception");
+            ioe.printStackTrace();
+        }
+    }
 
     public static void main(String[] args)
     {
         Weather w = new Weather();
         System.out.println(w.getTemperatureF());
+
     }
 }
