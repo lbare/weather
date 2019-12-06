@@ -37,8 +37,7 @@ public class Controller implements Initializable {
     private String selection;
     private Image Icon1, day0icon, day1icon, day2icon, day3icon, day4icon, day5icon, day6icon;
     private Weather w1;
-
-    ObservableList<String> searchResults = FXCollections.observableArrayList("");
+    private ObservableList<String> searchResults = FXCollections.observableArrayList("");
 
     public void handleGoButton(){
         AsyncTask t = new locationSearchBackground();
@@ -136,42 +135,6 @@ public class Controller implements Initializable {
         }
     }
 
-    public void toggleToF(Weather w){
-        if (tempState) {
-            tempLabel.setText(w.getTemperatureF());
-            day0temp.setText(w.getAvgTempF(0));
-            day1temp.setText(w.getAvgTempF(1));
-            day2temp.setText(w.getAvgTempF(2));
-            day3temp.setText(w.getAvgTempF(3));
-            day4temp.setText(w.getAvgTempF(4));
-            day5temp.setText(w.getAvgTempF(5));
-            day6temp.setText(w.getAvgTempF(6));
-            maxLabel.setText(w.getMaxF());
-            minLabel.setText(w.getMinF());
-            windLabel.setText(w.getWindSpeedMPH());
-            visibilityLabel.setText(w.getVisibilityMI());
-            tempImage.setImage(new Image("file:icons/fah.png"));
-        }
-    }
-
-    public void toggleToC(Weather w){
-        if (!tempState) {
-            tempLabel.setText(w.getTemperatureC());
-            day0temp.setText(w.getAvgTempC(0));
-            day1temp.setText(w.getAvgTempC(1));
-            day2temp.setText(w.getAvgTempC(2));
-            day3temp.setText(w.getAvgTempC(3));
-            day4temp.setText(w.getAvgTempC(4));
-            day5temp.setText(w.getAvgTempC(5));
-            day6temp.setText(w.getAvgTempC(6));
-            maxLabel.setText(w.getMaxC());
-            minLabel.setText(w.getMinC());
-            windLabel.setText(w.getWindSpeedKPH());
-            visibilityLabel.setText(w.getVisibilityKM());
-            tempImage.setImage(new Image("file:icons/cel.png"));
-        }
-    }
-
     public void displayInfo(Weather w) {
         tempState = true;
         if (tempState) {
@@ -245,6 +208,42 @@ public class Controller implements Initializable {
         Icon1 = new Image("file:images/" + w.getIcon());
         imageView.setImage(Icon1);
         currentDateLabel.setText(w.getDate(0));
+    }
+
+    public void toggleToF(Weather w){
+        if (tempState) {
+            tempLabel.setText(w.getTemperatureF());
+            day0temp.setText(w.getAvgTempF(0));
+            day1temp.setText(w.getAvgTempF(1));
+            day2temp.setText(w.getAvgTempF(2));
+            day3temp.setText(w.getAvgTempF(3));
+            day4temp.setText(w.getAvgTempF(4));
+            day5temp.setText(w.getAvgTempF(5));
+            day6temp.setText(w.getAvgTempF(6));
+            maxLabel.setText(w.getMaxF());
+            minLabel.setText(w.getMinF());
+            windLabel.setText(w.getWindSpeedMPH());
+            visibilityLabel.setText(w.getVisibilityMI());
+            tempImage.setImage(new Image("file:icons/fah.png"));
+        }
+    }
+
+    public void toggleToC(Weather w){
+        if (!tempState) {
+            tempLabel.setText(w.getTemperatureC());
+            day0temp.setText(w.getAvgTempC(0));
+            day1temp.setText(w.getAvgTempC(1));
+            day2temp.setText(w.getAvgTempC(2));
+            day3temp.setText(w.getAvgTempC(3));
+            day4temp.setText(w.getAvgTempC(4));
+            day5temp.setText(w.getAvgTempC(5));
+            day6temp.setText(w.getAvgTempC(6));
+            maxLabel.setText(w.getMaxC());
+            minLabel.setText(w.getMinC());
+            windLabel.setText(w.getWindSpeedKPH());
+            visibilityLabel.setText(w.getVisibilityKM());
+            tempImage.setImage(new Image("file:icons/cel.png"));
+        }
     }
 
     public void displayOnStart(){

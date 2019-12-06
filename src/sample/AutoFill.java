@@ -114,13 +114,17 @@ public class AutoFill {
         return locationResults;
     }
 
+    public ArrayList<String> getCoordinateResults() {
+        return coordinateResults;
+    }
+
     public HashMap<String,String> getMap(){
         return map;
     }
 
     public static void main(String[] args) {
-        AutoFill a = new AutoFill("new york");
-        System.out.println(a.getLocationResultsArray());
+        AutoFill a = new AutoFill("New orleans");
+        System.out.println(a.getCoordinateResults());
     }
 
 

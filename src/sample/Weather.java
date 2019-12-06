@@ -482,12 +482,15 @@ public class Weather {
 
     public String getCityState()
     {
-        String cityState = getLocationData("place").getAsJsonObject()
+        String city = getLocationData("place").getAsJsonObject()
                 .get("name").getAsString();
-        cityState = cityState.substring(0, 1).toUpperCase() + cityState.substring(1);
-        cityState = cityState + "," + " " + getLocationData("place").getAsJsonObject()
-                .get("state").getAsString().toUpperCase();
-        return cityState;
+        city = city.substring(0, 1).toUpperCase() + city.substring(1); // capitalize City name
+        city = city + city.substring(city.indexOf(" "),city.indexOf(" ") + 1).toUpperCase() +
+                city.substring(city.indexOf(" ") + 1);
+        String state = getLocationData("place").getAsJsonObject()
+                .get("state").getAsString().toUpperCase(); // capitalize State
+
+        return city + "," + " " + state;
     }
 
     public boolean checkAPIKey(){
@@ -552,8 +555,8 @@ public class Weather {
 
     public static void main(String[] args)
     {
-        Weather w = new Weather();
-        System.out.println(w.getWindDirection());
+        Weather w = new Weather("New Orleans,LA");
+        System.out.println(w.getCityState());
 
     }
 }
