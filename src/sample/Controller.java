@@ -30,9 +30,6 @@ public class Controller implements Initializable {
     @FXML
     ImageView imageView, day0view, day1view, day2view, day3view, day4view, day5view, day6view, bgImage, arrowImage, tempImage, windDirection;
 
-    @FXML
-
-
     // keeps track of whether the Go or myLocation was pressed for the RadioButtons
     private int buttonClicked;
     private boolean tempState;

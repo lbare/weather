@@ -552,8 +552,8 @@ public class Weather {
 
     public static void main(String[] args)
     {
-        Weather w = new Weather(1);
-        System.out.println(w.getTemperatureF());
+        Weather w = new Weather();
+        System.out.println(w.getWindDirection());
 
     }
 }
