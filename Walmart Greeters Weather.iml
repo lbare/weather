@@ -11,5 +11,6 @@
     <orderEntry type="library" name="JavaFX 13 SDK" level="application" />
     <orderEntry type="library" name="ControlsFX" level="project" />
     <orderEntry type="library" name="asynctask" level="project" />
+    <orderEntry type="library" name="json-simple-1.1.1" level="project" />
   </component>
 </module>
