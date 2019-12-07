@@ -272,7 +272,7 @@ public class Controller implements Initializable {
         resultsBox.setValue("");
         resultsBox.setItems(searchResults);
         tempState = true;
-        Image bg = new Image("file:bg/cloudy.png");
+        Image bg = new Image("file:bg/day.png");
         Image arrow = new Image("file:bg/arrow_black1.png");
         Image temp = new Image("file:icons/fah.png");
         tempImage.setImage(temp);
