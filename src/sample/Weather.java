@@ -500,8 +500,13 @@ public class Weather {
 
     public boolean checkAPIKey(){
         locationAutoFetch();
-        String check = getLocationData("ob").getAsJsonObject()
-                .get("humidity").getAsString();
+        try {
+            String check = getLocationData("ob").getAsJsonObject()
+                    .get("humidity").getAsString();
+        }
+        catch (IllegalStateException ie){
+            return false;
+        }
         return true;
     }
 

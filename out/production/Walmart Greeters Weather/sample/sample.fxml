@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DialogPane?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
@@ -57,7 +59,7 @@
          </font>
       </Label>
       <ComboBox fx:id="resultsBox" layoutX="94.0" layoutY="15.0" onAction="#checkComboBox" onMouseClicked="#handleGoButton" prefHeight="28.0" prefWidth="212.0" visibleRowCount="5" />
-      <TextField fx:id="locationInput" layoutX="93.0" layoutY="10.0" onKeyTyped="#autoFillUpdate" prefHeight="34.0" prefWidth="217.0" promptText="Enter a City or Zip Code" />
+      <TextField fx:id="locationInput" layoutX="93.0" layoutY="10.0" onKeyTyped="#autoFillUpdate" onMousePressed="#setDialogPane" prefHeight="34.0" prefWidth="217.0" promptText="Enter a City or Zip Code" />
       <Label fx:id="day3Label" alignment="CENTER" layoutX="188.0" layoutY="517.0" prefHeight="17.0" prefWidth="35.0" text="W">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -186,7 +188,7 @@
             <Font name="System Bold" size="26.0" />
          </font>
       </Label>
-      <ImageView fx:id="arrowImage" fitHeight="34.0" fitWidth="25.0" layoutX="324.0" layoutY="15.0" onMouseClicked="#myLocation" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="arrowImage" fitHeight="34.0" fitWidth="25.0" layoutX="324.0" layoutY="15.0" onMouseClicked="#myLocation" onMousePressed="#setDialogPane" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../bg/arrow_black1.png" />
          </image>
@@ -196,7 +198,7 @@
             <Font name="System Bold" size="26.0" />
          </font>
       </Label>
-      <ImageView fx:id="tempImage" fitHeight="34.0" fitWidth="25.0" layoutX="51.0" layoutY="15.0" onMousePressed="#toggleButton" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="tempImage" fitHeight="34.0" fitWidth="25.0" layoutX="51.0" layoutY="15.0" onMouseClicked="#setDialogPane" onMousePressed="#toggleButton" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../icons/fah.png" />
          </image>
@@ -206,5 +208,25 @@
             <Image url="@../../arrows/NE.png" />
          </image>
       </ImageView>
+      <DialogPane fx:id="dialogPane" contentText="Weather information does not exist for this location" expanded="true" headerText="Weather information does not exist for this location" layoutX="42.0" layoutY="211.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="124.0" prefWidth="320.0" visible="false">
+          <header>
+            <AnchorPane minHeight="0.0" minWidth="0.0" onMousePressed="#setDialogPane" prefHeight="200.0" prefWidth="320.0">
+               <children>
+                  <Label layoutX="11.0" layoutY="6.0" text="Weather information does not exist for this location:">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="locationErrorLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="48.0" prefHeight="17.0" prefWidth="320.0" text="location" />
+               </children>
+            </AnchorPane>
+          </header>
+          <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
+          </content>
+          <expandableContent>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
+          </expandableContent>
+      </DialogPane>
    </children>
 </Pane>

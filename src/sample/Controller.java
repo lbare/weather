@@ -20,12 +20,15 @@ public class Controller implements Initializable {
     TextField locationInput;
 
     @FXML
+    DialogPane dialogPane;
+
+    @FXML
     ComboBox resultsBox;
 
     @FXML
     Label tempLabel, weatherLabel, locationLabel, day0temp, day1temp, day2temp, day3temp, day4temp, day5temp, day6temp, humidityLabel,
             day0Label, day1Label, day2Label, day3Label, day4Label, day5Label, day6Label, currentDateLabel, minLabel, maxLabel, windLabel,
-            visibilityLabel;
+            visibilityLabel, locationErrorLabel;
 
     @FXML
     ImageView imageView, day0view, day1view, day2view, day3view, day4view, day5view, day6view, bgImage, arrowImage, tempImage, windDirection;
@@ -91,7 +94,13 @@ public class Controller implements Initializable {
             return w;
         }
         public void onPostExecute(Weather w){
-            displayInfo(w);
+            try {
+                displayInfo(w);
+            }
+            catch (IllegalStateException ie) {
+                dialogPane.setVisible(true);
+                locationErrorLabel.setText(resultsBox.getValue().toString());
+            }
         }
     }
 
@@ -249,6 +258,12 @@ public class Controller implements Initializable {
     public void displayOnStart(){
         Weather w = new Weather();
         displayInfo(w);
+    }
+
+    public void setDialogPane(){
+        if (dialogPane.isVisible()) {
+            dialogPane.setVisible(false);
+        }
     }
 
     @Override
