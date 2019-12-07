@@ -1,7 +1,5 @@
 package sample;
 
-import java.util.ArrayList;
-
 public class APIKeys {
     public static String ClientID = "Q8oS9ELk3U5xxClZQzYNk";
     public static String ClientKey = "FSS8x7hLnFJS4VZ7h6XBRcgYuCKDKLcfW7bfF9iU";
