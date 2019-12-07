@@ -11,14 +11,13 @@ import java.net.URLEncoder;
 
 public class Weather {
     private String location;
-    private JsonElement locationJSE, forecastJSE;
+    private JsonElement locationJSE, forecastJSE, tempJSE;
     private String[] avgTempF, avgTempC, humidity, conditions, icon, date;
     private String clientID;
     private String clientKey;
 
     // constructor for getting weather from user's IP
     public Weather() {
-        updateAPIKey();
         locationAutoFetch();
         forecastAutoFetch();
         storeForecastData();
@@ -28,7 +27,6 @@ public class Weather {
     public Weather(String input) {
         try {
             location = URLEncoder.encode(input, "utf-8"); // sets location to user input
-            updateAPIKey();
             locationFetch();
             forecastFetch();
             storeForecastData();
@@ -47,13 +45,12 @@ public class Weather {
     // fetch location weather JSON using user's input location and store in forecastJSE
     public void locationFetch()
     {
-
         String weatherUrl = "http://api.aerisapi.com/observations/" +
                 location +
                 "?client_id=" +
-                clientID +
+                APIKeys.ClientID +
                 "&client_secret=" +
-                clientKey; // store String with input location
+                APIKeys.ClientKey; // store String with input location
 
         try
         {
@@ -82,9 +79,9 @@ public class Weather {
         String weatherUrl = "http://api.aerisapi.com/forecasts/"
                 + location
                 + "?client_id="
-                + clientID
+                + APIKeys.ClientID
                 + "&client_secret="
-                + clientKey; // store String with input location
+                + APIKeys.ClientKey; // store String with input location
 
         try
         {
@@ -110,9 +107,9 @@ public class Weather {
     public void locationAutoFetch()
     {
         String weatherUrl = "http://api.aerisapi.com/observations/:auto?client_id="
-                + clientID
+                + APIKeys.ClientID
                 + "&client_secret="
-                + clientKey;
+                + APIKeys.ClientKey;
 
         try
         {
@@ -138,9 +135,9 @@ public class Weather {
     public void forecastAutoFetch()
     {
         String weatherUrl = "http://api.aerisapi.com/forecasts/:auto?client_id="
-                + clientID
+                + APIKeys.ClientID
                 + "&client_secret="
-                + clientKey;
+                + APIKeys.ClientKey;
 
         try
         {
@@ -498,27 +495,6 @@ public class Weather {
         return cityState;
     }
 
-    public boolean checkAPIKey(){
-        locationAutoFetch();
-        try {
-            String check = getLocationData("ob").getAsJsonObject()
-                    .get("humidity").getAsString();
-        }
-        catch (IllegalStateException ie){
-            return false;
-        }
-        return true;
-    }
-
-    public void updateAPIKey(){
-        APIKeys.addToArrayList();
-        clientID = APIKeys.ClientID();
-        clientKey = APIKeys.ClientKey();
-        if (!checkAPIKey()) {
-            APIKeys.nextKey();
-        }
-    }
-
     public String getAvgTempF(int day){
         return avgTempF[day];
     }
@@ -577,7 +553,6 @@ public class Weather {
     public static void main(String[] args)
     {
         Weather w = new Weather();
-        System.out.println(w.getCityState());
 
     }
 }

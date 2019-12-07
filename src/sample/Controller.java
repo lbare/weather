@@ -11,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import sierra.AsyncTask;
 
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
@@ -55,7 +56,7 @@ public class Controller implements Initializable {
     }
 
     public void autoFillUpdate(KeyEvent e){
-        if (locationInput.getText().length() > 2) {
+        if ((locationInput.getText().length()) > 2) {
             AsyncTask t = new autofillBackground();
             t.execute("test");
         }
@@ -114,8 +115,8 @@ public class Controller implements Initializable {
         }
     }
 
-    public class autofillBackground extends AsyncTask<String, AutoFill>{
-        public AutoFill doInBackground(String query){
+    public class autofillBackground extends AsyncTask<String, AutoFill> {
+        public AutoFill doInBackground(String query) {
             AutoFill a = new AutoFill(locationInput.getText());
             return a;
         }
