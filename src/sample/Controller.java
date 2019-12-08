@@ -156,7 +156,6 @@ public class Controller implements Initializable {
             maxLabel.setText(w.getMaxF());
             windLabel.setText(w.getWindSpeedMPH());
             visibilityLabel.setText(w.getVisibilityMI());
-            tempImage.setImage(new Image("file:icons/fah.png"));
         }
         else {
             tempLabel.setText(w.getTemperatureC());
@@ -274,8 +273,6 @@ public class Controller implements Initializable {
     public void setDefaultImages(){
         Image bg = new Image("file:bg/day.png");
         Image arrow = new Image("file:bg/arrow_black1.png");
-        Image temp = new Image("file:icons/fah.png");
-        tempImage.setImage(temp);
         arrowImage.setImage(arrow);
         bgImage.setImage(bg);
     }

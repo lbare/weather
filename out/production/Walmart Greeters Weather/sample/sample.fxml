@@ -8,7 +8,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <Pane prefHeight="650.0" prefWidth="400.0" style="-fx-background-color: #ccdeec;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
@@ -21,8 +20,8 @@
       <ImageView id="Icon" fx:id="imageView" fitHeight="164.0" fitWidth="164.0" layoutX="9.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../icons/n1.png" />
-         </image></ImageView>
-      <Circle fill="DODGERBLUE" layoutX="105.0" layoutY="293.0" radius="41.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
+         </image>
+      </ImageView>
       <Label fx:id="currentDateLabel" alignment="CENTER" layoutX="124.0" layoutY="69.0" prefHeight="20.0" prefWidth="152.0" text="CURRENT DATE">
          <font>
             <Font name="System Bold" size="13.0" />
@@ -73,31 +72,38 @@
       <ImageView fx:id="day0view" fitHeight="34.0" fitWidth="42.0" layoutX="25.0" layoutY="548.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../icons/nc.png" />
-         </image></ImageView>
+         </image>
+      </ImageView>
       <ImageView fx:id="day1view" fitHeight="34.0" fitWidth="42.0" layoutX="79.0" layoutY="548.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../icons/nc.png" />
-         </image></ImageView>
+         </image>
+      </ImageView>
       <ImageView fx:id="day2view" fitHeight="42.0" fitWidth="42.0" layoutX="131.0" layoutY="545.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../icons/nc.png" />
-         </image></ImageView>
+         </image>
+      </ImageView>
       <ImageView fx:id="day3view" fitHeight="44.0" fitWidth="43.0" layoutX="184.0" layoutY="544.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../icons/nc.png" />
-         </image></ImageView>
+         </image>
+      </ImageView>
       <ImageView fx:id="day4view" fitHeight="44.0" fitWidth="43.0" layoutX="236.0" layoutY="546.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../icons/nc.png" />
-         </image></ImageView>
+         </image>
+      </ImageView>
       <ImageView fx:id="day5view" fitHeight="44.0" fitWidth="43.0" layoutX="287.0" layoutY="544.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../icons/nc.png" />
-         </image></ImageView>
+         </image>
+      </ImageView>
       <ImageView fx:id="day6view" fitHeight="44.0" fitWidth="43.0" layoutX="341.0" layoutY="544.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../icons/sn.png" />
-         </image></ImageView>
+         </image>
+      </ImageView>
       <Label fx:id="day4Label" alignment="CENTER" layoutX="239.0" layoutY="517.0" prefHeight="17.0" prefWidth="35.0" text="W">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -188,7 +194,7 @@
             <Font name="System Bold" size="26.0" />
          </font>
       </Label>
-      <ImageView fx:id="arrowImage" fitHeight="34.0" fitWidth="25.0" layoutX="324.0" layoutY="15.0" onMouseClicked="#myLocation" onMousePressed="#setDialogPane" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="arrowImage" fitHeight="34.0" fitWidth="25.0" layoutX="59.0" layoutY="14.0" onMouseClicked="#myLocation" onMousePressed="#setDialogPane" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../bg/arrow_black1.png" />
          </image>
@@ -198,9 +204,9 @@
             <Font name="System Bold" size="26.0" />
          </font>
       </Label>
-      <ImageView fx:id="tempImage" fitHeight="34.0" fitWidth="25.0" layoutX="51.0" layoutY="15.0" onMouseClicked="#setDialogPane" onMousePressed="#toggleButton" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="infoIcon" fitHeight="34.0" fitWidth="25.0" layoutX="320.0" layoutY="14.0" onMouseClicked="#setDialogPane" onMousePressed="#toggleButton" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../icons/fah.png" />
+            <Image url="@../../bg/info_icon.png" />
          </image>
       </ImageView>
       <ImageView fx:id="windDirection" fitHeight="34.0" fitWidth="27.0" layoutX="114.0" layoutY="441.0" pickOnBounds="true" preserveRatio="true">
@@ -228,6 +234,10 @@
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
          </expandableContent>
       </DialogPane>
-      <ImageView fx:id="radarImageView" fitHeight="150.0" fitWidth="200.0" layoutX="88.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="radarImageView" fitHeight="217.0" fitWidth="252.0" layoutX="119.0" layoutY="617.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../JSON/radar%20image.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>
