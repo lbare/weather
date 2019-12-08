@@ -90,7 +90,7 @@ public class Controller implements Initializable {
     public class locationSearchBackground extends AsyncTask<String, Weather>{
         public Weather doInBackground(String query){
             selection = map.get(resultsBox.getValue()); // gets selected value from ComboBox
-            Weather w = new Weather(selection,"d"); // creates new Weather object using the selected location as the parameter
+            Weather w = new Weather(selection,zoomLevel); // creates new Weather object using the selected location as the parameter
             return w;
         }
         public void onPostExecute(Weather w){
@@ -106,7 +106,7 @@ public class Controller implements Initializable {
 
     public class myLocationBackground extends AsyncTask<String, Weather>{
         public Weather doInBackground(String query){
-            Weather w = new Weather("d"); // creates new Weather object using the selected location as the parameter
+            Weather w = new Weather(zoomLevel); // creates new Weather object using the selected location as the parameter
             return w;
         }
         public void onPostExecute(Weather w){
@@ -260,7 +260,7 @@ public class Controller implements Initializable {
     }
 
     public void displayOnStart(){
-        Weather w = new Weather(zoomLevel);
+        Weather w = new Weather("7");
         displayInfo(w);
         displayRadarImage(w);
     }
@@ -271,18 +271,22 @@ public class Controller implements Initializable {
         }
     }
 
+    public void setDefaultImages(){
+        Image bg = new Image("file:bg/day.png");
+        Image arrow = new Image("file:bg/arrow_black1.png");
+        Image temp = new Image("file:icons/fah.png");
+        tempImage.setImage(temp);
+        arrowImage.setImage(arrow);
+        bgImage.setImage(bg);
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         resultsBox.setValue("");
         resultsBox.setItems(searchResults);
         tempState = true;
-        Image bg = new Image("file:bg/day.png");
-        Image arrow = new Image("file:bg/arrow_black1.png");
-        Image temp = new Image("file:icons/fah.png");
+        setDefaultImages();
         zoomLevel = "7";
-        tempImage.setImage(temp);
-        arrowImage.setImage(arrow);
-        bgImage.setImage(bg);
         displayOnStart();
     }
 }
