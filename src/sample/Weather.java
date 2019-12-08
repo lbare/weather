@@ -11,9 +11,12 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Weather {
-    private String location;
+    private String location, updateTime;
     private JsonElement locationJSE, forecastJSE;
     private String[] avgTempF, avgTempC, humidity, conditions, icon, date;
     private Image radarImage;
@@ -23,6 +26,7 @@ public class Weather {
         locationAutoFetch();
         forecastAutoFetch();
         storeForecastData();
+        storeUpdateTime();
         location = getCoordinates();
         radarImageFetch(zoomLevel);
     }
@@ -34,6 +38,8 @@ public class Weather {
             locationFetch();
             forecastFetch();
             storeForecastData();
+            storeUpdateTime();
+
             radarImageFetch(zoomLevel);
         }
         catch (UnsupportedEncodingException e) {
@@ -245,6 +251,18 @@ public class Weather {
 
             day++;
         }
+    }
+
+    public void storeUpdateTime(){
+        updateTime = getCurrentTime();
+    }
+
+    public String getCurrentTime(){
+        Date date = new Date();
+        String strDateFormat = "hh:mm a";
+        DateFormat dateFormat = new SimpleDateFormat(strDateFormat);
+        String formattedDate= dateFormat.format(date);
+        return formattedDate;
     }
 
     public JsonObject getLocationData(String key){
@@ -587,7 +605,6 @@ public class Weather {
 
     public static void main(String[] args)
     {
-        Weather w = new Weather("d");
-        System.out.println(w.getCoordinates());
+
     }
 }

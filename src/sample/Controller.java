@@ -31,7 +31,7 @@ public class Controller implements Initializable {
     @FXML
     Label tempLabel, weatherLabel, locationLabel, day0temp, day1temp, day2temp, day3temp, day4temp, day5temp, day6temp, humidityLabel,
             day0Label, day1Label, day2Label, day3Label, day4Label, day5Label, day6Label, currentDateLabel, minLabel, maxLabel, windLabel,
-            visibilityLabel, locationErrorLabel;
+            visibilityLabel, locationErrorLabel, timeUpdated;
 
     @FXML
     ImageView imageView, day0view, day1view, day2view, day3view, day4view, day5view, day6view, bgImage, arrowImage, tempImage, windDirection,
@@ -104,6 +104,7 @@ public class Controller implements Initializable {
             try {
                 displayInfo(w);
                 displayRadarImage(w);
+                setUpdatedTime(w);
 
             }
             catch (IllegalStateException ie) {
@@ -122,6 +123,7 @@ public class Controller implements Initializable {
         public void onPostExecute(Weather w){
             displayInfo(w);
             displayRadarImage(w);
+            setUpdatedTime(w);
         }
     }
 
@@ -281,6 +283,7 @@ public class Controller implements Initializable {
         displayRadarImage(w);
         setDefaultImages();
         homePane.setVisible(false);
+        setUpdatedTime(w);
     }
 
     public void displayRadarImage(Weather w){
@@ -301,7 +304,10 @@ public class Controller implements Initializable {
         zoomLevel = result + "";
         AsyncTask t = new zoomBackground();
         t.execute(zoomLevel);
+    }
 
+    public void setUpdatedTime(Weather w){
+        timeUpdated.setText(w.getCurrentTime());
     }
 
     public void setDialogPane(){
