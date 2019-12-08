@@ -18,7 +18,7 @@ import java.util.Date;
 public class Weather {
     private String location, updateTime;
     private JsonElement locationJSE, forecastJSE;
-    private String[] avgTempF, avgTempC, humidity, conditions, icon, date;
+    private String[] avgTempF, avgTempC, humidity, conditions, icon, date, rainChance;
     private Image radarImage;
 
     // constructor for getting weather from user's IP
@@ -217,6 +217,7 @@ public class Weather {
         conditions = new String[7];
         icon = new String[7];
         date = new String[7];
+        rainChance = new String[7];
         // store data from each day into their own array
         while (day < 7) {
             avgTempF[day] = getForecastData()
@@ -232,6 +233,11 @@ public class Weather {
             humidity[day] = getForecastData()
                     .get(day).getAsJsonObject()
                     .get("humidity").getAsString()
+                    + "%";
+
+            rainChance[day] = getForecastData()
+                    .get(day).getAsJsonObject()
+                    .get("pop").getAsString()
                     + "%";
 
             conditions[day] = getForecastData()
@@ -570,6 +576,10 @@ public class Weather {
 
     public String getDate(int day){
         return date[day];
+    }
+
+    public String getRainChance(int day){
+        return rainChance[day];
     }
 
     public void storeJsonTest(){

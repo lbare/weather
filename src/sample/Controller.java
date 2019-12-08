@@ -31,11 +31,12 @@ public class Controller implements Initializable {
     @FXML
     Label tempLabel, weatherLabel, locationLabel, day0temp, day1temp, day2temp, day3temp, day4temp, day5temp, day6temp, humidityLabel,
             day0Label, day1Label, day2Label, day3Label, day4Label, day5Label, day6Label, currentDateLabel, minLabel, maxLabel, windLabel,
-            visibilityLabel, locationErrorLabel, timeUpdated;
+            visibilityLabel, locationErrorLabel, timeUpdated, day0RainChance, day1RainChance, day2RainChance, day3RainChance, day4RainChance,
+            day5RainChance, day6RainChance;
 
     @FXML
     ImageView imageView, day0view, day1view, day2view, day3view, day4view, day5view, day6view, bgImage, arrowImage, tempImage, windDirection,
-               radarImageView;
+               radarImageView, infoIcon;
 
     // keeps track of whether the Go or myLocation was pressed for the RadioButtons
     private int buttonClicked;
@@ -193,21 +194,7 @@ public class Controller implements Initializable {
 
         Icon1 = new Image("file:icons/" + w.getIcon());
         imageView.setImage(Icon1);
-
-        day0icon = new Image("file:icons/" + w.getIcon(0));
-        day0view.setImage(day0icon);
-        day1icon = new Image("file:icons/" + w.getIcon(1));
-        day1view.setImage(day1icon);
-        day2icon = new Image("file:icons/" + w.getIcon(2));
-        day2view.setImage(day2icon);
-        day3icon = new Image("file:icons/" + w.getIcon(3));
-        day3view.setImage(day3icon);
-        day4icon = new Image("file:icons/" + w.getIcon(4));
-        day4view.setImage(day4icon);
-        day5icon = new Image("file:icons/" + w.getIcon(5));
-        day5view.setImage(day5icon);
-        day6icon = new Image("file:icons/" + w.getIcon(6));
-        day6view.setImage(day6icon);
+        currentDateLabel.setText(w.getDate(0));
     }
 
     public void forecastLabels(Weather w){
@@ -236,9 +223,27 @@ public class Controller implements Initializable {
         day4Label.setText(w.getDate(4));
         day5Label.setText(w.getDate(5));
         day6Label.setText(w.getDate(6));
-        Icon1 = new Image("file:images/" + w.getIcon());
-        imageView.setImage(Icon1);
-        currentDateLabel.setText(w.getDate(0));
+        day0icon = new Image("file:icons/" + w.getIcon(0));
+        day0view.setImage(day0icon);
+        day1icon = new Image("file:icons/" + w.getIcon(1));
+        day1view.setImage(day1icon);
+        day2icon = new Image("file:icons/" + w.getIcon(2));
+        day2view.setImage(day2icon);
+        day3icon = new Image("file:icons/" + w.getIcon(3));
+        day3view.setImage(day3icon);
+        day4icon = new Image("file:icons/" + w.getIcon(4));
+        day4view.setImage(day4icon);
+        day5icon = new Image("file:icons/" + w.getIcon(5));
+        day5view.setImage(day5icon);
+        day6icon = new Image("file:icons/" + w.getIcon(6));
+        day6view.setImage(day6icon);
+        day0RainChance.setText(w.getRainChance(0));
+        day1RainChance.setText(w.getRainChance(1));
+        day2RainChance.setText(w.getRainChance(2));
+        day3RainChance.setText(w.getRainChance(3));
+        day4RainChance.setText(w.getRainChance(4));
+        day5RainChance.setText(w.getRainChance(5));
+        day6RainChance.setText(w.getRainChance(6));
     }
 
     public void toggleToF(Weather w){
@@ -282,7 +287,7 @@ public class Controller implements Initializable {
         displayInfo(w);
         displayRadarImage(w);
         setDefaultImages();
-        homePane.setVisible(false);
+        homePane.setVisible(true);
         setUpdatedTime(w);
     }
 
@@ -317,8 +322,10 @@ public class Controller implements Initializable {
     }
 
     public void setDefaultImages(){
-        Image bg = new Image("file:bg/day.png");
+        Image bg = new Image("file:bg/cloudy_1.png");
         Image arrow = new Image("file:bg/arrow_black1.png");
+        Image info = new Image("file:bg/info_icon.png");
+        infoIcon.setImage(info);
         arrowImage.setImage(arrow);
         bgImage.setImage(bg);
     }
