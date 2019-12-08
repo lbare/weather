@@ -4,6 +4,7 @@
 <?import javafx.scene.control.DialogPane?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -17,7 +18,10 @@
             <Image url="@../../bg/cloudy_1.png" />
          </image>
       </ImageView>
-      <Label layoutX="261.0" layoutY="654.0" text="Last updated:" />
+      <Label layoutX="277.0" layoutY="654.0" text="Last updated:">
+         <font>
+            <Font name="System Bold" size="10.0" />
+         </font></Label>
       <Label fx:id="currentDateLabel" alignment="CENTER" layoutX="124.0" layoutY="69.0" prefHeight="20.0" prefWidth="152.0" text="CURRENT DATE">
          <font>
             <Font name="System Bold" size="13.0" />
@@ -45,7 +49,7 @@
             <Image url="@../../bg/info_icon.png" />
          </image>
       </ImageView>
-      <Pane fx:id="homePane" layoutX="-6.0" layoutY="186.0">
+      <Pane fx:id="homePane" layoutX="-6.0" layoutY="186.0" prefHeight="449.0" prefWidth="404.0" visible="false">
          <children>
             <ImageView id="Icon" fx:id="imageView" fitHeight="164.0" fitWidth="164.0" layoutX="19.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -217,6 +221,45 @@
                   <Image url="@../../arrows/NE.png" />
                </image>
             </ImageView>
+            <Pane layoutX="31.0" layoutY="425.0">
+               <children>
+                  <Label fx:id="day0RainChance" alignment="CENTER" prefHeight="17.0" prefWidth="42.0" text="13%" textFill="#2491bc">
+                     <font>
+                        <Font name="System Bold" size="11.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="day1RainChance" alignment="CENTER" layoutX="53.0" prefHeight="17.0" prefWidth="42.0" text="13%" textFill="#2491bc">
+                     <font>
+                        <Font name="System Bold" size="11.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="day2RainChance" alignment="CENTER" layoutX="106.0" prefHeight="17.0" prefWidth="42.0" text="13%" textFill="#2491bc">
+                     <font>
+                        <Font name="System Bold" size="11.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="day3RainChance" alignment="CENTER" layoutX="159.0" prefHeight="17.0" prefWidth="42.0" text="13%" textFill="#2491bc">
+                     <font>
+                        <Font name="System Bold" size="11.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="day4RainChance" alignment="CENTER" layoutX="209.0" prefHeight="17.0" prefWidth="42.0" text="13%" textFill="#2491bc">
+                     <font>
+                        <Font name="System Bold" size="11.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="day5RainChance" alignment="CENTER" layoutX="262.0" prefHeight="17.0" prefWidth="42.0" text="13%" textFill="#2491bc">
+                     <font>
+                        <Font name="System Bold" size="11.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="day6RainChance" alignment="CENTER" layoutX="316.0" prefHeight="17.0" prefWidth="42.0" text="13%" textFill="#2491bc">
+                     <font>
+                        <Font name="System Bold" size="11.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
             <DialogPane fx:id="dialogPane" contentText="Weather information does not exist for this location" expanded="true" headerText="Weather information does not exist for this location" layoutX="48.0" layoutY="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="124.0" prefWidth="320.0" visible="false">
                <header>
                   <AnchorPane minHeight="0.0" minWidth="0.0" onMousePressed="#setDialogPane" prefHeight="200.0" prefWidth="320.0">
@@ -239,9 +282,9 @@
             </DialogPane>
          </children>
       </Pane>
-      <Pane fx:id="infoPane" layoutX="2.0" layoutY="186.0" prefHeight="468.0" prefWidth="401.0" visible="false">
+      <Pane fx:id="infoPane" layoutX="2.0" layoutY="186.0" prefHeight="468.0" prefWidth="401.0">
          <children>
-            <ImageView fx:id="radarImageView" fitHeight="232.0" fitWidth="400.0" layoutX="19.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="radarImageView" fitHeight="232.0" fitWidth="400.0" layoutX="17.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../JSON/radar%20image_1.png" />
                </image>
@@ -250,48 +293,23 @@
                <font>
                   <Font name="System Bold" size="48.0" />
                </font>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Label>
             <Label fx:id="zoomOut" layoutX="347.0" layoutY="150.0" onMouseClicked="#zoomOut" prefHeight="70.0" prefWidth="27.0" text="-" textFill="WHITE">
                <font>
                   <Font size="86.0" />
                </font>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Label>
          </children>
       </Pane>
-      <Label fx:id="timeUpdated" layoutX="346.0" layoutY="654.0" text="11:59 PM" />
-      <Label fx:id="day0RainChance" alignment="CENTER" layoutX="26.0" layoutY="609.0" prefHeight="17.0" prefWidth="42.0" text="13%" textFill="#2491bc">
+      <Label fx:id="timeUpdated" layoutX="346.0" layoutY="654.0" text="11:59 PM">
          <font>
-            <Font name="System Bold" size="11.0" />
-         </font>
-      </Label>
-      <Label fx:id="day1RainChance" alignment="CENTER" layoutX="79.0" layoutY="609.0" prefHeight="17.0" prefWidth="42.0" text="13%" textFill="#2491bc">
-         <font>
-            <Font name="System Bold" size="11.0" />
-         </font>
-      </Label>
-      <Label fx:id="day2RainChance" alignment="CENTER" layoutX="132.0" layoutY="609.0" prefHeight="17.0" prefWidth="42.0" text="13%" textFill="#2491bc">
-         <font>
-            <Font name="System Bold" size="11.0" />
-         </font>
-      </Label>
-      <Label fx:id="day3RainChance" alignment="CENTER" layoutX="185.0" layoutY="609.0" prefHeight="17.0" prefWidth="42.0" text="13%" textFill="#2491bc">
-         <font>
-            <Font name="System Bold" size="11.0" />
-         </font>
-      </Label>
-      <Label fx:id="day4RainChance" alignment="CENTER" layoutX="235.0" layoutY="609.0" prefHeight="17.0" prefWidth="42.0" text="13%" textFill="#2491bc">
-         <font>
-            <Font name="System Bold" size="11.0" />
-         </font>
-      </Label>
-      <Label fx:id="day5RainChance" alignment="CENTER" layoutX="288.0" layoutY="609.0" prefHeight="17.0" prefWidth="42.0" text="13%" textFill="#2491bc">
-         <font>
-            <Font name="System Bold" size="11.0" />
-         </font>
-      </Label>
-      <Label fx:id="day6RainChance" alignment="CENTER" layoutX="342.0" layoutY="609.0" prefHeight="17.0" prefWidth="42.0" text="13%" textFill="#2491bc">
-         <font>
-            <Font name="System Bold" size="11.0" />
+            <Font name="System Bold" size="10.0" />
          </font>
       </Label>
    </children>

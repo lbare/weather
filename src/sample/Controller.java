@@ -284,10 +284,11 @@ public class Controller implements Initializable {
 
     public void displayOnStart(){
         Weather w = new Weather("7");
+        currentLocation = w.getCoordinates();
         displayInfo(w);
         displayRadarImage(w);
         setDefaultImages();
-        homePane.setVisible(true);
+        homePane.setVisible(false);
         setUpdatedTime(w);
     }
 
