@@ -37,7 +37,7 @@ public class Controller implements Initializable {
     private int buttonClicked;
     private boolean tempState;
     private HashMap<String,String> map;
-    private String selection;
+    private String selection, zoomLevel;
     private Image Icon1, day0icon, day1icon, day2icon, day3icon, day4icon, day5icon, day6icon;
     private Weather w1;
     private ObservableList<String> searchResults = FXCollections.observableArrayList("");
@@ -90,7 +90,7 @@ public class Controller implements Initializable {
     public class locationSearchBackground extends AsyncTask<String, Weather>{
         public Weather doInBackground(String query){
             selection = map.get(resultsBox.getValue()); // gets selected value from ComboBox
-            Weather w = new Weather(selection); // creates new Weather object using the selected location as the parameter
+            Weather w = new Weather(selection,"d"); // creates new Weather object using the selected location as the parameter
             return w;
         }
         public void onPostExecute(Weather w){
@@ -106,7 +106,7 @@ public class Controller implements Initializable {
 
     public class myLocationBackground extends AsyncTask<String, Weather>{
         public Weather doInBackground(String query){
-            Weather w = new Weather(); // creates new Weather object using the selected location as the parameter
+            Weather w = new Weather("d"); // creates new Weather object using the selected location as the parameter
             return w;
         }
         public void onPostExecute(Weather w){
@@ -131,10 +131,10 @@ public class Controller implements Initializable {
     public class toggleBackground extends AsyncTask<String, Weather>{
         public Weather doInBackground(String query){
             if (buttonClicked == 0) {
-                w1 = new Weather();
+                w1 = new Weather("d");
             }
             else {
-                w1 = new Weather();
+                w1 = new Weather("d");
             }
             return w1;
         }
@@ -260,7 +260,7 @@ public class Controller implements Initializable {
     }
 
     public void displayOnStart(){
-        Weather w = new Weather();
+        Weather w = new Weather(zoomLevel);
         displayInfo(w);
         displayRadarImage(w);
     }
@@ -279,6 +279,7 @@ public class Controller implements Initializable {
         Image bg = new Image("file:bg/day.png");
         Image arrow = new Image("file:bg/arrow_black1.png");
         Image temp = new Image("file:icons/fah.png");
+        zoomLevel = "7";
         tempImage.setImage(temp);
         arrowImage.setImage(arrow);
         bgImage.setImage(bg);

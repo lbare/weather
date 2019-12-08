@@ -15,26 +15,28 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 public class Weather {
-    private String location;
+    private String location, radarLocation;
     private JsonElement locationJSE, forecastJSE, tempJSE;
     private String[] avgTempF, avgTempC, humidity, conditions, icon, date;
     private Image radarImage;
 
     // constructor for getting weather from user's IP
-    public Weather() {
+    public Weather(String zoomLevel) {
         locationAutoFetch();
         forecastAutoFetch();
         storeForecastData();
-        radarImageFetch();
+        location = getCoordinates();
+        radarImageFetch(zoomLevel);
     }
 
     // constructor for getting weather from user's input
-    public Weather(String input) {
+    public Weather(String input, String zoomLevel) {
         try {
             location = URLEncoder.encode(input, "utf-8"); // sets location to user input
             locationFetch();
             forecastFetch();
             storeForecastData();
+            radarImageFetch(zoomLevel);
         }
         catch (UnsupportedEncodingException e) {
             e.printStackTrace();
@@ -158,16 +160,16 @@ public class Weather {
         }
     }
 
-    public void radarImageFetch()
+    public void radarImageFetch(String zoomLevel)
     {
         String weatherUrl = "https://maps.aerisapi.com/"
                 + APIKeys.ClientID
                 + "_"
                 + APIKeys.ClientKey
-                + "/flat,radar,counties,interstates,admin-cities/256x256/"
-                + "Rocklin,CA"
+                + "/blue-marble,radar,counties,interstates,admin-cities/256x256/"
+                + location
                 + ","
-                + "7"
+                + zoomLevel
                 + "/current.png";
 
         try
@@ -189,7 +191,12 @@ public class Weather {
         return radarImage;
     }
 
-
+    public String getCoordinates(){
+        return  getLocationData("loc").getAsJsonObject()
+                .get("lat").getAsString()
+                + "," +  getLocationData("loc").getAsJsonObject()
+                .get("long").getAsString();
+    }
 
     public JsonArray getForecastData(){
         return forecastJSE.getAsJsonObject()
@@ -206,7 +213,6 @@ public class Weather {
         conditions = new String[7];
         icon = new String[7];
         date = new String[7];
-
         // store data from each day into their own array
         while (day < 7) {
             avgTempF[day] = getForecastData()
@@ -238,7 +244,6 @@ public class Weather {
                     .get(day).getAsJsonObject()
                     .get("validTime").getAsString()
                     .substring(5,10).replace('-','/');
-
 
             day++;
         }
@@ -584,7 +589,7 @@ public class Weather {
 
     public static void main(String[] args)
     {
-        Weather w = new Weather("Rocklin,CA");
-        w.radarImageFetch();
+        Weather w = new Weather("d");
+        System.out.println(w.getCoordinates());
     }
 }
