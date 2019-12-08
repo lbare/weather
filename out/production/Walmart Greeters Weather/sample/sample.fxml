@@ -44,12 +44,12 @@
             <Font name="System Bold" size="26.0" />
          </font>
       </Label>
-      <ImageView fx:id="infoIcon" fitHeight="34.0" fitWidth="25.0" layoutX="320.0" layoutY="14.0" onMouseClicked="#setDialogPane" onMousePressed="#toggleButton" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="infoIcon" fitHeight="34.0" fitWidth="25.0" layoutX="320.0" layoutY="14.0" onMouseClicked="#homeToggle" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../bg/info_icon.png" />
          </image>
       </ImageView>
-      <Pane fx:id="homePane" layoutX="-6.0" layoutY="186.0" prefHeight="449.0" prefWidth="404.0" visible="false">
+      <Pane fx:id="homePane" layoutX="-6.0" layoutY="186.0" prefHeight="449.0" prefWidth="404.0">
          <children>
             <ImageView id="Icon" fx:id="imageView" fitHeight="164.0" fitWidth="164.0" layoutX="19.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -282,7 +282,7 @@
             </DialogPane>
          </children>
       </Pane>
-      <Pane fx:id="infoPane" layoutX="2.0" layoutY="186.0" prefHeight="468.0" prefWidth="401.0">
+      <Pane fx:id="infoPane" layoutX="2.0" layoutY="186.0" prefHeight="468.0" prefWidth="401.0" visible="false">
          <children>
             <ImageView fx:id="radarImageView" fitHeight="232.0" fitWidth="400.0" layoutX="17.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                <image>

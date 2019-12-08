@@ -73,7 +73,9 @@ public class Controller implements Initializable {
     }
 
     public void homeToggle(){
-
+        toggleToHomePane();
+        toggleToInfoPane();
+        homeState = !homeState;
     }
 
     public void clearSearch() {
@@ -295,16 +297,20 @@ public class Controller implements Initializable {
     }
 
     public void toggleToHomePane(){
-        if (homeState){
+        if (!homeState){
             infoPane.setVisible(false);
             homePane.setVisible(true);
+            Image image = new Image("file:bg/info_icon.png");
+            infoIcon.setImage(image);
         }
     }
 
     public void toggleToInfoPane(){
-        if (!homeState) {
+        if (homeState) {
             homePane.setVisible(false);
             infoPane.setVisible(true);
+            Image image = new Image("file:bg/home_icon.png");
+            infoIcon.setImage(image);
         }
     }
 
