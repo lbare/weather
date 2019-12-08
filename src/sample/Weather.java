@@ -4,7 +4,12 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import javax.imageio.ImageIO;
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.image.Image;
 
+import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
 import java.io.*;
 import java.net.URL;
 import java.net.URLEncoder;
@@ -13,14 +18,14 @@ public class Weather {
     private String location;
     private JsonElement locationJSE, forecastJSE, tempJSE;
     private String[] avgTempF, avgTempC, humidity, conditions, icon, date;
-    private String clientID;
-    private String clientKey;
+    private Image radarImage;
 
     // constructor for getting weather from user's IP
     public Weather() {
         locationAutoFetch();
         forecastAutoFetch();
         storeForecastData();
+        radarImageFetch();
     }
 
     // constructor for getting weather from user's input
@@ -34,12 +39,6 @@ public class Weather {
         catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-    }
-
-    // test
-    public Weather(int num){
-        storeJsonTest();
-        storeForecastData();
     }
 
     // fetch location weather JSON using user's input location and store in forecastJSE
@@ -158,6 +157,39 @@ public class Weather {
             ioe.printStackTrace();
         }
     }
+
+    public void radarImageFetch()
+    {
+        String weatherUrl = "https://maps.aerisapi.com/"
+                + APIKeys.ClientID
+                + "_"
+                + APIKeys.ClientKey
+                + "/flat,radar,counties,interstates,admin-cities/256x256/"
+                + "Rocklin,CA"
+                + ","
+                + "7"
+                + "/current.png";
+
+        try
+        {
+            URL url = new URL(weatherUrl);
+            BufferedImage buffImage = ImageIO.read(url);
+            radarImage = SwingFXUtils.toFXImage(buffImage,null);
+        }
+        catch (java.net.MalformedURLException mue)
+        {
+            System.out.println("Malformed URL");
+            mue.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Image getRadarImage(){
+        return radarImage;
+    }
+
+
 
     public JsonArray getForecastData(){
         return forecastJSE.getAsJsonObject()
@@ -552,7 +584,7 @@ public class Weather {
 
     public static void main(String[] args)
     {
-        Weather w = new Weather();
-
+        Weather w = new Weather("Rocklin,CA");
+        w.radarImageFetch();
     }
 }

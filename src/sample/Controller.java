@@ -10,8 +10,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import sierra.AsyncTask;
-
-import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
@@ -32,7 +30,8 @@ public class Controller implements Initializable {
             visibilityLabel, locationErrorLabel;
 
     @FXML
-    ImageView imageView, day0view, day1view, day2view, day3view, day4view, day5view, day6view, bgImage, arrowImage, tempImage, windDirection;
+    ImageView imageView, day0view, day1view, day2view, day3view, day4view, day5view, day6view, bgImage, arrowImage, tempImage, windDirection,
+               radarImageView;
 
     // keeps track of whether the Go or myLocation was pressed for the RadioButtons
     private int buttonClicked;
@@ -143,6 +142,10 @@ public class Controller implements Initializable {
             toggleToC(w1);
             toggleToF(w1);
         }
+    }
+
+    public void displayRadarImage(Weather w){
+        radarImageView.setImage((Image) w.getRadarImage());
     }
 
     public void displayInfo(Weather w) {
@@ -259,6 +262,7 @@ public class Controller implements Initializable {
     public void displayOnStart(){
         Weather w = new Weather();
         displayInfo(w);
+        displayRadarImage(w);
     }
 
     public void setDialogPane(){
