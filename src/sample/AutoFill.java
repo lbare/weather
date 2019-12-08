@@ -123,7 +123,7 @@ public class AutoFill {
     }
 
     public static void main(String[] args) {
-        AutoFill a = new AutoFill("Texán De Palomeque");
+        AutoFill a = new AutoFill("Interlaken");
         System.out.println(a.getLocationResultsArray());
         System.out.println(a.getCoordinateResults());
     }

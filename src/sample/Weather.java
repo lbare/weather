@@ -164,6 +164,7 @@ public class Weather {
         }
     }
 
+    // fetch radar image and store in variable
     public void radarImageFetch(String zoomLevel)
     {
         String weatherUrl = "https://maps.aerisapi.com/"
@@ -315,77 +316,113 @@ public class Weather {
     }
 
     public String getMinC(){
-        String temp = getForecastData()
-                .get(0).getAsJsonObject()
-                .get("minTempC").getAsString() + "°";
-        return temp;
+        try {
+            String temp = getForecastData()
+                    .get(0).getAsJsonObject()
+                    .get("minTempC").getAsString() + "°";
+            return temp;
+        }
+        catch (UnsupportedOperationException ue){
+            return "n/a";
+        }
     }
 
     public String getWeather()
     {
-        String weather = getLocationData("ob").getAsJsonObject()
-                .get("weather").getAsString();
-        return weather;
+        try {
+            String weather = getLocationData("ob").getAsJsonObject()
+                    .get("weather").getAsString();
+            return weather;
+        }
+        catch (UnsupportedOperationException ue){
+            return "No weather given";
+        }
     }
 
     public String getHumidity()
     {
-        String humidity = getLocationData("ob").getAsJsonObject()
-                .get("humidity").getAsString() + "%";
-        return humidity;
+        try {
+            String humidity = getLocationData("ob").getAsJsonObject()
+                    .get("humidity").getAsString() + "%";
+            return humidity;
+        }
+        catch (UnsupportedOperationException ue){
+            return "n/a";
+        }
     }
 
     public String getWindSpeedMPH()
     {
-        String humidity = getLocationData("ob").getAsJsonObject()
-                .get("windSpeedMPH").getAsString() + " MPH";
-        return humidity;
+        try {
+            String humidity = getLocationData("ob").getAsJsonObject()
+                    .get("windSpeedMPH").getAsString() + " MPH";
+            return humidity;
+        }
+        catch (UnsupportedOperationException ue){
+            return "n/a";
+        }
     }
 
     public String getWindSpeedKPH()
     {
-        String humidity = getLocationData("ob").getAsJsonObject()
-                .get("windSpeedKPH").getAsString() + " KPH";
-        return humidity;
+        try {
+            String humidity = getLocationData("ob").getAsJsonObject()
+                    .get("windSpeedKPH").getAsString() + " KPH";
+            return humidity;
+        }
+        catch (UnsupportedOperationException ue){
+            return "n/a";
+        }
     }
 
     public String getVisibilityMI()
     {
-        String visibility = getLocationData("ob").getAsJsonObject()
-                .get("visibilityMI").getAsString();
-        if (visibility.indexOf('.') == 2) {
-            visibility = visibility.substring(0,2) + " MI";
+        try {
+            String visibility = getLocationData("ob").getAsJsonObject()
+                    .get("visibilityMI").getAsString();
+            if (visibility.indexOf('.') == 2) {
+                visibility = visibility.substring(0, 2) + " MI";
+            } else if (visibility.indexOf('.') == 1) {
+                visibility = visibility.substring(0, 3) + " MI";
+            } else {
+                visibility += " MI";
+            }
+            return visibility;
         }
-        else if (visibility.indexOf('.') == 1) {
-            visibility = visibility.substring(0,3) + " MI";
+        catch (UnsupportedOperationException ue){
+            return "n/a";
         }
-        else {
-            visibility += " MI";
-        }
-        return visibility;
     }
 
     public String getVisibilityKM()
     {
-        String visibility = getLocationData("ob").getAsJsonObject()
-                .get("visibilityKM").getAsString();
-        if (visibility.indexOf('.') == 2) {
-            visibility = visibility.substring(0,2) + " KM";
+        try {
+            String visibility = getLocationData("ob").getAsJsonObject()
+                    .get("visibilityKM").getAsString();
+            if (visibility.indexOf('.') == 2) {
+                visibility = visibility.substring(0, 2) + " KM";
+            } else if (visibility.indexOf('.') == 1) {
+                visibility = visibility.substring(0, 3) + " KM";
+            } else {
+                visibility += " KM";
+            }
+            return visibility;
         }
-        else if (visibility.indexOf('.') == 1) {
-            visibility = visibility.substring(0,3) + " KM";
+        catch (UnsupportedOperationException ue){
+            return "n/a";
         }
-        else {
-            visibility += " KM";
-        }
-        return visibility;
     }
 
     public String getWindDirection()
     {
-        String direction = getLocationData("ob").getAsJsonObject()
-                .get("windDir").getAsString() + ".png";
-        return direction;
+        try {
+            String direction = getLocationData("ob").getAsJsonObject()
+                    .get("windDir").getAsString() + ".png";
+            return direction;
+        }
+        catch (UnsupportedOperationException ue){
+                return "n/a";
+            }
     }
 
     public String iconSort(String icon){
@@ -530,28 +567,38 @@ public class Weather {
 
     public String getIcon()
     {
-        String icon = getLocationData("ob")
-                .getAsJsonObject()
-                .get("icon").getAsString();
-        return iconSort(icon);
+        try {
+            String icon = getLocationData("ob")
+                    .getAsJsonObject()
+                    .get("icon").getAsString();
+            return iconSort(icon);
+        }
+        catch (UnsupportedOperationException ue){
+            return "";
+        }
     }
 
     public String getCityState()
     {
-        String city = getLocationData("place").getAsJsonObject()
-                .get("name").getAsString();
-        if (city.indexOf('/') > 0){
-            city = city.substring(0, city.indexOf('/'));
+        try {
+            String city = getLocationData("place").getAsJsonObject()
+                    .get("name").getAsString();
+            if (city.indexOf('/') > 0) {
+                city = city.substring(0, city.indexOf('/'));
+            }
+            String state = getLocationData("place").getAsJsonObject()
+                    .get("state").getAsString().toUpperCase(); // capitalize State
+            if (state.equals("")) {
+                state = getLocationData("place").getAsJsonObject()
+                        .get("country").getAsString().toUpperCase();
+            }
+            String cityState = city + "," + " " + state;
+            cityState = capitalizeWord(cityState);
+            return cityState;
         }
-        String state = getLocationData("place").getAsJsonObject()
-                .get("state").getAsString().toUpperCase(); // capitalize State
-        if (state.equals("")) {
-            state = getLocationData("place").getAsJsonObject()
-                    .get("country").getAsString().toUpperCase();
+        catch (UnsupportedOperationException ue){
+            return "n/a";
         }
-        String cityState = city + "," + " " + state;
-        cityState = capitalizeWord(cityState);
-        return cityState;
     }
 
     public String getAvgTempF(int day){

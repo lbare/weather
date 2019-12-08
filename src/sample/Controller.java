@@ -115,11 +115,11 @@ public class Controller implements Initializable {
                 displayHome(w);
                 displayInfo(w);
                 setUpdatedTime(w);
-
             }
             catch (IllegalStateException ie) {
                 dialogPane.setVisible(true);
                 locationErrorLabel.setText(resultsBox.getValue().toString());
+
             }
         }
     }
@@ -170,17 +170,6 @@ public class Controller implements Initializable {
                 w1 = new Weather(zoomLevel);
             }
             return w1;
-        }
-        public void onPostExecute(Weather w){
-            toggleToC(w1);
-            toggleToF(w1);
-        }
-    }
-
-    public class togglePaneBackground extends AsyncTask<String, Weather>{
-        public Weather doInBackground(String query){
-            Weather w = new Weather(currentLocation,zoomLevel);
-            return w;
         }
         public void onPostExecute(Weather w){
             toggleToC(w1);
@@ -375,7 +364,7 @@ public class Controller implements Initializable {
         resultsBox.setItems(searchResults);
         tempState = true;
         homeState = true;
-        zoomLevel = "7";
+        zoomLevel = "8";
         displayOnStart();
     }
 }
