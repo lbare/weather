@@ -6,7 +6,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <Pane prefHeight="650.0" prefWidth="400.0" style="-fx-background-color: #ccdeec;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
@@ -20,7 +19,6 @@
          <image>
             <Image url="@../../icons/n1.png" />
          </image></ImageView>
-      <Circle fill="DODGERBLUE" layoutX="104.0" layoutY="306.0" radius="41.0" stroke="BLACK" strokeType="INSIDE" visible="false" />
       <Label fx:id="currentDateLabel" alignment="CENTER" layoutX="123.0" layoutY="82.0" prefHeight="20.0" prefWidth="152.0" text="CURRENT DATE">
          <font>
             <Font name="System Bold" size="9.0" />

@@ -131,10 +131,10 @@ public class Controller implements Initializable {
     public class toggleBackground extends AsyncTask<String, Weather>{
         public Weather doInBackground(String query){
             if (buttonClicked == 0) {
-                w1 = new Weather("d");
+                w1 = new Weather(zoomLevel);
             }
             else {
-                w1 = new Weather("d");
+                w1 = new Weather(zoomLevel);
             }
             return w1;
         }
@@ -145,7 +145,7 @@ public class Controller implements Initializable {
     }
 
     public void displayRadarImage(Weather w){
-        radarImageView.setImage((Image) w.getRadarImage());
+        radarImageView.setImage(w.getRadarImage());
     }
 
     public void displayInfo(Weather w) {
