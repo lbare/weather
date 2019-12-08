@@ -32,7 +32,7 @@
             <Font name="System Bold Italic" size="17.0" />
          </font>
       </Label>
-      <ComboBox fx:id="resultsBox" layoutX="94.0" layoutY="28.0" onAction="#checkComboBox" onMouseClicked="#handleGoButton" prefHeight="28.0" prefWidth="212.0" visibleRowCount="5" />
+      <ComboBox fx:id="resultsBox" layoutX="94.0" layoutY="28.0" maxWidth="217.0" onAction="#checkComboBox" onMouseClicked="#handleGoButton" prefHeight="28.0" prefWidth="217.0" visibleRowCount="5" />
       <TextField fx:id="locationInput" layoutX="93.0" layoutY="23.0" onKeyTyped="#autoFillUpdate" onMousePressed="#setDialogPane" prefHeight="34.0" prefWidth="217.0" promptText="Enter a City or Zip Code" />
       <ImageView fx:id="arrowImage" fitHeight="34.0" fitWidth="25.0" layoutX="59.0" layoutY="27.0" onMouseClicked="#myLocation" onMousePressed="#setDialogPane" pickOnBounds="true" preserveRatio="true">
          <image>
