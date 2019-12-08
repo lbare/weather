@@ -93,15 +93,6 @@ public class Controller implements Initializable {
         System.exit(1);
     }
 
-    public void setVisible(){
-        locationLabel.setVisible(true);
-        weatherLabel.setVisible(true);
-        tempLabel.setVisible(true);
-        weatherLabel.setVisible(true);
-        locationLabel.setVisible(true);
-        imageView.setVisible(true);
-    }
-
     public class locationSearchBackground extends AsyncTask<String, Weather>{
         public Weather doInBackground(String query){
             zoomLevel = "7";
@@ -198,7 +189,6 @@ public class Controller implements Initializable {
         windDirection.setImage(new Image("file:arrows/" + w.getWindDirection()));
         locationLabel.setText(w.getCityState());
         humidityLabel.setText(w.getHumidity());
-        setVisible();
         forecastLabels(w);
 
         Icon1 = new Image("file:icons/" + w.getIcon());
