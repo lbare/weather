@@ -89,6 +89,10 @@ public class Controller implements Initializable {
         }
     }
 
+    public void closeWindow(){
+        System.exit(1);
+    }
+
     public void setVisible(){
         locationLabel.setVisible(true);
         weatherLabel.setVisible(true);
