@@ -38,9 +38,8 @@ public class Controller implements Initializable {
     ImageView imageView, day0view, day1view, day2view, day3view, day4view, day5view, day6view, bgImage, arrowImage, tempImage, windDirection,
                radarImageView, infoIcon;
 
-    // keeps track of whether the Go or myLocation was pressed for the RadioButtons
     private int buttonClicked;
-    private boolean tempState;
+    private boolean tempState, homeState;
     private HashMap<String,String> map;
     private String selection, zoomLevel;
     private Image Icon1, day0icon, day1icon, day2icon, day3icon, day4icon, day5icon, day6icon;
@@ -73,6 +72,10 @@ public class Controller implements Initializable {
         tempState = !tempState;
     }
 
+    public void homeToggle(){
+
+    }
+
     public void clearSearch() {
         locationInput.clear();
     }
@@ -103,8 +106,8 @@ public class Controller implements Initializable {
         }
         public void onPostExecute(Weather w){
             try {
+                displayHome(w);
                 displayInfo(w);
-                displayRadarImage(w);
                 setUpdatedTime(w);
 
             }
@@ -122,8 +125,8 @@ public class Controller implements Initializable {
             return w;
         }
         public void onPostExecute(Weather w){
+            displayHome(w);
             displayInfo(w);
-            displayRadarImage(w);
             setUpdatedTime(w);
         }
     }
@@ -148,14 +151,14 @@ public class Controller implements Initializable {
             return w;
         }
         public void onPostExecute(Weather w){
-            displayRadarImage(w);
+            displayInfo(w);
         }
     }
 
     public class toggleBackground extends AsyncTask<String, Weather>{
         public Weather doInBackground(String query){
             if (buttonClicked == 0) {
-                w1 = new Weather(zoomLevel);
+                w1 = new Weather(currentLocation,zoomLevel);
             }
             else {
                 w1 = new Weather(zoomLevel);
@@ -168,7 +171,18 @@ public class Controller implements Initializable {
         }
     }
 
-    public void displayInfo(Weather w) {
+    public class togglePaneBackground extends AsyncTask<String, Weather>{
+        public Weather doInBackground(String query){
+            Weather w = new Weather(currentLocation,zoomLevel);
+            return w;
+        }
+        public void onPostExecute(Weather w){
+            toggleToC(w1);
+            toggleToF(w1);
+        }
+    }
+
+    public void displayHome(Weather w) {
         tempState = true;
         if (tempState) {
             tempLabel.setText(w.getTemperatureF());
@@ -260,7 +274,6 @@ public class Controller implements Initializable {
             minLabel.setText(w.getMinF());
             windLabel.setText(w.getWindSpeedMPH());
             visibilityLabel.setText(w.getVisibilityMI());
-            tempImage.setImage(new Image("file:icons/fah.png"));
         }
     }
 
@@ -278,22 +291,37 @@ public class Controller implements Initializable {
             minLabel.setText(w.getMinC());
             windLabel.setText(w.getWindSpeedKPH());
             visibilityLabel.setText(w.getVisibilityKM());
-            tempImage.setImage(new Image("file:icons/cel.png"));
+        }
+    }
+
+    public void toggleToHomePane(){
+        if (homeState){
+            infoPane.setVisible(false);
+            homePane.setVisible(true);
+        }
+    }
+
+    public void toggleToInfoPane(){
+        if (!homeState) {
+            homePane.setVisible(false);
+            infoPane.setVisible(true);
         }
     }
 
     public void displayOnStart(){
         Weather w = new Weather("7");
         currentLocation = w.getCoordinates();
+        displayHome(w);
         displayInfo(w);
-        displayRadarImage(w);
         setDefaultImages();
-        homePane.setVisible(false);
+        homePane.setVisible(true);
+        infoPane.setVisible(false);
         setUpdatedTime(w);
     }
 
-    public void displayRadarImage(Weather w){
+    public void displayInfo(Weather w){
         radarImageView.setImage(w.getRadarImage());
+        // add labels
     }
 
     public void zoomIn(){
@@ -336,6 +364,7 @@ public class Controller implements Initializable {
         resultsBox.setValue("");
         resultsBox.setItems(searchResults);
         tempState = true;
+        homeState = true;
         zoomLevel = "7";
         displayOnStart();
     }
