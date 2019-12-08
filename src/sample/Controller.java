@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
 import sierra.AsyncTask;
 import java.net.URL;
 import java.util.HashMap;
@@ -17,6 +18,9 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
     @FXML
     TextField locationInput;
+
+    @FXML
+    Pane homePane, infoPane;
 
     @FXML
     DialogPane dialogPane;
@@ -128,6 +132,16 @@ public class Controller implements Initializable {
         }
     }
 
+    public class zoomBackground extends AsyncTask<String, Weather> {
+        public Weather doInBackground(String zoomLevel) {
+            Weather w = new Weather(zoomLevel);
+            return w;
+        }
+        public void onPostExecute(Weather w){
+            displayRadarImage(w);
+        }
+    }
+
     public class toggleBackground extends AsyncTask<String, Weather>{
         public Weather doInBackground(String query){
             if (buttonClicked == 0) {
@@ -142,10 +156,6 @@ public class Controller implements Initializable {
             toggleToC(w1);
             toggleToF(w1);
         }
-    }
-
-    public void displayRadarImage(Weather w){
-        radarImageView.setImage(w.getRadarImage());
     }
 
     public void displayInfo(Weather w) {
@@ -262,6 +272,29 @@ public class Controller implements Initializable {
         Weather w = new Weather("7");
         displayInfo(w);
         displayRadarImage(w);
+        setDefaultImages();
+        homePane.setVisible(false);
+    }
+
+    public void displayRadarImage(Weather w){
+        radarImageView.setImage(w.getRadarImage());
+    }
+
+    public void zoomIn(){
+        int result = Integer.parseInt(zoomLevel);
+        result++;
+        zoomLevel = result + "";
+        AsyncTask t = new zoomBackground();
+        t.execute(zoomLevel);
+    }
+
+    public void zoomOut(){
+        int result = Integer.parseInt(zoomLevel);
+        result--;
+        zoomLevel = result + "";
+        AsyncTask t = new zoomBackground();
+        t.execute(zoomLevel);
+
     }
 
     public void setDialogPane(){
@@ -282,7 +315,6 @@ public class Controller implements Initializable {
         resultsBox.setValue("");
         resultsBox.setItems(searchResults);
         tempState = true;
-        setDefaultImages();
         zoomLevel = "7";
         displayOnStart();
     }

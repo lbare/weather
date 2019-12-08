@@ -4,21 +4,17 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-
-import javax.imageio.IIOException;
 import javax.imageio.ImageIO;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
-
 import java.awt.image.BufferedImage;
-import java.awt.image.RenderedImage;
 import java.io.*;
 import java.net.URL;
 import java.net.URLEncoder;
 
 public class Weather {
-    private String location, radarLocation;
-    private JsonElement locationJSE, forecastJSE, tempJSE;
+    private String location;
+    private JsonElement locationJSE, forecastJSE;
     private String[] avgTempF, avgTempC, humidity, conditions, icon, date;
     private Image radarImage;
 
@@ -168,7 +164,7 @@ public class Weather {
                 + APIKeys.ClientID
                 + "_"
                 + APIKeys.ClientKey
-                + "/blue-marble,radar,counties,interstates,admin-cities/256x256/"
+                + "/blue-marble,radar,counties,interstates,admin-cities/400x256/"
                 + location
                 + ","
                 + zoomLevel

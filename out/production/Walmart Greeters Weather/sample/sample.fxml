@@ -17,11 +17,6 @@
             <Image url="@../../bg/cloudy.png" />
          </image>
       </ImageView>
-      <ImageView id="Icon" fx:id="imageView" fitHeight="164.0" fitWidth="164.0" layoutX="9.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../icons/n1.png" />
-         </image>
-      </ImageView>
       <Label fx:id="currentDateLabel" alignment="CENTER" layoutX="124.0" layoutY="69.0" prefHeight="20.0" prefWidth="152.0" text="CURRENT DATE">
          <font>
             <Font name="System Bold" size="13.0" />
@@ -32,168 +27,8 @@
             <Font name="System Bold Italic" size="17.0" />
          </font>
       </Label>
-      <Label fx:id="tempLabel" alignment="CENTER" layoutX="162.0" layoutY="186.0" onMousePressed="#toggleButton" prefHeight="109.0" prefWidth="233.0" text="55°F">
-         <font>
-            <Font size="91.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="234.0" layoutY="311.0" prefHeight="15.0" prefWidth="35.0" text="HIGH:">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="300.0" layoutY="311.0" prefHeight="15.0" prefWidth="35.0" text="LOW:">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label fx:id="maxLabel" alignment="CENTER" layoutX="222.0" layoutY="324.0" prefHeight="38.0" prefWidth="62.0" text="55°">
-         <font>
-            <Font name="System Bold" size="26.0" />
-         </font>
-      </Label>
-      <Label fx:id="minLabel" alignment="CENTER" layoutX="288.0" layoutY="324.0" prefHeight="38.0" prefWidth="62.0" text="55°">
-         <font>
-            <Font name="System Bold" size="26.0" />
-         </font>
-      </Label>
       <ComboBox fx:id="resultsBox" layoutX="94.0" layoutY="15.0" onAction="#checkComboBox" onMouseClicked="#handleGoButton" prefHeight="28.0" prefWidth="212.0" visibleRowCount="5" />
       <TextField fx:id="locationInput" layoutX="93.0" layoutY="10.0" onKeyTyped="#autoFillUpdate" onMousePressed="#setDialogPane" prefHeight="34.0" prefWidth="217.0" promptText="Enter a City or Zip Code" />
-      <Label fx:id="day3Label" alignment="CENTER" layoutX="188.0" layoutY="517.0" prefHeight="17.0" prefWidth="35.0" text="W">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label fx:id="day3temp" alignment="CENTER" layoutX="188.0" layoutY="596.0" prefHeight="27.0" prefWidth="35.0" text="W">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
-      <ImageView fx:id="day0view" fitHeight="34.0" fitWidth="42.0" layoutX="25.0" layoutY="548.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../icons/nc.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="day1view" fitHeight="34.0" fitWidth="42.0" layoutX="79.0" layoutY="548.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../icons/nc.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="day2view" fitHeight="42.0" fitWidth="42.0" layoutX="131.0" layoutY="545.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../icons/nc.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="day3view" fitHeight="44.0" fitWidth="43.0" layoutX="184.0" layoutY="544.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../icons/nc.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="day4view" fitHeight="44.0" fitWidth="43.0" layoutX="236.0" layoutY="546.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../icons/nc.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="day5view" fitHeight="44.0" fitWidth="43.0" layoutX="287.0" layoutY="544.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../icons/nc.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="day6view" fitHeight="44.0" fitWidth="43.0" layoutX="341.0" layoutY="544.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../icons/sn.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="day4Label" alignment="CENTER" layoutX="239.0" layoutY="517.0" prefHeight="17.0" prefWidth="35.0" text="W">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label fx:id="day4temp" alignment="CENTER" layoutX="239.0" layoutY="596.0" prefHeight="27.0" prefWidth="35.0" text="W">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="day5Label" alignment="CENTER" layoutX="291.0" layoutY="517.0" prefHeight="17.0" prefWidth="35.0" text="W">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label fx:id="day5temp" alignment="CENTER" layoutX="291.0" layoutY="596.0" prefHeight="27.0" prefWidth="35.0" text="W">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="day6Label" alignment="CENTER" layoutX="345.0" layoutY="517.0" prefHeight="17.0" prefWidth="35.0" text="W">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label fx:id="day6temp" alignment="CENTER" layoutX="345.0" layoutY="596.0" prefHeight="27.0" prefWidth="35.0" text="W">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="day2Label" alignment="CENTER" layoutX="135.0" layoutY="517.0" prefHeight="17.0" prefWidth="35.0" text="W">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label fx:id="day2temp" alignment="CENTER" layoutX="135.0" layoutY="596.0" prefHeight="27.0" prefWidth="35.0" text="W">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="day1Label" alignment="CENTER" layoutX="83.0" layoutY="517.0" prefHeight="17.0" prefWidth="35.0" text="W">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label fx:id="day1temp" alignment="CENTER" layoutX="83.0" layoutY="596.0" prefHeight="27.0" prefWidth="35.0" text="W">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="day0Label" alignment="CENTER" layoutX="29.0" layoutY="517.0" prefHeight="17.0" prefWidth="35.0" text="W">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label fx:id="day0temp" alignment="CENTER" layoutX="29.0" layoutY="596.0" prefHeight="27.0" prefWidth="35.0" text="W">
-         <font>
-            <Font name="System Bold" size="18.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="172.0" layoutY="407.0" prefHeight="17.0" prefWidth="70.0" text="HUMIDITY:">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label fx:id="humidityLabel" alignment="CENTER" layoutX="164.0" layoutY="435.0" prefHeight="38.0" prefWidth="84.0" text="26%">
-         <font>
-            <Font name="System Bold" size="26.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="35.0" layoutY="407.0" prefHeight="17.0" prefWidth="84.0" text="WIND:">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label fx:id="windLabel" alignment="CENTER_RIGHT" layoutX="-6.0" layoutY="435.0" onMousePressed="#toggleButton" prefHeight="38.0" prefWidth="117.0" text="5 MPH" textAlignment="RIGHT">
-         <font>
-            <Font name="System Bold" size="26.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="292.0" layoutY="407.0" prefHeight="17.0" prefWidth="70.0" text="VISIBILITY:">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
-      <Label fx:id="visibilityLabel" alignment="CENTER" layoutX="268.0" layoutY="435.0" onMousePressed="#toggleButton" prefHeight="38.0" prefWidth="116.0" text="10 MI">
-         <font>
-            <Font name="System Bold" size="26.0" />
-         </font>
-      </Label>
       <ImageView fx:id="arrowImage" fitHeight="34.0" fitWidth="25.0" layoutX="59.0" layoutY="14.0" onMouseClicked="#myLocation" onMousePressed="#setDialogPane" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../bg/arrow_black1.png" />
@@ -209,35 +44,218 @@
             <Image url="@../../bg/info_icon.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="windDirection" fitHeight="34.0" fitWidth="27.0" layoutX="114.0" layoutY="441.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../arrows/NE.png" />
-         </image>
-      </ImageView>
-      <DialogPane fx:id="dialogPane" contentText="Weather information does not exist for this location" expanded="true" headerText="Weather information does not exist for this location" layoutX="42.0" layoutY="211.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="124.0" prefWidth="320.0" visible="false">
-         <header>
-            <AnchorPane minHeight="0.0" minWidth="0.0" onMousePressed="#setDialogPane" prefHeight="200.0" prefWidth="320.0">
-               <children>
-                  <Label layoutX="11.0" layoutY="6.0" text="Weather information does not exist for this location:">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="locationErrorLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="48.0" prefHeight="17.0" prefWidth="320.0" text="location" />
-               </children>
-            </AnchorPane>
-         </header>
-         <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
-         </content>
-         <expandableContent>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
-         </expandableContent>
-      </DialogPane>
-      <ImageView fx:id="radarImageView" fitHeight="217.0" fitWidth="252.0" layoutX="119.0" layoutY="617.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../JSON/radar%20image.png" />
-         </image>
-      </ImageView>
+      <Pane fx:id="homePane" layoutX="-6.0" layoutY="186.0" visible="false">
+         <children>
+            <ImageView id="Icon" fx:id="imageView" fitHeight="164.0" fitWidth="164.0" layoutX="15.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../icons/n1.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="tempLabel" alignment="CENTER" layoutX="168.0" onMousePressed="#toggleButton" prefHeight="109.0" prefWidth="233.0" text="55°F">
+               <font>
+                  <Font size="91.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="240.0" layoutY="125.0" prefHeight="15.0" prefWidth="35.0" text="HIGH:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="306.0" layoutY="125.0" prefHeight="15.0" prefWidth="35.0" text="LOW:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="maxLabel" alignment="CENTER" layoutX="228.0" layoutY="138.0" prefHeight="38.0" prefWidth="62.0" text="55°">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Label>
+            <Label fx:id="minLabel" alignment="CENTER" layoutX="294.0" layoutY="138.0" prefHeight="38.0" prefWidth="62.0" text="55°">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Label>
+            <Label fx:id="day3Label" alignment="CENTER" layoutX="194.0" layoutY="331.0" prefHeight="17.0" prefWidth="35.0" text="W">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="day3temp" alignment="CENTER" layoutX="194.0" layoutY="410.0" prefHeight="27.0" prefWidth="35.0" text="W">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="day0view" fitHeight="34.0" fitWidth="42.0" layoutX="31.0" layoutY="362.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../icons/nc.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="day1view" fitHeight="34.0" fitWidth="42.0" layoutX="85.0" layoutY="362.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../icons/nc.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="day2view" fitHeight="42.0" fitWidth="42.0" layoutX="137.0" layoutY="359.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../icons/nc.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="day3view" fitHeight="44.0" fitWidth="43.0" layoutX="190.0" layoutY="358.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../icons/nc.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="day4view" fitHeight="44.0" fitWidth="43.0" layoutX="242.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../icons/nc.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="day5view" fitHeight="44.0" fitWidth="43.0" layoutX="293.0" layoutY="358.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../icons/nc.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="day6view" fitHeight="44.0" fitWidth="43.0" layoutX="347.0" layoutY="358.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../icons/sn.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="day4Label" alignment="CENTER" layoutX="245.0" layoutY="331.0" prefHeight="17.0" prefWidth="35.0" text="W">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="day4temp" alignment="CENTER" layoutX="245.0" layoutY="410.0" prefHeight="27.0" prefWidth="35.0" text="W">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="day5Label" alignment="CENTER" layoutX="297.0" layoutY="331.0" prefHeight="17.0" prefWidth="35.0" text="W">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="day5temp" alignment="CENTER" layoutX="297.0" layoutY="410.0" prefHeight="27.0" prefWidth="35.0" text="W">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="day6Label" alignment="CENTER" layoutX="351.0" layoutY="331.0" prefHeight="17.0" prefWidth="35.0" text="W">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="day6temp" alignment="CENTER" layoutX="351.0" layoutY="410.0" prefHeight="27.0" prefWidth="35.0" text="W">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="day2Label" alignment="CENTER" layoutX="141.0" layoutY="331.0" prefHeight="17.0" prefWidth="35.0" text="W">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="day2temp" alignment="CENTER" layoutX="141.0" layoutY="410.0" prefHeight="27.0" prefWidth="35.0" text="W">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="day1Label" alignment="CENTER" layoutX="89.0" layoutY="331.0" prefHeight="17.0" prefWidth="35.0" text="W">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="day1temp" alignment="CENTER" layoutX="89.0" layoutY="410.0" prefHeight="27.0" prefWidth="35.0" text="W">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="day0Label" alignment="CENTER" layoutX="35.0" layoutY="331.0" prefHeight="17.0" prefWidth="35.0" text="W">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="day0temp" alignment="CENTER" layoutX="35.0" layoutY="410.0" prefHeight="27.0" prefWidth="35.0" text="W">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="178.0" layoutY="221.0" prefHeight="17.0" prefWidth="70.0" text="HUMIDITY:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="humidityLabel" alignment="CENTER" layoutX="170.0" layoutY="249.0" prefHeight="38.0" prefWidth="84.0" text="26%">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="41.0" layoutY="221.0" prefHeight="17.0" prefWidth="84.0" text="WIND:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="windLabel" alignment="CENTER_RIGHT" layoutY="249.0" onMousePressed="#toggleButton" prefHeight="38.0" prefWidth="117.0" text="5 MPH" textAlignment="RIGHT">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="298.0" layoutY="221.0" prefHeight="17.0" prefWidth="70.0" text="VISIBILITY:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="visibilityLabel" alignment="CENTER" layoutX="274.0" layoutY="249.0" onMousePressed="#toggleButton" prefHeight="38.0" prefWidth="116.0" text="10 MI">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="windDirection" fitHeight="34.0" fitWidth="27.0" layoutX="120.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../arrows/NE.png" />
+               </image>
+            </ImageView>
+            <DialogPane fx:id="dialogPane" contentText="Weather information does not exist for this location" expanded="true" headerText="Weather information does not exist for this location" layoutX="48.0" layoutY="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="124.0" prefWidth="320.0" visible="false">
+               <header>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" onMousePressed="#setDialogPane" prefHeight="200.0" prefWidth="320.0">
+                     <children>
+                        <Label layoutX="11.0" layoutY="6.0" text="Weather information does not exist for this location:">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="locationErrorLabel" alignment="CENTER" contentDisplay="CENTER" layoutY="48.0" prefHeight="17.0" prefWidth="320.0" text="location" />
+                     </children>
+                  </AnchorPane>
+               </header>
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
+               </content>
+               <expandableContent>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
+               </expandableContent>
+            </DialogPane>
+         </children>
+      </Pane>
+      <Pane fx:id="infoPane" layoutX="2.0" layoutY="186.0" prefHeight="468.0" prefWidth="401.0">
+         <children>
+            <ImageView fx:id="radarImageView" fitHeight="232.0" fitWidth="400.0" layoutX="19.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../JSON/radar%20image_1.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="zoomIn" layoutX="322.0" layoutY="213.0" onMouseClicked="#zoomIn" text="+">
+               <font>
+                  <Font name="System Bold" size="48.0" />
+               </font>
+            </Label>
+            <Label fx:id="zoomOut" layoutX="352.0" layoutY="183.0" onMouseClicked="#zoomOut" prefHeight="70.0" prefWidth="27.0" text="-">
+               <font>
+                  <Font size="86.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
    </children>
 </Pane>
