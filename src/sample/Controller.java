@@ -45,6 +45,7 @@ public class Controller implements Initializable {
     private Image Icon1, day0icon, day1icon, day2icon, day3icon, day4icon, day5icon, day6icon;
     private Weather w1;
     private ObservableList<String> searchResults = FXCollections.observableArrayList("");
+    public String currentLocation;
 
     public void handleGoButton(){
         AsyncTask t = new locationSearchBackground();
@@ -93,13 +94,17 @@ public class Controller implements Initializable {
 
     public class locationSearchBackground extends AsyncTask<String, Weather>{
         public Weather doInBackground(String query){
+            zoomLevel = "7";
             selection = map.get(resultsBox.getValue()); // gets selected value from ComboBox
             Weather w = new Weather(selection,zoomLevel); // creates new Weather object using the selected location as the parameter
+            currentLocation = selection;
             return w;
         }
         public void onPostExecute(Weather w){
             try {
                 displayInfo(w);
+                displayRadarImage(w);
+
             }
             catch (IllegalStateException ie) {
                 dialogPane.setVisible(true);
@@ -110,11 +115,13 @@ public class Controller implements Initializable {
 
     public class myLocationBackground extends AsyncTask<String, Weather>{
         public Weather doInBackground(String query){
+            zoomLevel = "7";
             Weather w = new Weather(zoomLevel); // creates new Weather object using the selected location as the parameter
             return w;
         }
         public void onPostExecute(Weather w){
             displayInfo(w);
+            displayRadarImage(w);
         }
     }
 
@@ -134,7 +141,7 @@ public class Controller implements Initializable {
 
     public class zoomBackground extends AsyncTask<String, Weather> {
         public Weather doInBackground(String zoomLevel) {
-            Weather w = new Weather(zoomLevel);
+            Weather w = new Weather(currentLocation,zoomLevel);
             return w;
         }
         public void onPostExecute(Weather w){
