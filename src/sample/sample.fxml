@@ -32,7 +32,7 @@
             <Font name="System Bold Italic" size="17.0" />
          </font>
       </Label>
-      <ComboBox fx:id="resultsBox" layoutX="94.0" layoutY="28.0" maxWidth="217.0" onAction="#checkComboBox" onMouseClicked="#handleGoButton" prefHeight="28.0" prefWidth="217.0" visibleRowCount="5" />
+      <ComboBox fx:id="resultsBox" layoutX="94.0" layoutY="28.0" maxWidth="217.0" onAction="#checkComboBox" onMouseClicked="#handleGoButton" prefHeight="28.0" prefWidth="209.0" visibleRowCount="5" />
       <TextField fx:id="locationInput" layoutX="93.0" layoutY="23.0" onKeyTyped="#autoFillUpdate" onMousePressed="#setDialogPane" prefHeight="34.0" prefWidth="217.0" promptText="Enter a City or Zip Code" />
       <ImageView fx:id="arrowImage" fitHeight="34.0" fitWidth="25.0" layoutX="59.0" layoutY="27.0" onMouseClicked="#myLocation" onMousePressed="#setDialogPane" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -49,7 +49,7 @@
             <Image url="@../../bg/info_icon.png" />
          </image>
       </ImageView>
-      <Pane fx:id="homePane" layoutX="-3.0" layoutY="201.0" prefHeight="449.0" prefWidth="404.0">
+      <Pane fx:id="homePane" layoutX="-3.0" layoutY="201.0" prefHeight="449.0" prefWidth="404.0" visible="false">
          <children>
             <ImageView id="Icon" fx:id="imageView" fitHeight="164.0" fitWidth="164.0" layoutX="19.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -282,7 +282,7 @@
             </DialogPane>
          </children>
       </Pane>
-      <Pane fx:id="infoPane" layoutX="2.0" layoutY="186.0" prefHeight="468.0" prefWidth="401.0" visible="false">
+      <Pane fx:id="infoPane" layoutX="2.0" layoutY="186.0" prefHeight="468.0" prefWidth="401.0">
          <children>
             <ImageView fx:id="radarImageView" fitHeight="232.0" fitWidth="400.0" layoutX="17.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -297,9 +297,9 @@
                   <DropShadow />
                </effect>
             </Label>
-            <Label fx:id="zoomOut" layoutX="347.0" layoutY="150.0" onMouseClicked="#zoomOut" prefHeight="70.0" prefWidth="27.0" text="-" textFill="WHITE">
+            <Label fx:id="zoomOut" layoutX="348.0" layoutY="175.0" onMouseClicked="#zoomOut" prefHeight="70.0" prefWidth="27.0" text="-" textFill="WHITE">
                <font>
-                  <Font size="86.0" />
+                  <Font size="58.0" />
                </font>
                <effect>
                   <DropShadow />
@@ -312,7 +312,7 @@
             <Font name="System Bold" size="10.0" />
          </font>
       </Label>
-      <Label layoutX="376.0" layoutY="-8.0" onMouseClicked="#closeWindow" text="x">
+      <Label layoutX="376.0" layoutY="-5.0" onMouseClicked="#closeWindow" text="x">
          <font>
             <Font name="System Bold" size="29.0" />
          </font>
