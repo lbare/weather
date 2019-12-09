@@ -86,42 +86,42 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="day3temp" alignment="CENTER" layoutX="194.0" layoutY="397.0" prefHeight="27.0" prefWidth="35.0" text="49°">
+            <Label fx:id="day3temp" alignment="CENTER" layoutX="194.0" layoutY="397.0" onMouseClicked="#toggleButton" prefHeight="27.0" prefWidth="35.0" text="49°">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <ImageView fx:id="day0view" fitHeight="34.0" fitWidth="42.0" layoutX="31.0" layoutY="349.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="day0view" fitHeight="34.0" fitWidth="42.0" layoutX="31.0" layoutY="349.0" onMouseClicked="#toggleButton" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../icons/nc.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="day1view" fitHeight="34.0" fitWidth="42.0" layoutX="85.0" layoutY="349.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="day1view" fitHeight="34.0" fitWidth="42.0" layoutX="85.0" layoutY="349.0" onMouseClicked="#toggleButton" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../icons/nc.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="day2view" fitHeight="42.0" fitWidth="42.0" layoutX="137.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="day2view" fitHeight="42.0" fitWidth="42.0" layoutX="137.0" layoutY="346.0" onMouseClicked="#toggleButton" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../icons/nc.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="day3view" fitHeight="44.0" fitWidth="43.0" layoutX="190.0" layoutY="345.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="day3view" fitHeight="44.0" fitWidth="43.0" layoutX="190.0" layoutY="345.0" onMouseClicked="#toggleButton" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../icons/nc.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="day4view" fitHeight="44.0" fitWidth="43.0" layoutX="242.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="day4view" fitHeight="44.0" fitWidth="43.0" layoutX="242.0" layoutY="347.0" onMouseClicked="#toggleButton" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../icons/nc.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="day5view" fitHeight="44.0" fitWidth="43.0" layoutX="293.0" layoutY="345.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="day5view" fitHeight="44.0" fitWidth="43.0" layoutX="293.0" layoutY="345.0" onMouseClicked="#toggleButton" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../icons/nc.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="day6view" fitHeight="44.0" fitWidth="43.0" layoutX="347.0" layoutY="345.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="day6view" fitHeight="44.0" fitWidth="43.0" layoutX="347.0" layoutY="345.0" onMouseClicked="#toggleButton" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../icons/sn.png" />
                </image>
@@ -131,7 +131,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="day4temp" alignment="CENTER" layoutX="245.0" layoutY="397.0" prefHeight="27.0" prefWidth="35.0" text="61°">
+            <Label fx:id="day4temp" alignment="CENTER" layoutX="245.0" layoutY="397.0" onMouseClicked="#toggleButton" prefHeight="27.0" prefWidth="35.0" text="61°">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -141,7 +141,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="day5temp" alignment="CENTER" layoutX="297.0" layoutY="397.0" prefHeight="27.0" prefWidth="35.0" text="59°">
+            <Label fx:id="day5temp" alignment="CENTER" layoutX="297.0" layoutY="397.0" onMouseClicked="#toggleButton" prefHeight="27.0" prefWidth="35.0" text="59°">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -151,7 +151,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="day6temp" alignment="CENTER" layoutX="351.0" layoutY="397.0" prefHeight="27.0" prefWidth="35.0" text="58°">
+            <Label fx:id="day6temp" alignment="CENTER" layoutX="351.0" layoutY="397.0" onMouseClicked="#toggleButton" prefHeight="27.0" prefWidth="35.0" text="58°">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -161,7 +161,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="day2temp" alignment="CENTER" layoutX="141.0" layoutY="397.0" prefHeight="27.0" prefWidth="35.0" text="55°">
+            <Label fx:id="day2temp" alignment="CENTER" layoutX="141.0" layoutY="397.0" onMouseClicked="#toggleButton" prefHeight="27.0" prefWidth="35.0" text="55°">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -171,7 +171,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="day1temp" alignment="CENTER" layoutX="89.0" layoutY="397.0" prefHeight="27.0" prefWidth="35.0" text="62°">
+            <Label fx:id="day1temp" alignment="CENTER" layoutX="89.0" layoutY="397.0" onMouseClicked="#toggleButton" prefHeight="27.0" prefWidth="35.0" text="62°">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -181,7 +181,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="day0temp" alignment="CENTER" layoutX="35.0" layoutY="397.0" prefHeight="27.0" prefWidth="35.0" text="58°">
+            <Label fx:id="day0temp" alignment="CENTER" layoutX="35.0" layoutY="397.0" onMouseClicked="#toggleButton" prefHeight="27.0" prefWidth="35.0" text="58°">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -191,7 +191,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="humidityLabel" alignment="CENTER" layoutX="170.0" layoutY="251.0" prefHeight="38.0" prefWidth="84.0" text="26%">
+            <Label fx:id="humidityLabel" alignment="CENTER" layoutX="170.0" layoutY="251.0" onMouseClicked="#toggleButton" prefHeight="38.0" prefWidth="84.0" text="26%">
                <font>
                   <Font name="System Bold" size="26.0" />
                </font>
@@ -310,7 +310,7 @@
                   <DropShadow />
                </effect>
             </Label>
-            <Label fx:id="precipLabel" alignment="CENTER" layoutX="156.0" layoutY="300.0" prefHeight="38.0" prefWidth="84.0" text="0 IN">
+            <Label fx:id="precipLabel" alignment="CENTER" layoutX="156.0" layoutY="300.0" onMouseClicked="#toggleButton" prefHeight="38.0" prefWidth="84.0" text="0 IN">
                <font>
                   <Font name="System Bold" size="26.0" />
                </font>
@@ -320,7 +320,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="pressureLabel" alignment="CENTER" layoutX="251.0" layoutY="300.0" prefHeight="38.0" prefWidth="136.0" text="1013 MB">
+            <Label fx:id="pressureLabel" alignment="CENTER" layoutX="251.0" layoutY="300.0" onMouseClicked="#toggleButton" prefHeight="38.0" prefWidth="136.0" text="1013 MB">
                <font>
                   <Font name="System Bold" size="26.0" />
                </font>
@@ -330,7 +330,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="feelsLikeLabel" alignment="CENTER" layoutX="28.0" layoutY="300.0" prefHeight="38.0" prefWidth="84.0" text="48°F">
+            <Label fx:id="feelsLikeLabel" alignment="CENTER" layoutX="28.0" layoutY="300.0" onMouseClicked="#toggleButton" prefHeight="38.0" prefWidth="84.0" text="48°F">
                <font>
                   <Font name="System Bold" size="26.0" />
                </font>
@@ -345,12 +345,12 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="sunsetLabel" alignment="CENTER" layoutX="248.0" layoutY="391.0" prefHeight="38.0" prefWidth="136.0" text="4:43 PM" textFill="#c33b20">
+            <Label fx:id="sunsetLabel" alignment="CENTER" layoutX="248.0" layoutY="391.0" onMouseClicked="#toggleButton" prefHeight="38.0" prefWidth="136.0" text="4:43 PM" textFill="#c33b20">
                <font>
                   <Font name="System Bold" size="26.0" />
                </font>
             </Label>
-            <Label fx:id="sunriseLabel" alignment="CENTER" layoutX="126.0" layoutY="391.0" prefHeight="38.0" prefWidth="136.0" text="7:11 AM" textFill="#ff8718">
+            <Label fx:id="sunriseLabel" alignment="CENTER" layoutX="126.0" layoutY="391.0" onMouseClicked="#toggleButton" prefHeight="38.0" prefWidth="136.0" text="7:11 AM" textFill="#ff8718">
                <font>
                   <Font name="System Bold" size="26.0" />
                </font>
@@ -360,7 +360,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="elevationLabel" alignment="CENTER" layoutY="390.0" prefHeight="38.0" prefWidth="136.0" text="1215 FT">
+            <Label fx:id="elevationLabel" alignment="CENTER" layoutY="390.0" onMouseClicked="#toggleButton" prefHeight="38.0" prefWidth="136.0" text="1215 FT">
                <font>
                   <Font name="System Bold" size="26.0" />
                </font>
