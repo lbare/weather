@@ -20,6 +20,7 @@ public class Weather {
     private JsonElement locationJSE, forecastJSE;
     private String[] avgTempF, avgTempC, humidity, conditions, icon, date, rainChance;
     private Image radarImage;
+    private int numTest;
 
     // constructor for getting weather from user's IP
     public Weather(String zoomLevel) {
@@ -279,89 +280,179 @@ public class Weather {
     }
 
     public String getFeelsLikeF(){
-        int num = getLocationData("ob").getAsJsonObject()
-                .get("feelslikeF").getAsInt();
-        String temp = Integer.toString(num) + "°F";
-        return temp;
+        try {
+            int num = getLocationData("ob").getAsJsonObject()
+                    .get("feelslikeF").getAsInt();
+            String temp = Integer.toString(num) + "°F";
+            return temp;
+        }
+        catch (UnsupportedOperationException ue){
+            return "n/a";
+        }
     }
 
     public String getFeelsLikeC(){
-        int num = getLocationData("ob").getAsJsonObject()
-                .get("feelslikeC").getAsInt();
-        String temp = Integer.toString(num) + "°C";
-        return temp;
+        try {
+            int num = getLocationData("ob").getAsJsonObject()
+                    .get("feelslikeC").getAsInt();
+            String temp = Integer.toString(num) + "°C";
+            return temp;
+        }
+        catch (UnsupportedOperationException ue){
+            return "n/a";
+        }
     }
 
     public String getPressure(){
-        int num = getLocationData("ob").getAsJsonObject()
-                .get("pressureMB").getAsInt();
-        String temp = Integer.toString(num) + " MB";
-        return temp;
+        try {
+            int num = getLocationData("ob").getAsJsonObject()
+                    .get("pressureMB").getAsInt();
+            String temp = Integer.toString(num) + " MB";
+            return temp;
+        }
+        catch (UnsupportedOperationException ue){
+            return "n/a";
+        }
     }
 
     public String getPrecipIN(){
-        int num = getLocationData("ob").getAsJsonObject()
-                .get("precipIN").getAsInt();
-        String temp = Integer.toString(num) + " IN";
-        return temp;
+        try {
+            int num = getLocationData("ob").getAsJsonObject()
+                    .get("precipIN").getAsInt();
+            String temp = Integer.toString(num) + " IN";
+            return temp;
+        }
+        catch (UnsupportedOperationException ue){
+            return "n/a";
+        }
     }
 
     public String getPrecipMM(){
-        int num = getLocationData("ob").getAsJsonObject()
-                .get("precipMM").getAsInt();
-        String temp = Integer.toString(num) + " MM";
-        return temp;
+        try {
+            int num = getLocationData("ob").getAsJsonObject()
+                    .get("precipMM").getAsInt();
+            String temp = Integer.toString(num) + " MM";
+            return temp;
+        }
+        catch (UnsupportedOperationException ue){
+            return "n/a";
+        }
     }
 
     public String getElevationFT(){
-        int num = getLocationData("profile").getAsJsonObject()
-                .get("elevFT").getAsInt();
-        String temp = Integer.toString(num) + " FT";
-        return temp;
+        try {
+            int num = getLocationData("profile").getAsJsonObject()
+                    .get("elevFT").getAsInt();
+            String temp = Integer.toString(num) + " FT";
+            return temp;
+        }
+        catch (UnsupportedOperationException ue){
+            return "n/a";
+        }
     }
 
     public String getElevationM(){
-        int num = getLocationData("profile").getAsJsonObject()
-                .get("elevM").getAsInt();
-        String temp = Integer.toString(num) + " M";
-        return temp;
+        try {
+            int num = getLocationData("profile").getAsJsonObject()
+                    .get("elevM").getAsInt();
+            String temp = Integer.toString(num) + " M";
+            return temp;
+        }
+        catch (UnsupportedOperationException ue){
+            return "n/a";
+        }
+    }
+
+    public String getSunrise(){
+        try {
+            String time = getLocationData("ob").getAsJsonObject()
+                    .get("sunriseISO").getAsString().substring(11, 16) + " AM";
+            if (time.indexOf('0') == 0) {
+                time = time.substring(1);
+            }
+            return time;
+        }
+        catch (UnsupportedOperationException ue){
+            return "n/a";
+        }
+    }
+
+    public String getSunset(){
+        try {
+            String temp = getLocationData("ob").getAsJsonObject()
+                    .get("sunsetISO").getAsString().substring(11, 13);
+            numTest = Integer.parseInt(temp);
+            numTest = numTest - 12;
+            String first = Integer.toString(numTest);
+            String time = getLocationData("ob").getAsJsonObject()
+                    .get("sunsetISO").getAsString().substring(13, 16);
+            return first + time + " PM";
+        }
+        catch (UnsupportedOperationException ue){
+            return "n/a";
+        }
     }
 
     public String getTemperatureC()
     {
-        int num = getLocationData("ob").getAsJsonObject()
-                .get("tempC").getAsInt();
-        String temp = Integer.toString(num) + "°C";
-        return temp;
+        try {
+            int num = getLocationData("ob").getAsJsonObject()
+                    .get("tempC").getAsInt();
+            String temp = Integer.toString(num) + "°C";
+            return temp;
+        }
+        catch (UnsupportedOperationException ue){
+            return "n/a";
+        }
     }
 
     public String getTemperatureF()
     {
-        int num = getLocationData("ob").getAsJsonObject()
-                .get("tempF").getAsInt();
-        String temp = Integer.toString(num) + "°F";
-        return temp;
+        try {
+            int num = getLocationData("ob").getAsJsonObject()
+                    .get("tempF").getAsInt();
+            String temp = Integer.toString(num) + "°F";
+            return temp;
+        }
+        catch (UnsupportedOperationException ue){
+            return "n/a";
+        }
     }
 
     public String getMaxF(){
-        String temp = getForecastData()
-                .get(0).getAsJsonObject()
-                .get("maxTempF").getAsString() + "°";
-        return temp;
+        try {
+            String temp = getForecastData()
+                    .get(0).getAsJsonObject()
+                    .get("maxTempF").getAsString() + "°";
+            return temp;
+        }
+        catch (UnsupportedOperationException ue){
+            return "n/a";
+        }
     }
 
     public String getMinF(){
-        String temp = getForecastData()
-                .get(0).getAsJsonObject()
-                .get("minTempF").getAsString() + "°";
-        return temp;
+        try {
+            String temp = getForecastData()
+                    .get(0).getAsJsonObject()
+                    .get("minTempF").getAsString() + "°";
+            return temp;
+        }
+        catch (UnsupportedOperationException ue){
+            return "n/a";
+        }
     }
 
     public String getMaxC(){
-        String temp = getForecastData()
-                .get(0).getAsJsonObject()
-                .get("maxTempC").getAsString() + "°";
-        return temp;
+        try {
+            String temp = getForecastData()
+                    .get(0).getAsJsonObject()
+                    .get("maxTempC").getAsString() + "°";
+            return temp;
+        }
+        catch (UnsupportedOperationException ue){
+            return "n/a";
+        }
     }
 
     public String getMinC(){
@@ -711,6 +802,8 @@ public class Weather {
 
     public static void main(String[] args)
     {
-
+        Weather w = new Weather("7");
+        w.getSunrise();
+        w.getSunset();
     }
 }

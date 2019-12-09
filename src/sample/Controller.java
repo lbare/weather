@@ -327,7 +327,8 @@ public class Controller implements Initializable {
             precipLabel.setText(w.getPrecipMM());
         }
         pressureLabel.setText(w.getPressure());
-        //sunriseLabel sunsetLabel;
+        sunriseLabel.setText(w.getSunrise());
+        sunsetLabel.setText(w.getSunset());
     }
 
     public void zoomIn(){

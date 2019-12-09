@@ -1,16 +1,16 @@
 package sample;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class test {
     public static void main(String[] args) {
-        test t = new test();
-        String city = "new york city/nyc";
-        if (city.indexOf('/') > 0){
-            city = city.substring(0, city.indexOf('/'));
-        }
-        String state = "la".toUpperCase(); // capitalize State
-        String cityState = city + "," + " " + state;
-        cityState = t.capitalizeWords(cityState);
-        System.out.println(cityState);
+        Date date = new Date();
+        String strDateFormat = "hh:mm a";
+        DateFormat dateFormat = new SimpleDateFormat(strDateFormat);
+        String formattedDate= dateFormat.format(date);
+        System.out.println(formattedDate);
     }
 
     public String capitalizeWords(String str){
