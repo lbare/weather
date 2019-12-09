@@ -278,6 +278,55 @@ public class Weather {
                 .get(key).getAsJsonObject();
     }
 
+    public String getFeelsLikeF(){
+        int num = getLocationData("ob").getAsJsonObject()
+                .get("feelslikeF").getAsInt();
+        String temp = Integer.toString(num) + "°F";
+        return temp;
+    }
+
+    public String getFeelsLikeC(){
+        int num = getLocationData("ob").getAsJsonObject()
+                .get("feelslikeC").getAsInt();
+        String temp = Integer.toString(num) + "°C";
+        return temp;
+    }
+
+    public String getPressure(){
+        int num = getLocationData("ob").getAsJsonObject()
+                .get("pressureMB").getAsInt();
+        String temp = Integer.toString(num) + " MB";
+        return temp;
+    }
+
+    public String getPrecipIN(){
+        int num = getLocationData("ob").getAsJsonObject()
+                .get("precipIN").getAsInt();
+        String temp = Integer.toString(num) + " IN";
+        return temp;
+    }
+
+    public String getPrecipMM(){
+        int num = getLocationData("ob").getAsJsonObject()
+                .get("precipMM").getAsInt();
+        String temp = Integer.toString(num) + " MM";
+        return temp;
+    }
+
+    public String getElevationFT(){
+        int num = getLocationData("profile").getAsJsonObject()
+                .get("elevFT").getAsInt();
+        String temp = Integer.toString(num) + " FT";
+        return temp;
+    }
+
+    public String getElevationM(){
+        int num = getLocationData("profile").getAsJsonObject()
+                .get("elevM").getAsInt();
+        String temp = Integer.toString(num) + " M";
+        return temp;
+    }
+
     public String getTemperatureC()
     {
         int num = getLocationData("ob").getAsJsonObject()

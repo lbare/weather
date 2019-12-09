@@ -1,8 +1,8 @@
 package sample;
 
 public class APIKeys {
-    public static String ClientID = "gM17D2FbxaQsBZl8jBfN1";
-    public static String ClientKey = "K6yHaNfUKiQdO5xfq6cq4yKwYErn1sbGQHJF4mkP";
+    public static String ClientID = "Q8oS9ELk3U5xxClZQzYNk";
+    public static String ClientKey = "FSS8x7hLnFJS4VZ7h6XBRcgYuCKDKLcfW7bfF9iU";
 }
 
         /*"jqI4SN5g22BSyrI7rBIFb";

@@ -32,7 +32,7 @@ public class Controller implements Initializable {
     Label tempLabel, weatherLabel, locationLabel, day0temp, day1temp, day2temp, day3temp, day4temp, day5temp, day6temp, humidityLabel,
             day0Label, day1Label, day2Label, day3Label, day4Label, day5Label, day6Label, currentDateLabel, minLabel, maxLabel, windLabel,
             visibilityLabel, locationErrorLabel, timeUpdated, day0RainChance, day1RainChance, day2RainChance, day3RainChance, day4RainChance,
-            day5RainChance, day6RainChance;
+            day5RainChance, day6RainChance, elevationLabel, sunriseLabel, sunsetLabel, pressureLabel, precipLabel, feelsLikeLabel;
 
     @FXML
     ImageView imageView, day0view, day1view, day2view, day3view, day4view, day5view, day6view, bgImage, arrowImage, tempImage, windDirection,
@@ -259,6 +259,9 @@ public class Controller implements Initializable {
             minLabel.setText(w.getMinF());
             windLabel.setText(w.getWindSpeedMPH());
             visibilityLabel.setText(w.getVisibilityMI());
+            elevationLabel.setText(w.getElevationFT());
+            feelsLikeLabel.setText(w.getFeelsLikeF());
+            precipLabel.setText(w.getPrecipIN());
         }
     }
 
@@ -276,6 +279,9 @@ public class Controller implements Initializable {
             minLabel.setText(w.getMinC());
             windLabel.setText(w.getWindSpeedKPH());
             visibilityLabel.setText(w.getVisibilityKM());
+            elevationLabel.setText(w.getElevationM());
+            feelsLikeLabel.setText(w.getFeelsLikeC());
+            precipLabel.setText(w.getPrecipMM());
         }
     }
 
@@ -310,7 +316,18 @@ public class Controller implements Initializable {
 
     public void displayInfo(Weather w){
         radarImageView.setImage(w.getRadarImage());
-        // add labels
+        if (tempState) {
+            elevationLabel.setText(w.getElevationFT());
+            feelsLikeLabel.setText(w.getFeelsLikeF());
+            precipLabel.setText(w.getPrecipIN());
+        }
+        else{
+            elevationLabel.setText(w.getElevationM());
+            feelsLikeLabel.setText(w.getFeelsLikeC());
+            precipLabel.setText(w.getPrecipMM());
+        }
+        pressureLabel.setText(w.getPressure());
+        //sunriseLabel sunsetLabel;
     }
 
     public void zoomIn(){

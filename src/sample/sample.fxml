@@ -22,12 +22,12 @@
          <font>
             <Font name="System Bold" size="10.0" />
          </font></Label>
-      <Label fx:id="currentDateLabel" alignment="CENTER" layoutX="124.0" layoutY="82.0" prefHeight="20.0" prefWidth="152.0" text="CURRENT DATE">
+      <Label fx:id="currentDateLabel" alignment="CENTER" layoutX="124.0" layoutY="75.0" prefHeight="20.0" prefWidth="152.0" text="CURRENT DATE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="weatherLabel" alignment="CENTER" layoutX="31.0" layoutY="153.0" prefHeight="27.0" prefWidth="339.0" text="WEATHER CONDITION">
+      <Label fx:id="weatherLabel" alignment="CENTER" layoutX="31.0" layoutY="146.0" prefHeight="27.0" prefWidth="339.0" text="WEATHER CONDITION">
          <font>
             <Font name="System Bold Italic" size="17.0" />
          </font>
@@ -39,7 +39,7 @@
             <Image url="@../../bg/arrow_black1.png" />
          </image>
       </ImageView>
-      <Label fx:id="locationLabel" alignment="CENTER" layoutX="15.0" layoutY="101.0" prefHeight="51.0" prefWidth="370.0" text="Current Location">
+      <Label fx:id="locationLabel" alignment="CENTER" layoutX="15.0" layoutY="94.0" prefHeight="51.0" prefWidth="370.0" text="Current Location">
          <font>
             <Font name="System Bold" size="31.0" />
          </font>
@@ -186,37 +186,37 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="178.0" layoutY="213.0" prefHeight="17.0" prefWidth="70.0" text="HUMIDITY:">
+            <Label alignment="CENTER" layoutX="178.0" layoutY="223.0" prefHeight="17.0" prefWidth="70.0" text="HUMIDITY:">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="humidityLabel" alignment="CENTER" layoutX="170.0" layoutY="241.0" prefHeight="38.0" prefWidth="84.0" text="26%">
+            <Label fx:id="humidityLabel" alignment="CENTER" layoutX="170.0" layoutY="251.0" prefHeight="38.0" prefWidth="84.0" text="26%">
                <font>
                   <Font name="System Bold" size="26.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="41.0" layoutY="213.0" prefHeight="17.0" prefWidth="84.0" text="WIND:">
+            <Label alignment="CENTER" layoutX="41.0" layoutY="223.0" prefHeight="17.0" prefWidth="84.0" text="WIND:">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="windLabel" alignment="CENTER_RIGHT" layoutY="241.0" onMousePressed="#toggleButton" prefHeight="38.0" prefWidth="117.0" text="5 MPH" textAlignment="RIGHT">
+            <Label fx:id="windLabel" alignment="CENTER_RIGHT" layoutY="251.0" onMousePressed="#toggleButton" prefHeight="38.0" prefWidth="117.0" text="5 MPH" textAlignment="RIGHT">
                <font>
                   <Font name="System Bold" size="26.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="298.0" layoutY="213.0" prefHeight="17.0" prefWidth="70.0" text="VISIBILITY:">
+            <Label alignment="CENTER" layoutX="298.0" layoutY="223.0" prefHeight="17.0" prefWidth="70.0" text="VISIBILITY:">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="visibilityLabel" alignment="CENTER" layoutX="274.0" layoutY="241.0" onMousePressed="#toggleButton" prefHeight="38.0" prefWidth="116.0" text="10 MI">
+            <Label fx:id="visibilityLabel" alignment="CENTER" layoutX="274.0" layoutY="251.0" onMousePressed="#toggleButton" prefHeight="38.0" prefWidth="116.0" text="10 MI">
                <font>
                   <Font name="System Bold" size="26.0" />
                </font>
             </Label>
-            <ImageView fx:id="windDirection" fitHeight="34.0" fitWidth="27.0" layoutX="120.0" layoutY="247.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="windDirection" fitHeight="34.0" fitWidth="27.0" layoutX="120.0" layoutY="257.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../arrows/NE.png" />
                </image>
@@ -284,12 +284,25 @@
       </Pane>
       <Pane fx:id="infoPane" layoutX="2.0" layoutY="186.0" prefHeight="468.0" prefWidth="401.0">
          <children>
-            <ImageView fx:id="radarImageView" fitHeight="232.0" fitWidth="400.0" layoutX="17.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+            <Label alignment="CENTER" layoutX="136.0" layoutY="272.0" prefHeight="17.0" prefWidth="125.0" text="PRECIPITATION:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="zoomOut" layoutX="347.0" layoutY="146.0" onMouseClicked="#zoomOut" prefHeight="70.0" prefWidth="27.0" text="-" textFill="WHITE">
+               <font>
+                  <Font size="82.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+            <ImageView fx:id="radarImageView" fitHeight="232.0" fitWidth="400.0" layoutX="17.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../JSON/radar%20image_1.png" />
                </image>
             </ImageView>
-            <Label fx:id="zoomIn" layoutX="317.0" layoutY="180.0" onMouseClicked="#zoomIn" text="+" textFill="WHITE">
+            <Label fx:id="zoomIn" layoutX="316.0" layoutY="172.0" onMouseClicked="#zoomIn" text="+" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="48.0" />
                </font>
@@ -297,13 +310,60 @@
                   <DropShadow />
                </effect>
             </Label>
-            <Label fx:id="zoomOut" layoutX="348.0" layoutY="175.0" onMouseClicked="#zoomOut" prefHeight="70.0" prefWidth="27.0" text="-" textFill="WHITE">
+            <Label fx:id="precipLabel" alignment="CENTER" layoutX="156.0" layoutY="300.0" prefHeight="38.0" prefWidth="84.0" text="0 IN">
                <font>
-                  <Font size="58.0" />
+                  <Font name="System Bold" size="26.0" />
                </font>
-               <effect>
-                  <DropShadow />
-               </effect>
+            </Label>
+            <Label alignment="CENTER" layoutX="284.0" layoutY="272.0" prefHeight="17.0" prefWidth="70.0" text="PRESSURE:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="pressureLabel" alignment="CENTER" layoutX="251.0" layoutY="300.0" prefHeight="38.0" prefWidth="136.0" text="1013 MB">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="36.0" layoutY="272.0" prefHeight="17.0" prefWidth="70.0" text="FEELS LIKE:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="feelsLikeLabel" alignment="CENTER" layoutX="28.0" layoutY="300.0" prefHeight="38.0" prefWidth="84.0" text="48°F">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="160.0" layoutY="363.0" prefHeight="17.0" prefWidth="70.0" text="SUNRISE:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="282.0" layoutY="363.0" prefHeight="17.0" prefWidth="70.0" text="SUNSET:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="sunsetLabel" alignment="CENTER" layoutX="248.0" layoutY="391.0" prefHeight="38.0" prefWidth="136.0" text="4:43 PM" textFill="#c33b20">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Label>
+            <Label fx:id="sunriseLabel" alignment="CENTER" layoutX="126.0" layoutY="391.0" prefHeight="38.0" prefWidth="136.0" text="7:11 AM" textFill="#ff8718">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="36.0" layoutY="362.0" prefHeight="17.0" prefWidth="70.0" text="ELEVATION:">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="elevationLabel" alignment="CENTER" layoutY="390.0" prefHeight="38.0" prefWidth="136.0" text="1215 FT">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
             </Label>
          </children>
       </Pane>
