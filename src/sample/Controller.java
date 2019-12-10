@@ -8,10 +8,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import sierra.AsyncTask;
 import java.net.URL;
+import java.security.Key;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
@@ -83,7 +85,7 @@ public class Controller implements Initializable {
     }
 
     public void checkComboBox(ActionEvent e){
-        if (resultsBox.getValue() != null){
+        if (resultsBox.getValue() != null) {
             handleGoButton();
             clearSearch();
         }
