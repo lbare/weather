@@ -13,7 +13,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import sierra.AsyncTask;
 import java.net.URL;
-import java.security.Key;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
@@ -111,7 +110,6 @@ public class Controller implements Initializable {
             catch (IllegalStateException ie) {
                 dialogPane.setVisible(true);
                 locationErrorLabel.setText(resultsBox.getValue().toString());
-
             }
         }
     }
