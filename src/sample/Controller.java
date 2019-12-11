@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import sierra.AsyncTask;
@@ -83,9 +84,8 @@ public class Controller implements Initializable {
     }
 
     public void checkComboBox(ActionEvent e){
-        if (resultsBox.getValue() != null){
+        if (resultsBox.getValue() != null) {
             handleGoButton();
-            clearSearch();
         }
     }
 
@@ -94,14 +94,14 @@ public class Controller implements Initializable {
     }
 
     public class locationSearchBackground extends AsyncTask<String, Weather>{
-        public Weather doInBackground(String query){
+        public Weather doInBackground(String query) {
             zoomLevel = "7";
             selection = map.get(resultsBox.getValue()); // gets selected value from ComboBox
             Weather w = new Weather(selection,zoomLevel); // creates new Weather object using the selected location as the parameter
             currentLocation = selection;
             return w;
         }
-        public void onPostExecute(Weather w){
+        public void onPostExecute(Weather w) {
             try {
                 displayHome(w);
                 displayInfo(w);
@@ -110,7 +110,6 @@ public class Controller implements Initializable {
             catch (IllegalStateException ie) {
                 dialogPane.setVisible(true);
                 locationErrorLabel.setText(resultsBox.getValue().toString());
-
             }
         }
     }
