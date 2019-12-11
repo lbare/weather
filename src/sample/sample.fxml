@@ -22,29 +22,29 @@
          <font>
             <Font name="System Bold" size="10.0" />
          </font></Label>
-      <Label fx:id="currentDateLabel" alignment="CENTER" layoutX="124.0" layoutY="90.0" prefHeight="20.0" prefWidth="152.0" text="CURRENT DATE">
+      <Label fx:id="currentDateLabel" alignment="CENTER" layoutX="124.0" layoutY="75.0" prefHeight="20.0" prefWidth="152.0" text="CURRENT DATE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Label fx:id="weatherLabel" alignment="CENTER" layoutX="31.0" layoutY="161.0" prefHeight="27.0" prefWidth="339.0" text="WEATHER CONDITION">
+      <Label fx:id="weatherLabel" alignment="CENTER" layoutX="31.0" layoutY="146.0" prefHeight="27.0" prefWidth="339.0" text="WEATHER CONDITION">
          <font>
             <Font name="System Bold Italic" size="17.0" />
          </font>
       </Label>
-      <ComboBox fx:id="resultsBox" layoutX="94.0" layoutY="44.0" maxWidth="217.0" onAction="#checkComboBox" prefHeight="28.0" prefWidth="209.0" visibleRowCount="5" />
-      <TextField fx:id="locationInput" layoutX="93.0" layoutY="39.0" onKeyTyped="#autoFillUpdate" onMousePressed="#setDialogPane" prefHeight="34.0" prefWidth="217.0" promptText="Enter a City or Zip Code" />
-      <ImageView fx:id="arrowImage" fitHeight="34.0" fitWidth="25.0" layoutX="24.0" layoutY="45.0" onMouseClicked="#myLocation" onMousePressed="#setDialogPane" pickOnBounds="true" preserveRatio="true">
+      <ComboBox fx:id="resultsBox" layoutX="94.0" layoutY="28.0" maxWidth="217.0" onAction="#checkComboBox" onMouseClicked="#handleGoButton" prefHeight="28.0" prefWidth="209.0" visibleRowCount="5" />
+      <TextField fx:id="locationInput" layoutX="93.0" layoutY="23.0" onKeyTyped="#autoFillUpdate" onMousePressed="#setDialogPane" prefHeight="34.0" prefWidth="217.0" promptText="Enter a City or Zip Code" />
+      <ImageView fx:id="arrowImage" fitHeight="34.0" fitWidth="25.0" layoutX="59.0" layoutY="27.0" onMouseClicked="#myLocation" onMousePressed="#setDialogPane" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../bg/arrow_black1.png" />
          </image>
       </ImageView>
-      <Label fx:id="locationLabel" alignment="CENTER" layoutX="15.0" layoutY="109.0" prefHeight="51.0" prefWidth="370.0" text="Current Location">
+      <Label fx:id="locationLabel" alignment="CENTER" layoutX="15.0" layoutY="94.0" prefHeight="51.0" prefWidth="370.0" text="Current Location">
          <font>
             <Font name="System Bold" size="31.0" />
          </font>
       </Label>
-      <ImageView fx:id="infoIcon" fitHeight="34.0" fitWidth="25.0" layoutX="56.0" layoutY="46.0" onMouseClicked="#homeToggle" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="infoIcon" fitHeight="34.0" fitWidth="25.0" layoutX="320.0" layoutY="28.0" onMouseClicked="#homeToggle" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../bg/info_icon.png" />
          </image>
@@ -71,12 +71,12 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="maxLabel" alignment="CENTER" layoutX="228.0" layoutY="138.0" onMouseClicked="#toggleButton" prefHeight="38.0" prefWidth="62.0" text="55°" textFill="#bf4e4e">
+            <Label fx:id="maxLabel" alignment="CENTER" layoutX="228.0" layoutY="138.0" prefHeight="38.0" prefWidth="62.0" text="55°" textFill="#bf4e4e">
                <font>
                   <Font name="System Bold" size="26.0" />
                </font>
             </Label>
-            <Label fx:id="minLabel" alignment="CENTER" layoutX="294.0" layoutY="138.0" onMouseClicked="#toggleButton" prefHeight="38.0" prefWidth="62.0" text="55°" textFill="#3a889e">
+            <Label fx:id="minLabel" alignment="CENTER" layoutX="294.0" layoutY="138.0" prefHeight="38.0" prefWidth="62.0" text="55°" textFill="#3a889e">
                <font>
                   <Font name="System Bold" size="26.0" />
                </font>
@@ -186,37 +186,37 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="178.0" layoutY="216.0" prefHeight="17.0" prefWidth="70.0" text="HUMIDITY:">
+            <Label alignment="CENTER" layoutX="178.0" layoutY="223.0" prefHeight="17.0" prefWidth="70.0" text="HUMIDITY:">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="humidityLabel" alignment="CENTER" layoutX="170.0" layoutY="244.0" onMouseClicked="#toggleButton" prefHeight="38.0" prefWidth="84.0" text="26%">
+            <Label fx:id="humidityLabel" alignment="CENTER" layoutX="170.0" layoutY="251.0" onMouseClicked="#toggleButton" prefHeight="38.0" prefWidth="84.0" text="26%">
                <font>
                   <Font name="System Bold" size="26.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="41.0" layoutY="216.0" prefHeight="17.0" prefWidth="84.0" text="WIND:">
+            <Label alignment="CENTER" layoutX="41.0" layoutY="223.0" prefHeight="17.0" prefWidth="84.0" text="WIND:">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="windLabel" alignment="CENTER_RIGHT" layoutY="244.0" onMousePressed="#toggleButton" prefHeight="38.0" prefWidth="117.0" text="5 MPH" textAlignment="RIGHT">
+            <Label fx:id="windLabel" alignment="CENTER_RIGHT" layoutY="251.0" onMousePressed="#toggleButton" prefHeight="38.0" prefWidth="117.0" text="5 MPH" textAlignment="RIGHT">
                <font>
                   <Font name="System Bold" size="26.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="298.0" layoutY="216.0" prefHeight="17.0" prefWidth="70.0" text="VISIBILITY:">
+            <Label alignment="CENTER" layoutX="298.0" layoutY="223.0" prefHeight="17.0" prefWidth="70.0" text="VISIBILITY:">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="visibilityLabel" alignment="CENTER" layoutX="274.0" layoutY="244.0" onMousePressed="#toggleButton" prefHeight="38.0" prefWidth="116.0" text="10 MI">
+            <Label fx:id="visibilityLabel" alignment="CENTER" layoutX="274.0" layoutY="251.0" onMousePressed="#toggleButton" prefHeight="38.0" prefWidth="116.0" text="10 MI">
                <font>
                   <Font name="System Bold" size="26.0" />
                </font>
             </Label>
-            <ImageView fx:id="windDirection" fitHeight="34.0" fitWidth="27.0" layoutX="120.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="windDirection" fitHeight="34.0" fitWidth="27.0" layoutX="120.0" layoutY="257.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../arrows/NE.png" />
                </image>
@@ -375,11 +375,6 @@
       <Label layoutX="376.0" layoutY="-5.0" onMouseClicked="#closeWindow" text="x">
          <font>
             <Font name="System Bold" size="29.0" />
-         </font>
-      </Label>
-      <Label layoutX="319.0" layoutY="45.0" onMouseClicked="#clearSearch" text="CLEAR">
-         <font>
-            <Font name="System Bold" size="20.0" />
          </font>
       </Label>
    </children>
