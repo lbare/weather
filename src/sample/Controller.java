@@ -12,7 +12,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import sierra.AsyncTask;
 import java.net.URL;
-import java.security.Key;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
